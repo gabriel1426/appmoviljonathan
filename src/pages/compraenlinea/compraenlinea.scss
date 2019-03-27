@@ -1,0 +1,29 @@
+page-compraenlinea {
+    .fondocompralinea{
+        background: rgb(243, 243, 243);
+
+    }
+    .bordes{
+        border-radius: 8px;
+        margin-bottom:22px; 
+    }
+    .button-md{
+        text-transform: none;
+    }
+
+    .color{
+        color:#6FBBF9 !important;
+    }
+    .gris{
+        color: gray;
+    }
+    .contador{
+        margin: 0px;
+        
+        background: white;
+        color: gray;
+    }
+    .item-md.item-block .item-inner{
+        border: 0px;
+    }
+}

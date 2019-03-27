@@ -1,0 +1,144 @@
+page-home {
+
+    .tabbar{
+        opacity: 1 !important;
+    }
+    .tarjetadecredito{
+        margin: 0 auto;
+        position: relative;
+        width: 97%;
+        height: 200px;
+        border-radius: 12px;
+        color: white;
+        background-image: url(../../assets/imgs/1.png);
+        -webkit-box-shadow: -1px 16px 62px -15px rgba(0,0,0,0.75);
+        -moz-box-shadow: -1px 16px 62px -15px rgba(0,0,0,0.75);
+        box-shadow: -1px 16px 62px -15px rgba(0,0,0,0.75);
+
+    }
+
+      .card-title {
+        position: absolute;
+        top: 6%;
+        font-size: 1.6em;
+        font-variant-numeric: tabular-nums;
+        width: 100%;
+        font-weight: bold;
+        color: #fff;
+        padding-left:10px; 
+        
+      }
+    
+      .card-subtitle {
+        padding-left:17px;
+        font-variant-numeric: tabular-nums;
+        text-shadow: -3px -3px 3px rgb(90, 90, 90);
+        font-size: 1.8em;
+        position: absolute;
+        top: 40%;
+        width: 100%;
+        color: #fff;
+      }
+      .card-subsubtitle{
+        position: absolute;
+        bottom: 3%;
+        font-size: 0.9em;
+       
+        font-variant-numeric: tabular-nums;
+        width: 100%;
+        font-weight: bold;
+        color: #fff;
+        padding-left:20px; 
+        
+      }
+
+      .saldo{
+          
+        margin: 0 auto;
+        width: 75%;
+        margin-top: 25px;
+        text-align: center;
+        background: white;
+        border-radius: 10px;
+        -webkit-box-shadow: 2px 3px 44px 10px rgba(204,204,204,1);
+        -moz-box-shadow: 2px 3px 44px 10px rgba(204,204,204,1);
+        box-shadow: 2px 3px 44px 10px rgba(204,204,204,1);
+
+      }
+
+      .saldo h3{
+          margin: 2px;
+      }
+
+      .sinfondo{
+        background: transparent;
+        padding: 0px;
+        border: 0px;
+        font-size: 14px;
+    }
+    .item-md.item-block .item-inner{
+    border: 0px;
+    }
+    .button-md{
+        text-transform: none;
+    }
+    .promocion{
+        margin: 0 auto;
+        position: relative;
+        width: 97%; 
+        border-radius: 12px;
+        color: white;
+      
+      
+    }
+    .card-title-promocion{
+        position: absolute;
+        top: 6%;
+        font-size: 1.1em;
+        font-family: sans-serif;
+        width: 100%;
+        font-weight: bold;
+        text-align: left;
+        color: #fff;
+        padding-left:10px; 
+        
+      }
+    
+      .card-subtitle-promocion {
+        padding-left:17px;
+        text-shadow: -3px -3px 3px rgb(90, 90, 90);
+        font-size: 13px;
+        position: absolute;
+        text-align: left;
+        top: 30%;
+        width: 100%;
+        color: #fff;
+      }
+      .card-subsubtitle-promocion{
+        position: absolute;
+        text-align: left;
+        bottom: 10%;
+        font-size: 0.9em;
+        font-family: sans-serif;
+        width: 100%;
+        font-weight: bold;
+        color: #fff;
+        padding-left:20px; 
+        
+      }
+      .ion-slide.swiper-slide {
+        left: 60%;
+    }
+    .overlay:before{
+      border-radius: 12px;
+      position: absolute;
+      content:" ";
+      top:0;
+      left:0;
+      width:98%;
+      height:98%;
+      display: block;
+      z-index:0;
+      background-color: rgba(73, 71, 71, 0.5);
+    }
+}

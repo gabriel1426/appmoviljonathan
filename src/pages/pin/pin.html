@@ -1,0 +1,47 @@
+<!--
+  Generated template for the PinPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+<ion-content class="no-scroll">
+
+    <div class="marco overlay" style="display: block; text-align: center;">
+        <button (click)="cerrar();" ion-button menuToggle end class="ponerBotonMenu">
+
+            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+            width="26" height="30"
+            viewBox="0 0 192 192"
+            style=" fill:#000000;"><g transform="translate(9.024,9.024) scale(0.906,0.906)"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="none" stroke-linecap="butt" stroke-linejoin="none" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><g fill="#ffffff" stroke="#ffffff" stroke-width="20" stroke-linejoin="round"><g id="surface1 1"><path d="M84.03,54.39c1.29,2.955 0.6,6.375 -1.71,8.61l-25.08,25.32h96.36c2.775,-0.045 5.34,1.41 6.735,3.81c1.41,2.385 1.41,5.355 0,7.74c-1.395,2.4 -3.96,3.855 -6.735,3.81h-96.36l25.08,25.32c2.985,3.045 2.925,7.935 -0.12,10.92c-3.045,2.985 -7.935,2.925 -10.92,-0.12l-37.92,-38.4l-5.28,-5.4l5.28,-5.4l37.92,-38.4c1.38,-1.455 3.27,-2.325 5.28,-2.4c3.21,-0.18 6.18,1.65 7.47,4.59z"></path></g></g><path d="M0,192v-192h192v192z" fill="none" stroke="none" stroke-width="1" stroke-linejoin="miter"></path><g fill="#ffffff" stroke="none" stroke-width="1" stroke-linejoin="miter"><g id="surface1"><path d="M76.56,49.8c-2.01,0.075 -3.9,0.945 -5.28,2.4l-37.92,38.4l-5.28,5.4l5.28,5.4l37.92,38.4c2.985,3.045 7.875,3.105 10.92,0.12c3.045,-2.985 3.105,-7.875 0.12,-10.92l-25.08,-25.32h96.36c2.775,0.045 5.34,-1.41 6.735,-3.81c1.41,-2.385 1.41,-5.355 0,-7.74c-1.395,-2.4 -3.96,-3.855 -6.735,-3.81h-96.36l25.08,-25.32c2.31,-2.235 3,-5.655 1.71,-8.61c-1.29,-2.94 -4.26,-4.77 -7.47,-4.59z"></path></g></g><path d="" fill="none" stroke="none" stroke-width="1" stroke-linejoin="miter"></path><path d="" fill="none" stroke="none" stroke-width="1" stroke-linejoin="miter"></path></g></g></svg>
+
+        </button>
+        <img  src="../../assets/imgs/pin2.png" style="display: block;height: 100%;" >
+       <div class="escudo">
+        <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+        width="100" height="100"
+        viewBox="0 0 192 192"
+        style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,192v-192h192v192z" fill="none"></path><g fill="#ffffff"><path d="M96,8l-72,32v48c0,62.64 51.512,91.888 72,96c20.488,-4.112 72,-33.36 72,-96v-48zM96,25.51562l56,24.89062v37.59375c0,49.072 -38.28,74.036 -56,79.5c-17.72,-5.464 -56,-30.428 -56,-79.5v-37.59375zM134.34375,62.35938l-46.34375,46.32813l-22.17188,-22.17188l-11.3125,11.3125l33.48438,33.48437l57.64062,-57.65625z"></path></g></g></svg>
+       <h1 style="color: white">VERIFIQUE SU PIN DE SEGURIDAD</h1>
+      </div>
+
+      <div class="divcodigo">
+        <h3 style="color: white">CODIGO</h3>
+        <ion-item class="transparente" style=" padding-right: 16px; border-bottom: 3px solid white; margin: 0 auto; width: 80%">
+          <span item-left start style="margin:0px; padding-right:15px;">
+              <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+              width="24" height="24"
+              viewBox="0 0 192 192"
+              style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,192v-192h192v192z" fill="none"></path><g fill="#ffffff"><g id="surface1"><path d="M96.075,191.25l-1.68,-0.78c-0.84,-0.375 -82.875,-39.615 -82.875,-156.585v-3.09l3.015,-0.66c28.425,-6.24 45.21,-15.075 57.465,-21.525c9.525,-4.995 16.395,-8.61 24,-8.61c7.605,0 14.475,3.615 24,8.61c12.255,6.45 29.04,15.285 57.465,21.525l3.015,0.66v3.09c0,113.085 -81.915,156.09 -82.74,156.525z"></path></g></g></g></svg>
+            </span>
+       
+        <ion-input style="width: 90%;" class="codigo" type="number" autofocus value="" ></ion-input>
+      </ion-item>
+      
+      </div>
+      <div class="divconfirmar" style="margin: 0 auto; width: 60%">
+          <button  class="btnconfirmar"  ion-button  (click)="confirmar();">Comfirmar</button>
+      </div>
+      </div>
+
+</ion-content>

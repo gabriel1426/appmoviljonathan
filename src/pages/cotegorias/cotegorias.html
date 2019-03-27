@@ -1,0 +1,201 @@
+<!--
+  Generated template for the CotegoriasPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar *ngIf="lupa">
+    
+      <ion-buttons left>
+          <ion-icon style="font-size: 31px;" name="menu"></ion-icon>
+      </ion-buttons>
+      <span *ngIf="buscar else templateName">
+      <ion-segment  class="segmento" color="primary">
+      <ion-segment-button (click)="buscarboton2();" class="segmentleft activo">
+          
+
+          <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+          width="24" height="24"
+          viewBox="0 0 192 192"
+          style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,192v-192h192v192z" fill="none"></path><g fill="#ffffff"><g id="surface1"><path d="M22.15385,7.38462c-8.13461,0 -14.76923,6.63462 -14.76923,14.76923v14.76923c0,8.13462 6.63462,14.76923 14.76923,14.76923h14.76923c8.13462,0 14.76923,-6.63461 14.76923,-14.76923v-14.76923c0,-8.13461 -6.63461,-14.76923 -14.76923,-14.76923zM88.61538,7.38462c-8.13461,0 -14.76923,6.63462 -14.76923,14.76923v14.76923c0,8.13462 6.63462,14.76923 14.76923,14.76923h14.76923c8.13462,0 14.76923,-6.63461 14.76923,-14.76923v-14.76923c0,-8.13461 -6.63461,-14.76923 -14.76923,-14.76923zM155.07692,7.38462c-8.13461,0 -14.76923,6.63462 -14.76923,14.76923v14.76923c0,8.13462 6.63462,14.76923 14.76923,14.76923h14.76923c8.13462,0 14.76923,-6.63461 14.76923,-14.76923v-14.76923c0,-8.13461 -6.63461,-14.76923 -14.76923,-14.76923zM22.15385,73.84615c-8.13461,0 -14.76923,6.63462 -14.76923,14.76923v14.76923c0,8.13462 6.63462,14.76923 14.76923,14.76923h14.76923c8.13462,0 14.76923,-6.63461 14.76923,-14.76923v-14.76923c0,-8.13461 -6.63461,-14.76923 -14.76923,-14.76923zM88.61538,73.84615c-8.13461,0 -14.76923,6.63462 -14.76923,14.76923v14.76923c0,8.13462 6.63462,14.76923 14.76923,14.76923h14.76923c8.13462,0 14.76923,-6.63461 14.76923,-14.76923v-14.76923c0,-8.13461 -6.63461,-14.76923 -14.76923,-14.76923zM155.07692,73.84615c-8.13461,0 -14.76923,6.63462 -14.76923,14.76923v14.76923c0,8.13462 6.63462,14.76923 14.76923,14.76923h14.76923c8.13462,0 14.76923,-6.63461 14.76923,-14.76923v-14.76923c0,-8.13461 -6.63461,-14.76923 -14.76923,-14.76923zM22.15385,140.30769c-8.13461,0 -14.76923,6.63462 -14.76923,14.76923v14.76923c0,8.13462 6.63462,14.76923 14.76923,14.76923h14.76923c8.13462,0 14.76923,-6.63461 14.76923,-14.76923v-14.76923c0,-8.13461 -6.63461,-14.76923 -14.76923,-14.76923zM88.61538,140.30769c-8.13461,0 -14.76923,6.63462 -14.76923,14.76923v14.76923c0,8.13462 6.63462,14.76923 14.76923,14.76923h14.76923c8.13462,0 14.76923,-6.63461 14.76923,-14.76923v-14.76923c0,-8.13461 -6.63461,-14.76923 -14.76923,-14.76923zM155.07692,140.30769c-8.13461,0 -14.76923,6.63462 -14.76923,14.76923v14.76923c0,8.13462 6.63462,14.76923 14.76923,14.76923h14.76923c8.13462,0 14.76923,-6.63461 14.76923,-14.76923v-14.76923c0,-8.13461 -6.63461,-14.76923 -14.76923,-14.76923z"></path></g></g></g></svg>    
+
+
+
+          
+        </ion-segment-button>
+        <ion-segment-button (click)="buscarboton();" class="segmentright noactivo">
+      
+           
+            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+            width="24" height="24"
+            viewBox="0 0 192 192"
+            style=" fill:#000000;"><g transform="translate(6.624,6.624) scale(0.931,0.931)"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="none" stroke-linecap="butt" stroke-linejoin="none" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><g fill="#000000" stroke="#000000" stroke-width="14" stroke-linejoin="round"><g id="surface1 1"><path d="M157.44,65.28c0,27.525 -14.835,57.615 -29.4,81.12c-14.565,23.505 -29.16,40.44 -29.16,40.44c-0.735,0.825 -1.785,1.305 -2.88,1.305c-1.095,0 -2.145,-0.48 -2.88,-1.305c0,0 -14.58,-16.59 -29.16,-39.96c-14.58,-23.37 -29.4,-53.535 -29.4,-81.6c0,-33.945 27.495,-61.44 61.44,-61.44c33.945,0 61.44,27.495 61.44,61.44zM42.24,65.28c0,25.305 13.98,54.72 28.2,77.52c11.895,19.065 21.99,31.185 25.56,35.4c3.54,-4.245 13.635,-16.635 25.56,-35.88c14.235,-22.965 28.2,-52.335 28.2,-77.04c0,-29.805 -23.955,-53.76 -53.76,-53.76c-29.805,0 -53.76,23.955 -53.76,53.76zM122.88,69.12c0,14.805 -12.075,26.88 -26.88,26.88c-14.805,0 -26.88,-12.075 -26.88,-26.88c0,-14.805 12.075,-26.88 26.88,-26.88c14.805,0 26.88,12.075 26.88,26.88zM76.8,69.12c0,10.65 8.55,19.2 19.2,19.2c10.65,0 19.2,-8.55 19.2,-19.2c0,-10.65 -8.55,-19.2 -19.2,-19.2c-10.65,0 -19.2,8.55 -19.2,19.2z"></path></g></g><path d="M0,192v-192h192v192z" fill="none" stroke="none" stroke-width="1" stroke-linejoin="miter"></path><g fill="#000000" stroke="none" stroke-width="1" stroke-linejoin="miter"><g id="surface1"><path d="M96,3.84c-33.945,0 -61.44,27.495 -61.44,61.44c0,28.065 14.82,58.23 29.4,81.6c14.58,23.37 29.16,39.96 29.16,39.96c0.735,0.825 1.785,1.305 2.88,1.305c1.095,0 2.145,-0.48 2.88,-1.305c0,0 14.595,-16.935 29.16,-40.44c14.565,-23.505 29.4,-53.595 29.4,-81.12c0,-33.945 -27.495,-61.44 -61.44,-61.44zM96,11.52c29.805,0 53.76,23.955 53.76,53.76c0,24.705 -13.965,54.075 -28.2,77.04c-11.925,19.245 -22.02,31.635 -25.56,35.88c-3.57,-4.215 -13.665,-16.335 -25.56,-35.4c-14.22,-22.8 -28.2,-52.215 -28.2,-77.52c0,-29.805 23.955,-53.76 53.76,-53.76zM96,42.24c-14.805,0 -26.88,12.075 -26.88,26.88c0,14.805 12.075,26.88 26.88,26.88c14.805,0 26.88,-12.075 26.88,-26.88c0,-14.805 -12.075,-26.88 -26.88,-26.88zM96,49.92c10.65,0 19.2,8.55 19.2,19.2c0,10.65 -8.55,19.2 -19.2,19.2c-10.65,0 -19.2,-8.55 -19.2,-19.2c0,-10.65 8.55,-19.2 19.2,-19.2z"></path></g></g><path d="" fill="none" stroke="none" stroke-width="1" stroke-linejoin="miter"></path><path d="" fill="none" stroke="none" stroke-width="1" stroke-linejoin="miter"></path></g></g></svg>           
+
+           
+        </ion-segment-button>
+      </ion-segment>
+      </span>
+      <ng-template #templateName>
+        <ion-segment  class="segmento" color="primary">
+          <ion-segment-button (click)="buscarboton2();" class="segmentleft noactivo">
+             
+              <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+              width="24" height="24"
+              viewBox="0 0 192 192"
+              style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,192v-192h192v192z" fill="none"></path><g fill="#000000"><g id="surface1"><path d="M22.15385,7.38462c-8.13461,0 -14.76923,6.63462 -14.76923,14.76923v14.76923c0,8.13462 6.63462,14.76923 14.76923,14.76923h14.76923c8.13462,0 14.76923,-6.63461 14.76923,-14.76923v-14.76923c0,-8.13461 -6.63461,-14.76923 -14.76923,-14.76923zM88.61538,7.38462c-8.13461,0 -14.76923,6.63462 -14.76923,14.76923v14.76923c0,8.13462 6.63462,14.76923 14.76923,14.76923h14.76923c8.13462,0 14.76923,-6.63461 14.76923,-14.76923v-14.76923c0,-8.13461 -6.63461,-14.76923 -14.76923,-14.76923zM155.07692,7.38462c-8.13461,0 -14.76923,6.63462 -14.76923,14.76923v14.76923c0,8.13462 6.63462,14.76923 14.76923,14.76923h14.76923c8.13462,0 14.76923,-6.63461 14.76923,-14.76923v-14.76923c0,-8.13461 -6.63461,-14.76923 -14.76923,-14.76923zM22.15385,73.84615c-8.13461,0 -14.76923,6.63462 -14.76923,14.76923v14.76923c0,8.13462 6.63462,14.76923 14.76923,14.76923h14.76923c8.13462,0 14.76923,-6.63461 14.76923,-14.76923v-14.76923c0,-8.13461 -6.63461,-14.76923 -14.76923,-14.76923zM88.61538,73.84615c-8.13461,0 -14.76923,6.63462 -14.76923,14.76923v14.76923c0,8.13462 6.63462,14.76923 14.76923,14.76923h14.76923c8.13462,0 14.76923,-6.63461 14.76923,-14.76923v-14.76923c0,-8.13461 -6.63461,-14.76923 -14.76923,-14.76923zM155.07692,73.84615c-8.13461,0 -14.76923,6.63462 -14.76923,14.76923v14.76923c0,8.13462 6.63462,14.76923 14.76923,14.76923h14.76923c8.13462,0 14.76923,-6.63461 14.76923,-14.76923v-14.76923c0,-8.13461 -6.63461,-14.76923 -14.76923,-14.76923zM22.15385,140.30769c-8.13461,0 -14.76923,6.63462 -14.76923,14.76923v14.76923c0,8.13462 6.63462,14.76923 14.76923,14.76923h14.76923c8.13462,0 14.76923,-6.63461 14.76923,-14.76923v-14.76923c0,-8.13461 -6.63461,-14.76923 -14.76923,-14.76923zM88.61538,140.30769c-8.13461,0 -14.76923,6.63462 -14.76923,14.76923v14.76923c0,8.13462 6.63462,14.76923 14.76923,14.76923h14.76923c8.13462,0 14.76923,-6.63461 14.76923,-14.76923v-14.76923c0,-8.13461 -6.63461,-14.76923 -14.76923,-14.76923zM155.07692,140.30769c-8.13461,0 -14.76923,6.63462 -14.76923,14.76923v14.76923c0,8.13462 6.63462,14.76923 14.76923,14.76923h14.76923c8.13462,0 14.76923,-6.63461 14.76923,-14.76923v-14.76923c0,-8.13461 -6.63461,-14.76923 -14.76923,-14.76923z"></path></g></g></g></svg>
+    
+            
+            
+            </ion-segment-button>
+            <ion-segment-button (click)="buscarboton();" class="segmentright activo">
+                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+                width="24" height="24"
+                viewBox="0 0 192 192"
+                style=" fill:#000000;"><g transform="translate(6.528,6.528) scale(0.932,0.932)"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="none" stroke-linecap="butt" stroke-linejoin="none" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><g fill="#ffffff" stroke="#ffffff" stroke-width="14" stroke-linejoin="round"><g id="surface1 1"><path d="M157.44,65.28c0,27.525 -14.835,57.615 -29.4,81.12c-14.565,23.505 -29.16,40.44 -29.16,40.44c-0.735,0.825 -1.785,1.305 -2.88,1.305c-1.095,0 -2.145,-0.48 -2.88,-1.305c0,0 -14.58,-16.59 -29.16,-39.96c-14.58,-23.37 -29.4,-53.535 -29.4,-81.6c0,-33.945 27.495,-61.44 61.44,-61.44c33.945,0 61.44,27.495 61.44,61.44zM42.24,65.28c0,25.305 13.98,54.72 28.2,77.52c11.895,19.065 21.99,31.185 25.56,35.4c3.54,-4.245 13.635,-16.635 25.56,-35.88c14.235,-22.965 28.2,-52.335 28.2,-77.04c0,-29.805 -23.955,-53.76 -53.76,-53.76c-29.805,0 -53.76,23.955 -53.76,53.76zM122.88,69.12c0,14.805 -12.075,26.88 -26.88,26.88c-14.805,0 -26.88,-12.075 -26.88,-26.88c0,-14.805 12.075,-26.88 26.88,-26.88c14.805,0 26.88,12.075 26.88,26.88zM76.8,69.12c0,10.65 8.55,19.2 19.2,19.2c10.65,0 19.2,-8.55 19.2,-19.2c0,-10.65 -8.55,-19.2 -19.2,-19.2c-10.65,0 -19.2,8.55 -19.2,19.2z"></path></g></g><path d="M0,192v-192h192v192z" fill="none" stroke="none" stroke-width="1" stroke-linejoin="miter"></path><g fill="#ffffff" stroke="none" stroke-width="1" stroke-linejoin="miter"><g id="surface1"><path d="M96,3.84c-33.945,0 -61.44,27.495 -61.44,61.44c0,28.065 14.82,58.23 29.4,81.6c14.58,23.37 29.16,39.96 29.16,39.96c0.735,0.825 1.785,1.305 2.88,1.305c1.095,0 2.145,-0.48 2.88,-1.305c0,0 14.595,-16.935 29.16,-40.44c14.565,-23.505 29.4,-53.595 29.4,-81.12c0,-33.945 -27.495,-61.44 -61.44,-61.44zM96,11.52c29.805,0 53.76,23.955 53.76,53.76c0,24.705 -13.965,54.075 -28.2,77.04c-11.925,19.245 -22.02,31.635 -25.56,35.88c-3.57,-4.215 -13.665,-16.335 -25.56,-35.4c-14.22,-22.8 -28.2,-52.215 -28.2,-77.52c0,-29.805 23.955,-53.76 53.76,-53.76zM96,42.24c-14.805,0 -26.88,12.075 -26.88,26.88c0,14.805 12.075,26.88 26.88,26.88c14.805,0 26.88,-12.075 26.88,-26.88c0,-14.805 -12.075,-26.88 -26.88,-26.88zM96,49.92c10.65,0 19.2,8.55 19.2,19.2c0,10.65 -8.55,19.2 -19.2,19.2c-10.65,0 -19.2,-8.55 -19.2,-19.2c0,-10.65 8.55,-19.2 19.2,-19.2z"></path></g></g><path d="" fill="none" stroke="none" stroke-width="1" stroke-linejoin="miter"></path><path d="" fill="none" stroke="none" stroke-width="1" stroke-linejoin="miter"></path></g></g></svg>
+            </ion-segment-button>
+          </ion-segment>
+      
+      </ng-template>
+      <ion-buttons end>
+          <button ion-button icon-only (click)="buscarlupa();">
+              <ion-icon style="font-size: 31px;" md="md-search"></ion-icon>
+          </button>
+        </ion-buttons>
+        
+    
+  </ion-navbar>
+  <ion-navbar *ngIf="!lupa">
+
+      <ion-item class="itembar">
+          <span item-left start style="margin:0px; padding-right:15px;">
+              <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+              width="24" height="24"
+              viewBox="0 0 192 192"
+              style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,192v-192h192v192z" fill="none"></path><g fill="#3498db"><g id="surface1"><path d="M75,0c-41.35547,0 -75,33.64453 -75,75c0,41.35547 33.64453,75 75,75c16.54688,0 31.83984,-5.39062 44.25,-14.49609c0,0 8.33203,8.15625 8.73047,8.29688c0,0.07031 -0.01172,0.12891 -0.01172,0.19922c0,4.00781 1.55859,7.78125 4.39453,10.60547l31.03125,31.03125c2.92969,2.92969 6.76172,4.38281 10.60547,4.38281c3.84375,0 7.6875,-1.45312 10.60547,-4.38281l1.03125,-1.04297c2.83594,-2.82422 4.39453,-6.58594 4.39453,-10.59375c0,-4.00781 -1.55859,-7.78125 -4.39453,-10.60547l-31.03125,-31.03125c-2.97656,-2.97656 -6.89062,-4.41797 -10.79297,-4.35937c-0.15234,-0.41016 -8.30859,-8.75391 -8.30859,-8.75391c9.10547,-12.41016 14.49609,-27.70312 14.49609,-44.25c0,-41.35547 -33.64453,-75 -75,-75zM75,6c38.05078,0 69,30.94922 69,69c0,38.05078 -30.94922,69 -69,69c-38.05078,0 -69,-30.94922 -69,-69c0,-38.05078 30.94922,-69 69,-69zM75,18c-15.22266,0 -29.54297,5.92969 -40.3125,16.6875c-22.21875,22.23047 -22.21875,58.39453 0,80.61328c10.76953,10.76953 25.08984,16.69922 40.3125,16.69922c15.22266,0 29.54297,-5.92969 40.3125,-16.6875c22.21875,-22.23047 22.21875,-58.39453 0,-80.625c-10.76953,-10.75781 -25.08984,-16.6875 -40.3125,-16.6875zM75,24c13.61719,0 26.42578,5.30859 36.05859,14.94141c19.88672,19.875 19.88672,52.24219 0,72.11719c-9.63281,9.63281 -22.4414,14.94141 -36.05859,14.94141c-13.61719,0 -26.42578,-5.30859 -36.05859,-14.94141c-19.88672,-19.875 -19.88672,-52.23047 0,-72.11719c9.63281,-9.63281 22.44141,-14.94141 36.05859,-14.94141zM74.42578,33c-10.91016,0.12891 -21.31641,4.48828 -29.13281,12.29297c-1.17187,1.1836 -1.17187,3.07031 0,4.25391c0.58594,0.57422 1.35938,0.87891 2.13281,0.87891c0.76172,0 1.53516,-0.30469 2.12109,-0.87891c7.64063,-7.65234 18.19922,-11.4375 28.99219,-10.37109c1.65234,0.14063 3.11719,-1.04297 3.28125,-2.69531c0.16406,-1.65234 -1.04297,-3.11719 -2.69531,-3.28125c-1.57031,-0.15234 -3.14062,-0.22265 -4.69922,-0.19922zM95.57813,38.625c-1.14844,-0.16406 -2.35547,0.36328 -3,1.42969c-0.85547,1.41797 -0.39844,3.25781 1.03125,4.11328c2.46094,1.5 4.76953,3.30469 6.84375,5.37891c0.58594,0.58594 1.34766,0.87891 2.12109,0.87891c0.77344,0 1.53516,-0.29297 2.13281,-0.87891c1.16016,-1.17187 1.16016,-3.07031 0,-4.24219c-2.42578,-2.41406 -5.12109,-4.52344 -8.00391,-6.26953c-0.35156,-0.21094 -0.73828,-0.35156 -1.125,-0.41016zM33,72c-1.65234,0 -3,1.33594 -3,3c0,1.66406 1.34766,3 3,3h6c1.65234,0 3,-1.33594 3,-3c0,-1.66406 -1.34766,-3 -3,-3zM111,72c-1.65234,0 -3,1.33594 -3,3c0,1.66406 1.34766,3 3,3h6c1.65234,0 3,-1.33594 3,-3c0,-1.66406 -1.34766,-3 -3,-3zM41.67188,85.48828c-0.38672,-0.01172 -0.79687,0.05859 -1.17187,0.21094l-5.56641,2.25c-1.53515,0.6211 -2.27344,2.36719 -1.65234,3.90235c0.46875,1.17188 1.59375,1.88672 2.77734,1.88672c0.375,0 0.76172,-0.07031 1.125,-0.22266l5.56641,-2.25c1.53516,-0.62109 2.27344,-2.36719 1.65234,-3.90234c-0.46875,-1.14844 -1.55859,-1.86328 -2.73047,-1.875zM108.14063,86.0625c-1.17187,0 -2.28516,0.69141 -2.76562,1.82813c-0.64453,1.53516 0.05859,3.29297 1.59375,3.9375l5.51953,2.34375c0.375,0.16406 0.77344,0.23438 1.17188,0.23438c1.17188,0 2.27344,-0.67969 2.76563,-1.82812c0.64453,-1.52344 -0.07031,-3.28125 -1.59375,-3.92578l-5.51953,-2.34375c-0.38672,-0.16406 -0.78516,-0.24609 -1.17187,-0.24609zM49.54688,97.45313c-0.77344,0 -1.53516,0.29297 -2.12109,0.87891l-4.24219,4.24219c-1.17187,1.17188 -1.17187,3.07031 0,4.24219c0.58594,0.58594 1.34766,0.87891 2.1211,0.87891c0.77344,0 1.53515,-0.29297 2.12109,-0.87891l4.24219,-4.24219c1.17188,-1.17187 1.17188,-3.07031 0,-4.24219c-0.58594,-0.58594 -1.35937,-0.87891 -2.12109,-0.87891zM100.45313,97.45313c-0.76172,0 -1.53516,0.29297 -2.12109,0.87891c-1.17187,1.17188 -1.17187,3.07031 0,4.24219l4.24219,4.24219c0.58594,0.58594 1.34766,0.87891 2.1211,0.87891c0.77344,0 1.53515,-0.29297 2.12109,-0.87891c1.17188,-1.17187 1.17188,-3.07031 0,-4.24219l-4.24219,-4.24219c-0.58594,-0.58594 -1.35937,-0.87891 -2.12109,-0.87891zM60.9375,105.14063c-1.17187,0 -2.28516,0.67969 -2.76562,1.82813l-2.34375,5.51953c-0.64453,1.52344 0.07031,3.29297 1.59375,3.9375c0.38672,0.16406 0.77344,0.23438 1.17188,0.23438c1.16016,0 2.27344,-0.69141 2.76563,-1.82812l2.34375,-5.51953c0.64453,-1.52344 -0.07031,-3.29297 -1.59375,-3.9375c-0.38672,-0.16406 -0.78516,-0.23437 -1.17187,-0.23437zM88.53516,105.375c-0.38672,0 -0.79687,0.07031 -1.17187,0.22266c-1.54687,0.62109 -2.28516,2.36719 -1.66406,3.90234l2.25,5.56641c0.46875,1.17188 1.59375,1.875 2.78906,1.875c0.375,0 0.75,-0.07031 1.125,-0.22266c1.53516,-0.62109 2.27344,-2.36719 1.65234,-3.90234l-2.25,-5.56641c-0.46875,-1.14844 -1.55859,-1.85156 -2.73047,-1.875zM75,108c-1.65234,0 -3,1.33594 -3,3v6c0,1.66406 1.34766,3 3,3c1.65234,0 3,-1.33594 3,-3v-6c0,-1.66406 -1.34766,-3 -3,-3zM131.73047,123.97266l5.625,5.63672c-1.41797,0.70313 -2.77734,1.58203 -3.96094,2.76563l-1.03125,1.01953c-1.17187,1.17188 -2.05078,2.51953 -2.76562,3.94922l-5.625,-5.61328c2.77734,-2.39062 5.36719,-4.98047 7.75781,-7.75781zM144,133.96875c2.30859,0 4.61719,0.87891 6.375,2.63672l31.03125,31.03125c1.69922,1.69922 2.625,3.96094 2.625,6.36328c0,2.40234 -0.9375,4.66406 -2.63672,6.36328l-1.03125,1.03125c-3.51562,3.50391 -9.21094,3.50391 -12.72656,0l-31.03125,-31.03125c-1.69922,-1.69922 -2.63672,-3.96094 -2.63672,-6.36328c0,-2.40234 0.9375,-4.66406 2.63672,-6.36328l1.03125,-1.03125c1.75781,-1.75781 4.06641,-2.63672 6.36328,-2.63672z"></path></g></g></g></svg>
+            </span>
+            <span item-right start style="margin:0px; padding-right:15px;">
+                <button  clear ion-button icon-only (click)="cerrarlupa();">
+                    <ion-icon ios="ios-close" md="md-close"></ion-icon>
+                </button>
+                
+              </span>
+        <ion-input class="lupabuscarcss" type="text" value="" autofocus placeholder="Buscar"></ion-input>
+      </ion-item>
+      <ion-buttons end>
+               
+        </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content class="no-scroll">
+
+        
+          <ion-slides parallax="false" pager="true" class = "swiper-no-swiping" (ionSlideDidChange)="slideChanged()">
+       
+              <ion-slide >
+                  <div class="marco overlay" style="display: block;height: 160px; width: 100%;" (click)="comercio();">
+                      <a (click)="comercio();" > <img  src="../../assets/imgs/shop.jpg" style="display: block;width:100%;" ></a>
+                      <div class="card-title-marco">COMERCIO</div>
+                      <div class="card-subtitle-marco">20 Establecimientos</div>
+                    </div>
+                  <div class="marco overlay"style="display: block;height: 160px; width: 100%;">
+                      <a (click)="deportes();">  <img  src="../../assets/imgs/cesped.jpg" style="display: block; height: 160px; width: 100%; "></a>
+                      <div class="card-title-marco">DEPORTES</div>
+                      <div class="card-subtitle-marco">12 Establecimientos</div>
+                    </div>
+                  <div class="marco overlay" style="display: block;height: 160px; width: 100%;">
+                      <a  (click)="entretenimiento();"><img  src="../../assets/imgs/cine.jpg" style="display: block;  height: 160px; width: 100%;"></a>
+                      <div class="card-title-marco">ENTRETENIMIENTO</div>
+                      <div class="card-subtitle-marco">25 Establecimientos</div>
+                    </div>
+                  <div class="marco overlay" style="display: block;height: 160px; width: 100%;">
+                      <a  (click)="hogar();"><img  src="../../assets/imgs/sala.jpg" style="display: block; height: 160px;   width: 100%;"></a>
+                      <div class="card-title-marco">HOGAR</div>
+                      <div class="card-subtitle-marco">17 Establecimientos</div>
+                    </div>
+                  <div class="marco overlay" style="display: block;height: 160px; width:100%;">
+                      <a  (click)="mercado();"><img  src="../../assets/imgs/mercado.jpg" style="display: block; height: 160px;  width: 100%;"></a>
+                      <div class="card-title-marco">MERCADO</div>
+                      <div class="card-subtitle-marco">30 Establecimientos</div>
+                 </div>
+                  <div class="marco overlay" style="display: block;height: 160px; width: 100%;">
+                      <a  (click)="restaurant();"><img  src="../../assets/imgs/comida.jpg" style="display: block;  height: 160px;  width: 100%;"></a>
+                      <div class="card-title-marco">RESTAURANTES</div>
+                      <div class="card-subtitle-marco">12 Establecimientos</div>
+                    </div>
+                  <div class="marco overlay" style="display: block;height: 160px; width: 100%;">
+                      <a  (click)="viajes();"><img  src="../../assets/imgs/viajar.jpeg" style="display: block;  height: 160px;  width: 100%;"></a>
+                      <div class="card-title-marco">SALUD Y BIENESTAR</div>
+                      <div class="card-subtitle-marco">21 Establecimientos</div>
+                    </div>
+                  <div class="marco overlay" style="display: block;height: 160px; width: 100%;">
+                      <a  (click)="salud();"><img  src="../../assets/imgs/mascarilla.jpg" style="display: block;  height: 160px;  width: 100%;"></a>
+                      <div class="card-title-marco">VIAJES</div>
+                      <div class="card-subtitle-marco">5 Establecimientos</div>
+                  </div>
+              </ion-slide >
+              <ion-slide    id="map" #map >
+                
+              </ion-slide>
+             <span>
+               
+             </span>
+              
+            </ion-slides>
+            <div id="mostrarPromos" class="formContent " >
+
+                <ion-slides class="image-slider " loop="true" slidesPerView="1.2">
+                    <ion-slide class="slaider">
+                        <ion-item >
+                            <h5 class="correr"><strong>Tiendas Deportivas Replay’s</strong></h5>
+                            <small class="correr"> Calle 82 # 10 -56</small>
+                            <br>
+                            <br>
+                            <br>
+                            <span item-right end  style="margin-right: 0px;">
+                                <button clear ion-button style="font-size: 14px;color:#6FBBF9; padding-right: 0px;" (click)="verpromociones();" >1.1 KM ></button>
+                              </span>
+                            </ion-item>
+                            <img  src="../../assets/imgs/4.jpg" style="width:100%; height: 100px;">                            
+                            <img class="logoredondo" src="../../assets/imgs/logor.jpg" alt="">
+                     
+                    </ion-slide>
+                    <ion-slide class="slaider">
+                        <ion-item >
+                            <h5 class="correr"><strong>Tiendas Deportivas Replay’s</strong></h5>
+                            <small class="correr"> Calle 82 # 10 -56</small>
+                            <br>
+                            <br>
+                            <br>
+                            <span item-right end  style="margin-right: 0px;">
+                                <button clear ion-button style="font-size: 14px;color:#6FBBF9; padding-right: 0px;" (click)="verpromociones();" >1.1 KM ></button>
+                              </span>
+                            </ion-item>
+                            <img  src="../../assets/imgs/4.jpg" style="width:100%; height: 100px;">                            
+                            <img class="logoredondo" src="../../assets/imgs/logor.jpg" alt="">
+                     
+                    </ion-slide>
+                    <ion-slide style="background: white;color: black; text-align: left; border-radius: 5px; margin-right: 5px !important;">
+                        <ion-item >
+                            <h5 class="correr"><strong>Tiendas Deportivas Replay’s</strong></h5>
+                            <small class="correr"> Calle 82 # 10 -56</small>
+                            <br>
+                            <br>
+                            <br>
+                            <span item-right end  style="margin-right: 0px;">
+                                <button clear ion-button style="font-size: 14px;color:#6FBBF9; padding-right: 0px;" (click)="verpromociones();" >1.1 KM ></button>
+                              </span>
+                            </ion-item>
+                            <img  src="../../assets/imgs/4.jpg" style="width:100%; height: 100px;">                            
+                            <img class="logoredondo" src="../../assets/imgs/logor.jpg" alt="">
+                     
+                    </ion-slide>
+                  </ion-slides>
+        
+                 
+            </div>
+
+   
+</ion-content>

@@ -1,0 +1,26 @@
+page-perfil {
+
+    .fondoperfil{
+        background: rgba(41,184,229,1);
+        background: -moz-linear-gradient(left, rgba(41,184,229,1) 0%, rgba(41,184,229,1) 11%, rgba(41,215,227,1) 100%);
+        background: -webkit-gradient(left top, right top, color-stop(0%, rgba(41,184,229,1)), color-stop(11%, rgba(41,184,229,1)), color-stop(100%, rgba(41,215,227,1)));
+        background: -webkit-linear-gradient(left, rgba(41,184,229,1) 0%, rgba(41,184,229,1) 11%, rgba(41,215,227,1) 100%);
+        background: -o-linear-gradient(left, rgba(41,184,229,1) 0%, rgba(41,184,229,1) 11%, rgba(41,215,227,1) 100%);
+        background: -ms-linear-gradient(left, rgba(41,184,229,1) 0%, rgba(41,184,229,1) 11%, rgba(41,215,227,1) 100%);
+        background: linear-gradient(to right, rgba(41,184,229,1) 0%, rgba(41,184,229,1) 11%, rgba(41,215,227,1) 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#29b8e5', endColorstr='#29d7e3', GradientType=1 );
+
+height: 180px;
+}
+
+.userimg{
+    height: 130px;
+    width: 130px;
+    border-radius:50%; 
+}
+
+.fondoperfil h1{
+    margin: 3px;
+}
+
+}

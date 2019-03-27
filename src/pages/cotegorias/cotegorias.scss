@@ -1,0 +1,164 @@
+page-cotegorias {
+
+   
+    .segmento{
+        max-width: 130px !important;
+        border: 1px solid gainsboro;
+        border-radius: 20px;
+        background: white;
+    }
+    .noactivo{
+        padding-top: 4px !important;
+        margin: 3px;
+        border-radius: 20px !important;
+        border: 5px solid white !important;
+        background: white !important;
+
+    }
+    .activo{
+      
+        padding-top: 4px !important;
+        border-radius: 20px !important;
+        border: 5px solid white !important;
+        
+        background: rgb(2, 135, 245) !important;
+    }
+    .marco{
+        position: relative;
+
+    }
+    .card-title-marco{
+        text-align: left !important;
+        position: absolute;
+        top: 20%;
+        font-size: 1.6em;
+        font-family: sans-serif;
+        width: 100%;
+        font-weight: bold;
+        color: #fff;
+        padding-left:12px; 
+    }
+    .card-subtitle-marco{
+        text-align: left !important;
+        padding-left:17px;
+        font: italic bold 100px Georgia, Serif;
+        font-size: 1.3em;
+        position: absolute;
+        top: 50%;
+        width: 100%;
+        color: #fff;
+    }
+    .overlay:before{
+        position: absolute;
+        content:" ";
+        top:0;
+        left:0;
+        width:100%;
+        height:100%;
+        display: block;
+        z-index:0;
+        background-color: rgba(73, 71, 71, 0.5);
+      }
+      #map{
+          height: 100%;
+      }
+      .swiper-slide {
+        overflow-y: scroll;
+        display: block;
+    }
+    .lupabuscarcss{
+        margin-left: 20px;
+        background: white;
+        width: 90%;
+        border-radius: 8px; 
+    }
+    .itembar{
+        border-radius: 10px; margin-left: 10px; margin-right: 10px; width: 94%; bisplat:block;margin: 0 auto;
+    }
+
+    .formContent{
+        position: relative;
+        bottom: 230px;
+        width: 100%;
+        margin: 0 auto;
+        border-radius: 12px;
+        color: white;
+    }
+
+    #map{
+      
+        width: 100%;
+    }
+
+    
+    .card-title-promocion{
+        
+       
+        font-size: 1.1em;
+        font-family: sans-serif;
+        width: 100%;
+        font-weight: bold;
+        text-align: left;
+        color: #fff;
+        padding-left:10px; 
+        
+      }
+    
+      .card-subtitle-promocion {
+        padding-left:17px;
+        text-shadow: -3px -3px 3px rgb(90, 90, 90);
+        font-size: 13px;
+        position: absolute;
+        text-align: left;
+        
+        width: 100%;
+        color: #fff;
+      }
+      .card-subsubtitle-promocion{
+        text-align: left;
+        font-size: 0.9em;
+        font-family: sans-serif;
+        width: 100%;
+        font-weight: bold;
+        color: #fff;
+        padding-left:20px; 
+        
+      }
+     .formContent ion-slide.swiper-slide  {
+        left: 5%;
+        background: transparent;
+    }
+    
+    .correr {
+        text-align: left !important;
+        padding-left:5px !important; 
+    }
+    .slide-zoom{
+        text-align: left;
+    }
+ 
+    .thumb-img {
+        padding: 10px;
+    }
+    .logoredondo{
+        position: absolute;
+        top:70px;
+        margin-left: 20px;
+        border-radius: 50px;
+        width: 70px;
+        height: 70px;
+    }
+
+    .slaider{
+        background: white;
+        color: black; 
+        text-align: left; 
+        border-radius: 5px; 
+        margin-right: 8px !important;
+        margin-left: 8px !important;
+    }
+    .no-scroll .scroll-content{
+        overflow: hidden;
+    }
+    
+}

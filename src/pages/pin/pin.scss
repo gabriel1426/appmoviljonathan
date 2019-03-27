@@ -1,0 +1,73 @@
+page-pin {
+
+    .marco{
+        position: relative;
+
+    }
+    .overlay:before{
+        position: absolute;
+        content:" ";
+        top:0;
+        left:0;
+        width:100%;
+        height:100%;
+        display: block;
+        z-index:0;
+        background-color: rgba(73, 71, 71, 0.5);
+      }
+      .escudo{
+          position: absolute;
+          top: 50px;
+        right: 0px;
+        left: 0px;
+
+      }
+
+      .divcodigo{
+        position: absolute;
+        top: 330px;
+        right: 0px;
+        left: 0px;
+      }
+
+      .codigo{
+          background: transparent;
+
+      }
+      .transparente{
+          background: transparent;
+          text-align: center;
+          color: white;
+          font-size: 24px;
+      }
+      .divconfirmar{
+        position: absolute;
+        top: 480px;
+        right: 0px;
+        left: 0px;
+      }
+      .item-md.item-block .item-inner{
+        border: 0px;
+    }
+    .ponerBotonMenu{
+  
+        position: absolute;
+        top: 5px;
+        left: 3px;
+       
+        background: transparent !important ;
+        font-size: 20px;
+      
+    }
+    .no-scroll .scroll-content{
+        overflow: hidden;
+    }
+    .btnconfirmar{
+        
+        font-size: 16px; 
+        color: white; 
+        border-radius: 10px;
+        width: 100%;
+    }
+
+}

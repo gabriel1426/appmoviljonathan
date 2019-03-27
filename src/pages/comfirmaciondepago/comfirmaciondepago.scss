@@ -1,0 +1,100 @@
+page-comfirmaciondepago {
+
+    .tiket{
+        margin: 0 auto;
+        width: 450px;;
+        height: 90%;
+    }
+
+    .trans{
+
+        position: absolute;
+        font-family: "Latin Modern Roman";
+        font-size: 18px;
+        padding-left: 65px;
+        top:150px;
+        color: #3D3C64;
+    }
+    .numtrans{
+        position: absolute;
+        font-family: "Latin Modern Roman ";
+        font-size: 15px;
+        padding-left: 65px;
+        top:175px;
+        color: gray;
+
+    }
+
+    .estableci{
+        position: absolute;
+        font-family: "Latin Modern Roman";
+        font-size: 18px;
+        padding-left: 65px;
+        top:220px;
+        color: #3D3C64;
+    }
+    .nomestableci{
+        position: absolute;
+        font-family: "Latin Modern Roman ";
+        font-size: 15px;
+        padding-left: 65px;
+        top:245px;
+        color: gray;
+
+    }
+
+    .user{
+        position: absolute;
+        font-family: "Latin Modern Roman";
+        font-size: 18px;
+        padding-left: 65px;
+        top:290px;
+        color: #3D3C64;
+
+    }
+    .iduser{
+
+        position: absolute;
+        font-family: "Latin Modern Roman ";
+        font-size: 15px;
+        padding-left: 65px;
+        top:315px;
+        color: gray;
+
+    }
+    .valor{
+        position: absolute;
+        font-family: "Latin Modern Roman";
+        font-size: 18px;
+        padding-left: 65px;
+        top:380px;
+        color: #3D3C64;
+    }
+
+    .precio{
+        position: absolute;
+        font-family: "Latin Modern Roman";
+        top:420px;
+        left: 203px;;
+        color: #3D3C64;
+    }
+    .logo{
+        position: absolute;
+        top: 60px; 
+        left: 40%;
+        display: block;
+        margin: 0 auto;
+        width: 70px;
+        height: 70px;
+    }
+    .fecha{
+        position: absolute;
+        font-family: "Latin Modern Roman ";
+        font-size: 15px;
+        padding-left: 33%;
+        top:125px;
+        color: gray;
+      
+    }
+
+}
