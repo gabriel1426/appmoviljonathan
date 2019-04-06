@@ -1,4 +1,4 @@
-
+import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
@@ -27,8 +27,23 @@ import { CompraexitosaPage } from '../pages/compraexitosa/compraexitosa';
 import { ValorapagarPage } from '../pages/valorapagar/valorapagar';
 import { ComfirmaciondepagoPage } from '../pages/comfirmaciondepago/comfirmaciondepago';
 import { ModaldeportePage } from '../pages/modaldeporte/modaldeporte';
+import { TerminosycondicionesPage } from '../pages/terminosycondiciones/terminosycondiciones';
+import { ScanerPage } from '../pages/scaner/scaner';
 
 
+
+
+// Providers
+import { UsersProvider } from '../providers/users/users';
+import { CategoriasProvider } from '../providers/categorias/categorias';
+import { PagarProvider } from '../providers/pagar/pagar';
+import { PerfilProvider } from '../providers/perfil/perfil';
+import { HomeProvider } from '../providers/home/home';
+
+
+// plugin
+
+import { QRScanner } from '@ionic-native/qr-scanner';
 
 
 
@@ -55,10 +70,14 @@ import { ModaldeportePage } from '../pages/modaldeporte/modaldeporte';
     CompraexitosaPage,
     ValorapagarPage,
     ComfirmaciondepagoPage,
-    ModaldeportePage
+    ModaldeportePage,
+    TerminosycondicionesPage,
+    ScanerPage
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
+    
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
@@ -84,13 +103,24 @@ import { ModaldeportePage } from '../pages/modaldeporte/modaldeporte';
     CompraexitosaPage,
     ValorapagarPage,
     ComfirmaciondepagoPage,
-    ModaldeportePage
+    ModaldeportePage,
+    TerminosycondicionesPage,
+    ScanerPage
   ],
   providers:[
     StatusBar,
     SplashScreen,
     Geolocation,
+
+
     {provide: ErrorHandler, useClass: IonicErrorHandler},
+    UsersProvider,
+    CategoriasProvider,
+    PagarProvider,
+    PerfilProvider,
+    HomeProvider,
+    QRScanner 
+ 
     
   ]
 })

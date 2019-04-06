@@ -5,13 +5,13 @@
   Ionic pages and navigation.
 -->
 
-<div class="modal" padding   >
+<div class="modal" padding *ngFor="let datos of datos.data"  >
    
   <div class="mimodal">
       <button class="cerrar" clear ion-button icon-only (click)="cerrarmodal();">
           <ion-icon ios="ios-close" md="md-close"></ion-icon>
       </button>
-      <img  class="imgmodal" src="../../assets/imgs/1.jpg" alt="">
+      <img  class="imgmodal" src={{datos.img}} alt="">
       <img  class="imgmarca" src="../../assets/imgs/logor.jpg" alt="">
       
       <div>
@@ -20,36 +20,34 @@
 
       <div style="text-align: right;">
         <br>
-        <label class="marquilla">Comercio</label>
+        <label class="marquilla">{{datos.nombre_categoria}}</label>
       </div>
       
 
       <div style="text-align: center">
           
-      <p style="font-size:15px"><strong>Tiendas Deportivas Replays</strong></p>
+      <p style="font-size:15px"><strong>{{datos.nombre_establecimiento}}</strong></p>
       </div>
       
       <div style="padding-left: 8px;">
         <ion-scroll scrollY="true" style="width: 100%; height: 280px;">
          
-        <p>En Tiendas Deportivas Replays podrás encontrar 15%
-            de descuento en todos los productos de la tienda.</p>
+        <p><strong>Producto: {{datos.titulo}}</strong></p>
       
           
-          <p>No acumulable con otras promociones y descuentos.
-              No aplica tienda online.</p>
-              <p>No acumulable con otras promociones y descuentos.
+          <p>{{datos.descripcion}}.</p>
+              <!-- <p>No acumulable con otras promociones y descuentos.
                   No aplica tienda online.</p>
-                     
-          <p>No acumulable con otras promociones y descuentos.
+                      -->
+          <!-- <p>No acumulable con otras promociones y descuentos.
             No aplica tienda online.</p>
             <p>No acumulable con otras promociones y descuentos.
-                No aplica tienda online.</p>
+                No aplica tienda online.</p> -->
                 
                 </ion-scroll>                                
         </div>
         <div style="text-align: center">
-          <button  round ion-button (click)="comprar();">
+          <button  round ion-button (click)="comprar(datos.id);">
             Comprar en linea
         </button>
         </div>

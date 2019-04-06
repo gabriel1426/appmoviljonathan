@@ -1,6 +1,7 @@
+  
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { ValorapagarPage } from '../valorapagar/valorapagar';
+import { ScanerPage } from '../scaner/scaner';
 
 /**
  * Generated class for the PagarPage page.
@@ -25,7 +26,10 @@ export class PagarPage {
   }
 
   pagar(){
-    this.navCtrl.push(ValorapagarPage);
+    this.navCtrl.push(ScanerPage);
   }
 
+
+
 }
+

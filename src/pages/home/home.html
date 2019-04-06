@@ -2,9 +2,9 @@
   <ion-navbar>
       
       
-      <ion-buttons left>
-          <ion-icon style="font-size: 31px;" name="menu"></ion-icon>
-      </ion-buttons>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
 
       <ion-title style="margin-left: 35%;">
 
@@ -20,6 +20,8 @@
       </ion-buttons>
   </ion-navbar>
 </ion-header>
+
+
 
 <ion-content padding>
   
@@ -59,19 +61,22 @@
     <div class="promocion" >
 
 
-        <ion-slides class="image-slider" loop="true" slidesPerView="1.1">
-            <ion-slide style="padding-right: 5px; ">
-              <div class="overlay" >
-                  <img src="../../assets/imgs/3.jpg" style="width:100%; height: 200px; border-radius: 12px;">
-              </div>
-                
-                <div class="card-title-promocion">Millonarios vs. Nacional</div>
-                <div class="card-subtitle-promocion"> Compra tus boletas facilmente y con un descuento especial</div>
-                <div class="card-subsubtitle-promocion">
-                  <button ion-button style="border-radius: 5px;" (click)="presentModal();">Ver Mas</button>
-                </div>
-            </ion-slide>
-            <ion-slide  style="padding-right: 5px; ">
+        <ion-slides class="image-slider" >
+          <div *ngFor="let datos of datos.data">
+              <ion-slide  style="padding-right: 5px; ">
+                  <div class="overlay" >
+                      <img src={{datos.img}} style="width:100%; height: 200px; border-radius: 12px;">
+                  </div>
+                    
+                    <div class="card-title-promocion">{{datos.titulo}}</div>
+                    <div class="card-subtitle-promocion"> {{ datos.descripcion | slice:0:50}}...</div>
+                    <div class="card-subsubtitle-promocion">
+                      <button ion-button style="border-radius: 5px;" (click)="presentModal(datos.id);">Ver Mas</button>
+                    </div>
+                </ion-slide>
+          </div>
+            
+            <!-- <ion-slide  style="padding-right: 5px; ">
                 <div  class="overlay">
                 <img  src="../../assets/imgs/1.jpg" style="width:100%; height: 200px; border-radius: 12px;">
                 </div>
@@ -90,7 +95,7 @@
                 <div class="card-subsubtitle-promocion" >
                   <button ion-button style="border-radius: 5px;" (click)="presentModal();">Ver Mas</button>
                 </div>
-            </ion-slide>
+            </ion-slide> -->
           </ion-slides>
 
          

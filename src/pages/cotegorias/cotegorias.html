@@ -7,9 +7,9 @@
 <ion-header>
   <ion-navbar *ngIf="lupa">
     
-      <ion-buttons left>
-          <ion-icon style="font-size: 31px;" name="menu"></ion-icon>
-      </ion-buttons>
+      <button ion-button menuToggle>
+          <ion-icon name="menu"></ion-icon>
+        </button>
       <span *ngIf="buscar else templateName">
       <ion-segment  class="segmento" color="primary">
       <ion-segment-button (click)="buscarboton2();" class="segmentleft activo">
@@ -95,12 +95,14 @@
           <ion-slides parallax="false" pager="true" class = "swiper-no-swiping" (ionSlideDidChange)="slideChanged()">
        
               <ion-slide >
-                  <div class="marco overlay" style="display: block;height: 160px; width: 100%;" (click)="comercio();">
-                      <a (click)="comercio();" > <img  src="../../assets/imgs/shop.jpg" style="display: block;width:100%;" ></a>
-                      <div class="card-title-marco">COMERCIO</div>
-                      <div class="card-subtitle-marco">20 Establecimientos</div>
+                <div *ngFor="let datos of datos.data">
+                    <div  class="marco overlay" style="display: block;height: 160px; width: 100%;" (click)="comercio(datos.id);">
+                      <a (click)="comercio(datos.id);" > <img  src={{datos.img}} style="display: block;width:100%;" ></a>
+                      <div class="card-title-marco">{{datos.descripcion}}</div>
+                      <div class="card-subtitle-marco">{{datos.numero_de_establecimientos}} Establecimientos</div>
                     </div>
-                  <div class="marco overlay"style="display: block;height: 160px; width: 100%;">
+                </div>
+                  <!-- <div class="marco overlay"style="display: block;height: 160px; width: 100%;">
                       <a (click)="deportes();">  <img  src="../../assets/imgs/cesped.jpg" style="display: block; height: 160px; width: 100%; "></a>
                       <div class="card-title-marco">DEPORTES</div>
                       <div class="card-subtitle-marco">12 Establecimientos</div>
@@ -134,7 +136,7 @@
                       <a  (click)="salud();"><img  src="../../assets/imgs/mascarilla.jpg" style="display: block;  height: 160px;  width: 100%;"></a>
                       <div class="card-title-marco">VIAJES</div>
                       <div class="card-subtitle-marco">5 Establecimientos</div>
-                  </div>
+                  </div> -->
               </ion-slide >
               <ion-slide    id="map" #map >
                 

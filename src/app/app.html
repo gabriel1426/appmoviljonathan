@@ -1,1 +1,44 @@
-<ion-nav [root]="rootPage"></ion-nav>
+
+<ion-menu [content]="content" type="overlay"  persistent="true"  side="right" ng-controller="RightController">
+    
+    <ion-header>
+      <!-- AQUI ESTA LA CONFIGURACIÓN DEL MENÚ-->
+      <ion-toolbar>
+        <div no-lines>
+          <ion-avatar item-center class="center" style="width:40%">
+            <br>
+                  <img  src="" style="display: block; border-radius: 1000px; width: 100%; height: auto; margin-left: auto; margin-right: auto;">
+    
+            
+          </ion-avatar>
+          <br>
+           <h1 style="text-align:center;color:#fff;" >Jonathan</h1>
+            
+        </div>
+      </ion-toolbar>
+        
+    </ion-header>
+    <!--Ciclo de dinamico de paginas  -->
+    <ion-content class="menucolor">
+      <ion-list no-lines>
+        <div *ngIf="logeado">
+            <button ion-item *ngFor="let p of pages" (click)="openPage(p)" >
+                <ion-icon name="{{p.icon}}"></ion-icon>  hola
+          
+    
+        </button>
+        </div>
+        <div *ngIf="!logeado">
+            <button ion-item *ngFor="let p of pagest" (click)="openPage(p)" >
+                <ion-icon name="{{p.icon}}"></ion-icon> hola
+          
+    
+        </button>
+        </div>
+    
+      </ion-list>
+    </ion-content>
+    
+    </ion-menu>
+    
+    <ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>

@@ -16,7 +16,7 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content class="fondocompralinea" padding>
+<ion-content class="fondocompralinea" padding *ngFor="let datos of datos.data">
 
    
      <div style="text-align: center">
@@ -30,48 +30,23 @@
      </div>
      <div>
 
-       <p style="text-align: justify"><strong>Fecha del Evento:</strong>  <span class="gris">03/10/18 &nbsp;&nbsp;</span>
-        <strong>Hora del Evento:</strong> <span class="gris">20:00</span></p> 
-      <p style="text-align: justify">  <strong>Ciudad:</strong> <span class="gris">Bogotá &nbsp;&nbsp;</span>
-       
-        <strong>Nombre del Sitio:</strong> <span class="gris">Estadio el Campin</span></p> 
-      <p>  <strong>Terminos y Condiciones</strong> </p> 
+       <p style="text-align: justify"><strong>Fecha del Evento:</strong>  <span class="gris">{{fechaprocesada}}&nbsp;&nbsp;</span>
+       </p> 
+
+        <p><strong>Establecimiento:</strong> <span class="gris">{{datos.nombre_establecimiento}}</span></p> 
+      
+      <p >  <strong (click)="presentModalTerminos(datos.id_establecimiento);" style="text-decoration: underline #1a1b1b;">Ver Terminos y Condiciones</strong> </p> 
      </div>
      <br>
 
      <div >
         <h1 class="color" style="margin: 2px;">Datos de la Compra</h1>
-        <p class="gris">Selección de ubicación y cantidad del producto</p>
+        
         <div  class="bordesnaranjas">
-          <ion-item style="border-radius: 10px;">
-            <ion-label>Centro</ion-label>
-            <span item-right end style="margin:0px;"><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="24"
-                height="24" viewBox="0 0 192 192" style=" fill:#000000;">
-                <g transform="translate(0.48,0.48) scale(0.995,0.995)">
-                  <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
-                    stroke-linejoin="none" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
-                    font-family="none" font-weight="none" font-size="none" text-anchor="none"
-                    style="mix-blend-mode: normal">
-                    <g fill="#cccccc" stroke="#000000" stroke-linejoin="round">
-                      <path
-                        d="M128,72c0,13.98398 -5.21581,26.76007 -13.75,36.59375l3.40625,3.40625h10.34375l48,48l-16,16l-48,-48v-10.34375l-3.40625,-3.40625c-9.83368,8.53419 -22.60977,13.75 -36.59375,13.75c-30.83319,0 -56,-25.16681 -56,-56c0,-30.83319 25.16681,-56 56,-56c30.83319,0 56,25.16681 56,56zM32,72c0,22.18614 17.81385,40 40,40c22.18614,0 40,-17.81386 40,-40c0,-22.18615 -17.81386,-40 -40,-40c-22.18615,0 -40,17.81385 -40,40z">
-                      </path>
-                    </g>
-                    <path d="M0,192v-192h192v192z" fill="none" stroke="none" stroke-linejoin="miter"></path>
-                    <g fill="#cccccc" stroke="none" stroke-linejoin="miter">
-                      <path
-                        d="M72,16c-30.83319,0 -56,25.16681 -56,56c0,30.83319 25.16681,56 56,56c13.98398,0 26.76007,-5.21581 36.59375,-13.75l3.40625,3.40625v10.34375l48,48l16,-16l-48,-48h-10.34375l-3.40625,-3.40625c8.53419,-9.83368 13.75,-22.60977 13.75,-36.59375c0,-30.83319 -25.16681,-56 -56,-56zM72,32c22.18614,0 40,17.81385 40,40c0,22.18614 -17.81386,40 -40,40c-22.18615,0 -40,-17.81386 -40,-40c0,-22.18615 17.81385,-40 40,-40z">
-                      </path>
-                    </g>
-                    <path d="" fill="none" stroke="none" stroke-linejoin="miter"></path>
-                  </g>
-                </g>
-              </svg></span>
-            <p></p>
-          </ion-item>
+          
         </div>
       </div>
-        
+      <p> <strong>producto:</strong> <span class="gris">{{datos.nombre}}</span></p> 
       <div>
        
 <br>
@@ -81,13 +56,13 @@
         <ion-item style="border-radius: 10px; background: transparent;" >
 
             <span item-right start style="margin:0px;  background: white; border-radius:15px;">
-               <h1 style="border-radius:15px; padding: 8px;"> &nbsp;+ &nbsp;1&nbsp; -&nbsp; </h1> 
+               <div style="border-radius:15px; padding: 8px; display: flex; justify-content: space-between"> &nbsp;<p (click)="menos()" style="font-size: 2.4rem !important">-</p> &nbsp; &nbsp;<p style="font-size: 2.4rem !important">{{contador}}</p>&nbsp;<p (click)="mas()" style="font-size: 2.4rem !important">+</p>&nbsp; </div> 
             </span>
          
             <p class="gris">
                 TOTAL 
                 
-               <span style="padding-left:50px; color: black;font-size: 25px;">$50.000</span> 
+               <span style="padding-left:50px; color: black;font-size: 25px;">{{datos.valor | currency:0:"$" }}</span> 
                </p>
         </ion-item>
 

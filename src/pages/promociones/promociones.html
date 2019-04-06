@@ -15,16 +15,17 @@
 </ion-header>
 
 <ion-content padding>
-
-  <div class="promocion overlay" (click)="presentModal();" >
-      <img src="../../assets/imgs/3.jpg" style="width:100%; height: 200px; border-radius: 12px;">
-      <div class="card-title-promocion">Millonarios vs. Nacional</div>
-      <div class="card-subtitle-promocion"> Compra tus boletas facilmente y con un descuento especial</div>
+<div *ngFor="let datos of datos.data">
+  <div class="promocion overlay" (click)="presentModal(datos.id);" >
+      <img src={{datos.img}} style="width:100%; height: 200px; border-radius: 12px;">
+      <div class="card-title-promocion">{{datos.titulo}}</div>
+      <div class="card-subtitle-promocion"> {{ datos.descripcion | slice:0:50}}...</div>
       <div class="card-subsubtitle-promocion">
         <button ion-button style="border-radius: 5px;">Ver Mas</button>
       </div>
   </div>
-  <div  class="promocion overlay" (click)="presentModal();" >
+</div>
+  <!-- <div  class="promocion overlay" (click)="presentModal();" >
       <img src="../../assets/imgs/3.jpg" style="width:100%; height: 200px; border-radius: 12px;">
       <div class="card-title-promocion">Millonarios vs. Nacional</div>
       <div class="card-subtitle-promocion"> Compra tus boletas facilmente y con un descuento especial</div>
@@ -47,6 +48,6 @@
       <div class="card-subsubtitle-promocion">
         <button ion-button style="border-radius: 5px;">Ver Mas</button>
       </div>
-  </div>
+  </div> -->
 
 </ion-content>

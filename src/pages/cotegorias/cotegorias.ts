@@ -2,7 +2,7 @@ import { Component ,ViewChild, ElementRef} from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Slides } from 'ionic-angular';
 import { ComercioPage } from '../comercio/comercio';
-
+import { CategoriasProvider } from '../../providers/categorias/categorias';
 
 /**
  * Generated class for the CotegoriasPage page.
@@ -10,8 +10,13 @@ import { ComercioPage } from '../comercio/comercio';
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
-var map;
+
 declare var google:any;
+var map;
+var infoWindow;
+var infowindow;
+var service;
+var pos;
 @IonicPage()
 @Component({
   selector: 'page-cotegorias',
@@ -26,8 +31,11 @@ export class CotegoriasPage {
  @ViewChild('map') mapElement: ElementRef
  @ViewChild(Slides) slides: Slides;
  map: any;
-  constructor( public navCtrl: NavController, public navParams: NavParams) {
-    
+ datos:any= [];
+ pos1:any;
+  constructor( public navCtrl: NavController, public navParams: NavParams, public CategoriasProvider:CategoriasProvider) {
+    this.getCategorias();
+    console.log('hola');
    }
   ionViewDidLoad() {
    
@@ -39,6 +47,15 @@ export class CotegoriasPage {
 
   ngAfterViewInit() {
    
+  }
+
+  getCategorias() {
+    this.CategoriasProvider.getCategorias()
+    .then(data => {
+      this.datos = data;
+     
+      console.log(this.datos);
+    })
   }
 
   buscarboton(){
@@ -77,18 +94,80 @@ export class CotegoriasPage {
     this.lupa=true;
    }
 
-  loadMap(){
-    const location= new google.maps.LatLng(7.8939100,-72.5078200);
-    const options={
-      center:location,
-      zoom:14
-    }
-    map = new google.maps.Map(document.getElementById('map'),options);
    
-  }
-  
-  comercio(){
-    this.navCtrl.push(ComercioPage);
+  comercio(id){
+    this.navCtrl.push(ComercioPage,{
+      id_categoria:id
+    });
   }
 
+
+   loadMap() {
+    map = new google.maps.Map(document.getElementById('map'), {
+      center: {lat: -34.397, lng: 150.644},
+      zoom: 6
+    });
+    infoWindow = new google.maps.InfoWindow;
+    var geocoder = new google.maps.Geocoder;
+    var infowindow = new google.maps.InfoWindow;
+    // Try HTML5 geolocation.
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function(position) {
+        pos = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
+        };
+        
+       
+        
+
+        infoWindow.setPosition(pos);
+        infoWindow.setContent('Location found.');
+        infoWindow.open(map);
+        map.setCenter(pos);
+        // this.geocodeLatLng(geocoder, map, infowindow,pos);
+      }, function() {
+        this.handleLocationError(true, infoWindow, map.getCenter());
+        
+      });
+    } else {
+      // Browser doesn't support Geolocation
+      
+    }
+   
+      
+  }
+
+  geocodeLatLng(geocoder, map, infowindow,pos) {
+    console.log('pos',pos);
+    var latlng = pos;
+    geocoder.geocode({'location': latlng}, function(results, status) {
+      if (status === 'OK') {
+        if (results[0]) {
+          map.setZoom(11);
+          var marker = new google.maps.Marker({
+            position: latlng,
+            map: map
+          });
+          infowindow.setContent(results[0].formatted_address);
+          infowindow.open(map, marker);
+        } else {
+          window.alert('No results found');
+        }
+      } else {
+        window.alert('Geocoder failed due to: ' + status);
+      }
+    });
+  }
+
+  handleLocationError(browserHasGeolocation, infoWindow, pos) {
+    infoWindow.setPosition(pos);
+    infoWindow.setContent(browserHasGeolocation ?
+                          'Error: The Geolocation service failed.' :
+                          'Error: Your browser doesn\'t support geolocation.');
+    infoWindow.open(map);
+  }
+
+
+  
 }

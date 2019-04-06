@@ -1,3 +1,4 @@
+import { PerfilProvider } from './../../providers/perfil/perfil';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
@@ -14,12 +15,22 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'editarperfil.html',
 })
 export class EditarperfilPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+datos:any=[];
+  constructor(public navCtrl: NavController, public navParams: NavParams, public PerfilProvider: PerfilProvider) {
+      this.getUser(1);
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad EditarperfilPage');
+  }
+
+  getUser(id){
+    this.PerfilProvider.getUser(id)
+    .then(data => {
+      this.datos = data;
+     
+      console.log(this.datos);
+    })
   }
 
 }

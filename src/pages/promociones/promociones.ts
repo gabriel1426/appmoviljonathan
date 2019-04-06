@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams ,ModalController } from 'ionic-angular';
 import { ModaldeportePage } from '../modaldeporte/modaldeporte';
-
+import { HomeProvider } from '../../providers/home/home';
 
 /**
  * Generated class for the PromocionesPage page.
@@ -16,16 +16,29 @@ import { ModaldeportePage } from '../modaldeporte/modaldeporte';
   templateUrl: 'promociones.html',
 })
 export class PromocionesPage {
+datos:any=[];
+  constructor(public navCtrl: NavController, public navParams: NavParams,public modalCtrl: ModalController, public HomeProvider:HomeProvider) {
+  this.getPromociones();
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,public modalCtrl: ModalController) {
+  }
+  getPromociones() {
+    this.HomeProvider.getCategorias()
+    .then(data => {
+      this.datos = data;
+     
+      console.log(this.datos);
+    })
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad PromocionesPage');
   }
 
-  presentModal() {
-    let profileModal = this.modalCtrl.create(ModaldeportePage);
+  presentModal(id) {
+    console.log('id_promocion',id)
+    let profileModal = this.modalCtrl.create(ModaldeportePage,{
+      id_promociones:id
+    });
     profileModal.present();
   }
  

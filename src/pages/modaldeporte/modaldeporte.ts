@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams,ViewController , ModalController} from 'ionic-angular';
 import { CompraenlineaPage } from '../compraenlinea/compraenlinea';
+import { HomeProvider } from '../../providers/home/home';
 /**
  * Generated class for the ModaldeportePage page.
  *
@@ -14,23 +15,41 @@ import { CompraenlineaPage } from '../compraenlinea/compraenlinea';
   templateUrl: 'modaldeporte.html',
 })
 export class ModaldeportePage {
+  id_promociones;
+  datos:any=[];
+    constructor(public navCtrl: NavController, 
+      public navParams: NavParams,
+      public viewCtrl: ViewController,
+      public modalCtrl: ModalController,
+      public HomeProvider:HomeProvider) {
+        this.id_promociones = navParams.get("id_promociones");
+        this.getDetallePromocion(this.id_promociones);
+    }
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,public viewCtrl: ViewController,public modalCtrl: ModalController) {
-  }
+    ionViewDidLoad() {
+      console.log('ionViewDidLoad ModaldeportePage');
+    }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad ModaldeportePage');
-  }
-
-  cerrarmodal(){
-    this.viewCtrl.dismiss();
-  }
-
-  comprar(){
-    let profileModal = this.modalCtrl.create(CompraenlineaPage);
-    profileModal.present().then((resolve)=>{
+    cerrarmodal(){
       this.viewCtrl.dismiss();
-    });
+    }
 
-}
-}
+    getDetallePromocion(id){
+      this.HomeProvider.getDetallePromocion(id)
+      .then(data => {
+        this.datos = data;
+       
+        console.log(this.datos);
+      })
+    }
+
+    comprar(id){
+      let profileModal = this.modalCtrl.create(CompraenlineaPage,{
+        id_promociones:id
+      });
+      profileModal.present().then((resolve)=>{
+        this.viewCtrl.dismiss();
+      });
+
+  }
+  }
