@@ -1,12 +1,12 @@
 
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { TabsPage } from '../pages/tabs/tabs';
 import { LoginPage } from '../pages/login/login';
 
-import { Platform, MenuController, Nav, AlertController } from 'ionic-angular';
+import { Platform, MenuController,Nav, AlertController} from 'ionic-angular';
 
 
 import { HomePage } from '../pages/home/home';
@@ -16,8 +16,9 @@ import { HomePage } from '../pages/home/home';
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = TabsPage;
-
+  @ViewChild(Nav) nav: Nav;
+  rootPage:any = LoginPage;
+ public  user; 
   public da : any;
   public nombre : any;
   public apellido : any;
@@ -47,16 +48,105 @@ export class MyApp {
       { title: 'Restaurantes',icon:'md-restaurant', component: HomePage , logout : false },
       { title: 'Deportes',icon:'md-baseball', component: HomePage , logout : false },
       { title: 'Eventos',icon:'ios-color-filter', component: HomePage , logout : false },
-      { title: 'Instalaciones',icon:'logo-codepen', component: HomePage , logout : false },
-      { title: 'Zona-Socios',icon:'md-cog', component: HomePage , logout : false },
-      { title: 'Paga en Linea',icon:'md-card', component: HomePage , logout : false },
-      { title: 'Pqrs',icon:'md-mail', component: HomePage , logout : false },
-      { title: 'Logout',icon:'md-log-out', component: HomePage , logout : true }
+    
+      { title: 'Logout',icon:'md-log-out', component: LoginPage , logout : true }
   
     ];
-    this.logeado = true;
+    
+
+      
+    
+    
+        // Verificación de logeo
+          if(localStorage["User"] == null || localStorage["User"] == undefined){
+              // this.user = new User("Usuario Default", "");
+              // this.imagen = "assets/images/avatar.png";
+        }
+        else{
+          this.logeado = true;
+          this.user = (localStorage["User"]);
+           this.nombre =this.user.nombre;
+       
+              console.log("nombre usuario",this.nombre);
+        }
+    
 
   }
+
+  ngAfterViewInit() {
+      this.nav.viewDidEnter.subscribe((data) => {
+        var view = data.component.name;
+        if(view != "IntroductionPage" && view != "UserSignup" && view != "UserLogin"){
+          
+            // VERIFICACIÓN DE LOGEO 
+            if(localStorage["User"] == null || localStorage["User"] == undefined){
+            
+            }
+            else{
+              this.logeado = true;
+              this.user = (localStorage["User"]);
+              this.nombre =this.user.nombre;
+             
+     
+            }
+        }
+      });
+    
+      // VERIFICACIÓN DE LOGEO 
+      if(localStorage["User"] == null || localStorage["User"] == undefined){
+        this.nav.setRoot(LoginPage);
+      }
+      else{
+        this.logeado = true;
+        this.user = (localStorage["User"]);
+        this.nombre =this.user.nombre;
+     
+        console.log("nombre usuario",this.nombre);
+        this.nav.setRoot(TabsPage);
+      }
+      
+    }
+
+  openPage(page) {
+    // close the menu when clicking a link from the menu
+    this.menu.close();
+
+/* Español
+si el atributo logout is true .. borramos los datos del usuario del telefono
+INGLES
+If the logout attribute is true .. we delete the user data from the phone  */
+      if(page.logout){
+        // window.localStorage.removeItem('User');
+        // window.localStorage.removeItem('Token');
+        localStorage.clear();
+        this.nombre = "Usuario";
+        // this.apellido = "Invitado";
+        
+        this.logeado = false;
+         this.nav.setRoot(page.component);
+        }else{
+        this.nav.push(page.component);
+        }
+
+    // navigate to the new page if it is not the current page
+  
+  }
+
+  
+  ionViewDidLoad() {
+    if (localStorage["Token"]){
+
+         this.user = JSON.parse(localStorage["User"]);
+          // AppSettings.datos = JSON.stringify(localStorage["Datos"]);
+        // console.log('dsiempre '+AppSettings.datos);
+         this.nombre =this.user.nombre;
+        //  this.apellido = AppSettings.datos.apellido;
+         
+        //  this.imagen = AppSettings.datos.avatar;
+         
+       
+    }
+ }
 
   
 }
