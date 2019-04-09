@@ -18,7 +18,8 @@ import { RegistroPage } from '../registro/registro';
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
-
+var datos;
+var user;
 @IonicPage()
 @Component({
   selector: 'page-login',
@@ -42,7 +43,7 @@ export class LoginPage {
     private toastCtrl: ToastController, 
     public usersprovider:UsersProvider)
    {
-
+    // localStorage.clear();
     this.LoginForm = formBuilder.group({
       Email:['',Validators.compose([Validators.maxLength(45),Validators.required])],
       Password:['',Validators.compose([Validators.required])]
@@ -53,13 +54,23 @@ export class LoginPage {
    console.log("entro",this.credentials);
   this.usersprovider.login(this.credentials)
   .then(data => {
-    this.datos = data;
-    console.log("token",localStorage["token"]= this.datos.token);
-    console.log("user",localStorage["User"] = this.datos.user);
-    // localStorage.setItem("datos_user",this.datos);
-    // const User = JSON.parse(localStorage.getItem('datos'));
-    
-    // console.log("user datos",JSON.stringify(localStorage.getItem("datos_user")));
+    datos = data;
+    user = datos.user[0];
+    console.log("token",localStorage["token"]= datos.token);
+    console.log("nombre",localStorage["nombre"] = user.nombre);
+    console.log("email",localStorage["email"] = user.email);
+    console.log("direccion",localStorage["direccion"] = user.direccion);
+    console.log("cedula",localStorage["cedula"] = user.cedula);
+    console.log("monto",localStorage["monto"] = user.monto);
+    console.log("id_usuario",localStorage["id_usuario"] = user.id_usuario);
+    console.log("id_empresa",localStorage["id_empresa"] = user.id_empresa);
+    console.log("id_empleado",localStorage["id_empleado"] = user.id);
+    console.log("celular",localStorage["celular"] = user.celular);
+    console.log("fecha_nacimiento",localStorage["fecha_nacimiento"] = user.fecha_nacimiento);
+    console.log("sexo",localStorage["sexo"] = user.sexo);
+    console.log("ciudad_empleado",localStorage["ciudad_empleado"] = user.ciudad_empleado);
+    console.log("bloqueo",localStorage["bloqueo"] = user.bloqueo);
+
     this.navCtrl.setRoot(TabsPage);
   })
 

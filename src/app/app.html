@@ -1,5 +1,5 @@
 
-<ion-menu [content]="content" type="overlay"  persistent="true"  side="right" ng-controller="RightController">
+<ion-menu [content]="content" type="overlay"  persistent="true"  side="left" ng-controller="RightController">
     
     <ion-header>
       <!-- AQUI ESTA LA CONFIGURACIÓN DEL MENÚ-->
@@ -7,12 +7,13 @@
         <div no-lines>
           <ion-avatar item-center class="center" style="width:40%">
             <br>
-                  <img  src="" style="display: block; border-radius: 1000px; width: 100%; height: auto; margin-left: auto; margin-right: auto;">
+ 
+                  <img  src="https://img.icons8.com/ultraviolet/120/000000/user.png" style="color:white;display: block; width: 100%; height: auto; margin-left: auto; margin-right: auto;">
     
             
           </ion-avatar>
-          <br>
-           <h1 style="text-align:center;color:#fff;" >{{nombre}}</h1>
+          
+           <h1 style="text-align:center;color:rgb(46, 43, 43);" >{{nombre}}</h1>
             
         </div>
       </ion-toolbar>
@@ -23,19 +24,11 @@
       <ion-list no-lines>
         <div *ngIf="logeado">
             <button ion-item *ngFor="let p of pages" (click)="openPage(p)" >
-                <ion-icon name="{{p.icon}}"></ion-icon>  hola
+                <ion-icon name="{{p.icon}}"> {{p.title}}</ion-icon>  
           
     
         </button>
         </div>
-        <div *ngIf="!logeado">
-            <button ion-item *ngFor="let p of pagest" (click)="openPage(p)" >
-                <ion-icon name="{{p.icon}}"></ion-icon> hola
-          
-    
-        </button>
-        </div>
-    
       </ion-list>
     </ion-content>
     

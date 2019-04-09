@@ -21,6 +21,7 @@
       <p>Complete la siguiente informarción para solicitar una recarga.</p>
     </div>
     <div>
+      <form [formGroup]="RecargaForm">
         <ion-item-group>
           
             <ion-item class="bordes">
@@ -30,16 +31,20 @@
                     viewBox="0 0 192 192"
                     style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,192v-192h192v192z" fill="none"></path><g fill="#3498db"><g id="surface1"><path d="M90,18v12.5625c-17.01562,2.85938 -30,17.74219 -30,35.4375c0,10.66406 4.99219,18.89063 11.625,24.1875c6.63281,5.29688 14.625,8.25 22.125,11.25c7.5,3 14.50781,6.04688 19.125,9.75c4.61719,3.70313 7.125,7.45313 7.125,14.8125c0,12.9375 -10.75781,24 -24,24c-13.3125,0 -24,-10.6875 -24,-24v-6h-12v6c0,17.78906 12.98438,32.57813 30,35.4375v12.5625h12v-12.5625c17.0625,-2.88281 30,-17.88281 30,-35.4375c0,-10.6875 -4.99219,-18.86719 -11.625,-24.1875c-6.63281,-5.32031 -14.625,-8.4375 -22.125,-11.4375c-7.5,-3 -14.50781,-5.88281 -19.125,-9.5625c-4.61719,-3.67969 -7.125,-7.5 -7.125,-14.8125c0,-13.14844 10.71094,-24 24,-24c13.3125,0 24,10.6875 24,24v6h12v-6c0,-17.78906 -12.98437,-32.57812 -30,-35.4375v-12.5625z"></path></g></g></g></svg>
                   </span>
-              <ion-input type="number" value="" placeholder="Valor a Solicitar"></ion-input>
+              <ion-input type="number"   formControlName="Valor_solicitado"  [(ngModel)]="request.valor_solicitado" placeholder="Valor a Solicitar"></ion-input>
+              <ion-input type="text"  hidden formControlName="Id_empresa"  [(ngModel)]="request.id_empresa" value="{{id_empresa}}" ></ion-input>
+              <ion-input type="text"  hidden  formControlName="Id_empleado"  [(ngModel)]="request.id_empleado"  value="{{id_empleado}}"></ion-input>
+              <ion-input type="text"  hidden  formControlName="Valor_actual_monto"  [(ngModel)]="request.valor_actual_monto"  value="{{monto}}"></ion-input>
             </ion-item>
             
             <ion-item class="bordes">
                
-              <ion-textarea rows="12" cols="20" type="text" value="" placeholder="Comentarios o Solicitudes"></ion-textarea>
+              <ion-textarea rows="12" cols="20" type="text"  formControlName="Descripcion"  [(ngModel)]="request.descripcion" value="" placeholder="Comentarios o Solicitudes"></ion-textarea>
             </ion-item>
-            <button block round  ion-button >Solicitar Recarga</button>
+            <button block round  ion-button (click)="recarga()" >Solicitar Recarga</button>
             <br>
             </ion-item-group>
+          </form>
     </div>
 
 </ion-content>

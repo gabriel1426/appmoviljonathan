@@ -40,15 +40,15 @@
 }
 ion-menu{
     //background menu user
-    .header::after{background: -webkit-linear-gradient(bottom left, #202b36, #202b36);
-  background: -o-linear-gradient(bottom right, #202b36, #202b36);
-  background: -moz-linear-gradient(bottom right, #202b36, #202b36);
-background: linear-gradient(to bottom right, #202b36, #202b36); } /*Hide toolbar shadow*/
+    .header::after{background: -webkit-linear-gradient(bottom right,#fff, #fff);
+  background: -o-linear-gradient(bottom right, #fff, #fff);
+  background: -moz-linear-gradient(bottom right, #fff, #fff);
+background: linear-gradient(to bottom right, #fff, #fff); } /*Hide toolbar shadow*/
      ion-toolbar{
-         .toolbar-background{background: -webkit-linear-gradient(bottom left, #202b36, #202b36);
-  background: -o-linear-gradient(bottom right, #202b36, #202b36);
-  background: -moz-linear-gradient(bottom right, #202b36, #202b36);
-background: linear-gradient(to bottom right, #202b36, #202b36);  border:0px; }
+         .toolbar-background{background: -webkit-linear-gradient(bottom right, #fff, #fff);
+  background: -o-linear-gradient(bottom right, #fff, #fff);
+  background: -moz-linear-gradient(bottom right, #fff, #fff);
+background: linear-gradient(to bottom right, #fff, #fff);  border:0px; }
          .toolbar-content{
                 ion-item{
                     //background menu user
@@ -62,10 +62,10 @@ background: linear-gradient(to bottom right, #202b36, #202b36);  border:0px; }
 
      ion-content{
          //CAMBIO DE COLOR DE CONTENIDO DEL MENU
-             background: -webkit-linear-gradient(bottom left, #202b36, #202b36);
-  background: -o-linear-gradient(bottom right, #202b36, #202b36);
-  background: -moz-linear-gradient(bottom right, #202b36, #202b36);
-background: linear-gradient(to bottom right, #202b36, #202b36) !important;
+             background: -webkit-linear-gradient(bottom right, #fff, #fff);
+  background: -o-linear-gradient(bottom right, #fff, #fff);
+  background: -moz-linear-gradient(bottom right, #fff, #fff);
+background: linear-gradient(to bottom right, #fff, #fff) !important;
              ion-list{
                  //background ITEMS MENU
                  

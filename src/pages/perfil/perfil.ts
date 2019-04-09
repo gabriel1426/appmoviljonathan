@@ -21,8 +21,9 @@ import { HistorialPage } from '../historial/historial';
   templateUrl: 'perfil.html',
 })
 export class PerfilPage {
-
+nombre;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.nombre = localStorage["nombre"]
   }
 
   editarPerfil(){

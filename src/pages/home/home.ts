@@ -13,11 +13,15 @@ import { HomeProvider } from '../../providers/home/home';
 export class HomePage {
  id_promociones;
   datos:any= [];
-
+nombre;
+monto;
   constructor(public navCtrl: NavController,
     public modalCtrl: ModalController,
      public HomeProvider:HomeProvider) {
     this.getPromociones();
+    this.nombre = localStorage["nombre"];
+    this.monto = localStorage["monto"];
+
   }
   getPromociones() {
     this.HomeProvider.getCategorias()

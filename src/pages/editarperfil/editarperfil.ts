@@ -1,34 +1,123 @@
 import { PerfilProvider } from './../../providers/perfil/perfil';
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
+import { Component , ChangeDetectorRef,ChangeDetectionStrategy } from '@angular/core';
+import { FormBuilder, FormGroup, Validators  } from '@angular/forms'
+import { IonicPage, NavController, NavParams, LoadingController, AlertController,ToastController  } from 'ionic-angular';
 /**
  * Generated class for the EditarperfilPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
-
+var datos;
+var user;
+var emp;
 @IonicPage()
 @Component({
   selector: 'page-editarperfil',
   templateUrl: 'editarperfil.html',
+  changeDetection: ChangeDetectionStrategy.OnPush
+
 })
 export class EditarperfilPage {
-datos:any=[];
-  constructor(public navCtrl: NavController, public navParams: NavParams, public PerfilProvider: PerfilProvider) {
-      this.getUser(1);
+
+  public nombre : any;
+  public email : any;
+  public cedula: any;
+  public celular: any;
+  public direccion : any;
+  public ciudad_empleado : any;
+  public monto : any;
+  public id_empresa: any;
+  public id_usuario : any;
+  public id_empleado : any;
+  public fecha_nacimiento : any;
+  public sexo : any;
+  public bloqueo : any;
+
+  ActProfileForm:FormGroup;
+  request = {
+     nombre : '',
+     email : '',
+     cedula: '',
+     celular: '',
+     direccion :'',
+     fecha_nacimiento : '',
+     _method:'put',
+     id_empleado:'',
+     id_usuario:''
+
   }
 
+ 
+datos:any=[];
+  constructor(
+    public cdRef:ChangeDetectorRef,
+    public formBuilder:FormBuilder,
+    private alertController:AlertController,
+    public navCtrl: NavController,
+    private loadingController:LoadingController, 
+    private toastCtrl: ToastController, 
+    public navParams: NavParams, 
+    public PerfilProvider: PerfilProvider) {
+
+      this.ActProfileForm = formBuilder.group({
+        Nombre:['',Validators.compose([Validators.maxLength(45),Validators.required])],
+        Email:['',Validators.compose([Validators.required])],
+        Cedula:['',Validators.compose([Validators.required])],
+        Celular:['',Validators.compose([Validators.required])],
+        Direccion:['',Validators.compose([Validators.required])],
+        Ciudad:['',Validators.compose([Validators.required])],
+        Fecha_nacimiento:['',Validators.compose([Validators.required])],
+        Id_empleado:['',Validators.compose([Validators.required])],
+        Id_usaurio:['',Validators.compose([Validators.required])],
+      });
+  }
+ 
   ionViewDidLoad() {
     console.log('ionViewDidLoad EditarperfilPage');
   }
+  ngAfterViewInit() {
 
-  getUser(id){
-    this.PerfilProvider.getUser(id)
-    .then(data => {
-      this.datos = data;
+    this.cdRef.detectChanges();
+     }
      
+     ngOnInit() {
+      console.log(this.id_empleado = localStorage["id_empleado"]);
+      
+      this.nombre =localStorage["nombre"];
+      this.email =localStorage["email"];
+      this.cedula =localStorage["cedula"];
+      this.celular =localStorage["celular"];
+      this.direccion =localStorage["direccion"];
+      this.ciudad_empleado =localStorage["ciudad_empleado"];
+      this.monto =localStorage["monto"];
+      this.id_empresa =localStorage["id_empresa"];
+      this.id_usuario =localStorage["id_usuario"];
+      this.id_empleado =localStorage["id_empleado"];
+      this.fecha_nacimiento =localStorage["fecha_nacimiento"];
+      this.sexo =localStorage["sexo"];
+      this.bloqueo =localStorage["bloqueo"];
+      console.log('ngoninit');     
+    }
+
+ 
+
+  Actualizar(){
+    console.log("request",this.request);
+    this.PerfilProvider.ActUser(this.request)
+    .then(data => {
+
+      datos = data;
+     console.log("empleado cedula",user = datos.data.empleado.cedula) 
+      localStorage.setItem("nombre",datos.data.user.nombre);
+      localStorage.setItem("email",datos.data.user.email);
+      localStorage.setItem("cedula",datos.data.empleado.cedula);
+      localStorage.setItem("celular",datos.data.empleado.celular);
+      localStorage.setItem("direccion",datos.data.user.direccion);
+      localStorage.setItem("fecha_nacimiento",datos.data.empleado.fecha_nacimiento);
+      // localStorage.setItem("monto",datos.data.empleado.cedula);
+     
+      
       console.log(this.datos);
     })
   }
