@@ -48,9 +48,15 @@ export class LoginPage {
       Email:['',Validators.compose([Validators.maxLength(45),Validators.required])],
       Password:['',Validators.compose([Validators.required])]
     });
+    // localStorage.clear();
   }
 
  login(){
+  const loader = this.loadingController.create({
+    content: "Please wait...",
+    duration: 3000
+  });
+ 
    console.log("entro",this.credentials);
   this.usersprovider.login(this.credentials)
   .then(data => {
@@ -68,12 +74,20 @@ export class LoginPage {
     console.log("celular",localStorage["celular"] = user.celular);
     console.log("fecha_nacimiento",localStorage["fecha_nacimiento"] = user.fecha_nacimiento);
     console.log("sexo",localStorage["sexo"] = user.sexo);
-    console.log("ciudad_empleado",localStorage["ciudad_empleado"] = user.ciudad_empleado);
+    console.log("ciudad_empleado",localStorage["ciudad_empleado"] = datos.ciudad);
     console.log("bloqueo",localStorage["bloqueo"] = user.bloqueo);
 
     this.navCtrl.setRoot(TabsPage);
+  },err => {
+    
+    let alert1 = this.alertController.create({
+      title: 'Error!',
+      subTitle: 'El usuario o la contraseña son incorrectas!',
+    buttons: ['OK']
+    });
+    alert1.present();
   })
-
+  loader.present();
  }
 
 

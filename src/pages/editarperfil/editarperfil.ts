@@ -19,7 +19,7 @@ var emp;
 
 })
 export class EditarperfilPage {
-
+public letras:any;
   public nombre : any;
   public email : any;
   public cedula: any;
@@ -97,12 +97,28 @@ datos:any=[];
       this.fecha_nacimiento =localStorage["fecha_nacimiento"];
       this.sexo =localStorage["sexo"];
       this.bloqueo =localStorage["bloqueo"];
-      console.log('ngoninit');     
+      console.log('ngoninit');  
+      
+      var palabras = this.nombre,
+      resultado= palabras.replace(/[A-Za-z]+/g, function(match){ return (match.trim()[0]);}); 
+    
+      console.log(resultado.replace(/\s/g, ''));
+      if(resultado.length <= 2){
+        this.letras = resultado;
+      }else{
+        this.letras = resultado.substr(0, 3);
+      }
     }
+
+    
 
  
 
   Actualizar(){
+    const loader = this.loadingController.create({
+      content: "Please wait...",
+      duration: 1000
+    });
     console.log("request",this.request);
     this.PerfilProvider.ActUser(this.request)
     .then(data => {
@@ -117,9 +133,18 @@ datos:any=[];
       localStorage.setItem("fecha_nacimiento",datos.data.empleado.fecha_nacimiento);
       // localStorage.setItem("monto",datos.data.empleado.cedula);
      
-      
+      var palabras = localStorage["nombre"],
+      resultado= palabras.replace(/[A-Za-z]+/g, function(match){ return (match.trim()[0]);}); 
+    
+      console.log(resultado.replace(/\s/g, ''));
+      if(resultado.length <= 2){
+        this.letras = resultado;
+      }else{
+        this.letras = resultado.substr(0, 3);
+      }
       console.log(this.datos);
     })
+    loader.present();
   }
 
 }

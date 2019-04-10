@@ -22,11 +22,15 @@
 
   <div>
 
-    <div class="fondoperfil">
-        <ion-grid style="padding: 20px 0 0 20px ; color: white">
+    <div>
+        <ion-grid style="padding: 20px 0 0 20px ; color: black">
             <ion-row align-items-center>
               <ion-col col-5 >
-                  <img class="userimg" src="../../assets/imgs/usuario.jpg" alt="">
+                <ion-item class="centrar">
+                  <ion-avatar>
+                    <ion-text-avatar  class="avatarletra">{{letras}}</ion-text-avatar>
+                  </ion-avatar>   
+                </ion-item>
               </ion-col>
               <ion-col col-7 >
                   <h1 >{{nombre}} </h1>

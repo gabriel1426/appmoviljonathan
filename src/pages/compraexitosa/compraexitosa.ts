@@ -16,13 +16,19 @@ import { TabsPage } from '../tabs/tabs';
   templateUrl: 'compraexitosa.html',
 })
 export class CompraexitosaPage {
-
+  datos;
+  contador;
+  valor_actual;
   constructor(public navCtrl: NavController, public navParams: NavParams,public viewCtrl: ViewController) {
+    console.log("datos",this.datos = navParams.get("datos"));
+    console.log("contador",this.contador = navParams.get("contador"));
+    console.log("valor_actual",this.datos = navParams.get("valor_actual"));
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad CompraexitosaPage');
   }
+  
 
   cerrar(){
     this.viewCtrl.dismiss();

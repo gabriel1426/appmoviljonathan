@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams,ViewController , ModalController} from 'ionic-angular';
 import { CompraenlineaPage } from '../compraenlinea/compraenlinea';
-
+import { CategoriasProvider } from '../../providers/categorias/categorias';
 
 /**
  * Generated class for the ModalcomercioPage page.
@@ -16,8 +16,11 @@ import { CompraenlineaPage } from '../compraenlinea/compraenlinea';
   templateUrl: 'modalcomercio.html',
 })
 export class ModalcomercioPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams,public viewCtrl: ViewController,public modalCtrl: ModalController) {
+  id_producto;
+  datos:any=[];
+  constructor(public CategoriasProvider:CategoriasProvider,public navCtrl: NavController, public navParams: NavParams,public viewCtrl: ViewController,public modalCtrl: ModalController) {
+    console.log("id_producto",this.id_producto = navParams.get("id_producto"));
+    this.getProductoDellate(this.id_producto)
   }
 
   ionViewDidLoad() {
@@ -27,14 +30,24 @@ export class ModalcomercioPage {
   cerrarmodal(){
     this.viewCtrl.dismiss();
   }
-
-  comprar(){
-    let profileModal = this.modalCtrl.create(CompraenlineaPage);
+  getProductoDellate(id){
+    this.CategoriasProvider.getProductoDellate(id)
+      .then(data => {
+        this.datos = data;
+       
+        console.log(this.datos);
+      })
+  }
+  comprar(id){
+    console.log("id producto",id)
+    let profileModal = this.modalCtrl.create(CompraenlineaPage,{
+      id_producto:id
+    });
     profileModal.present().then((resolve)=>{
       this.viewCtrl.dismiss();
     });
-   
-  }
+
+}
 
 
 }

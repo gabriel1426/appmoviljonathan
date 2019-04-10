@@ -1,5 +1,15 @@
 page-perfil {
-
+    .centrar{
+        text-align: center !important;
+        justify-content: center !important;
+        display: flex !important;
+        flex-direction: column !important;
+    }
+    .avatarletra{
+        height: 110px !important;
+        width: 110px !important;
+font-size: 45px;
+    }
     .fondoperfil{
         background: rgba(41,184,229,1);
         background: -moz-linear-gradient(left, rgba(41,184,229,1) 0%, rgba(41,184,229,1) 11%, rgba(41,215,227,1) 100%);

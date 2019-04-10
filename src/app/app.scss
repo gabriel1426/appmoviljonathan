@@ -33,6 +33,17 @@
 // automatically applied to the <body> element in the app.
 
 //-----------------------------------------------------
+.centrar{
+    text-align: center !important;
+    justify-content: center !important;
+    display: flex !important;
+    flex-direction: column !important;
+}
+.avatarletra{
+    height: 85px !important;
+    width: 85px !important;
+font-size: 45px;
+}
 .center {
     margin-left: auto;
     margin-right: auto;

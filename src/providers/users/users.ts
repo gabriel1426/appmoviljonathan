@@ -1,6 +1,6 @@
 import { IonicPage,NavController, LoadingController, AlertController,ToastController  } from 'ionic-angular';
 import { HttpClient ,HttpHeaders} from '@angular/common/http';
-import { Injectable } from '@angular/core'; 
+import { Injectable, Inject } from '@angular/core'; 
 import { LoginPage } from '../../pages/login/login';
 
 /*
@@ -13,13 +13,13 @@ let apiUrl = 'http://www.api.avantisoluciones.com/public/login';
 @Injectable()
 export class UsersProvider {
 
-  constructor(public http: HttpClient) {
+  constructor(public http: HttpClient,private alertController:AlertController) {
     console.log('Hello UsersProvider Provider');
   }
 
    
-  public navCtrl: NavController
-
+  public navCtrl: NavController;
+  ;
 
 login(credentials){
     return new Promise((resolve, reject)=>{
@@ -42,11 +42,18 @@ login(credentials){
           .subscribe(
             data => {
               resolve(data);
+             
               console.log(data);
             },
             err => {
-              this.navCtrl.setRoot(LoginPage);
-              console.log("Error occured"+credentials.email+credentials.password);
+              Inject(err);
+              let alert1 = this.alertController.create({
+                title: 'Error!',
+                subTitle: 'El usuario o la contraseña son incorrectas!',
+              buttons: ['OK']
+              });
+              alert1.present();
+              // console.log("Error occured"+credentials.email+credentials.password);
             }
           );
     }

@@ -18,7 +18,7 @@
     
     <div *ngFor="let datos of datos.data">
         <br>
-<div class="divrelative" (click)="presentModal();">
+<div class="divrelative" (click)="producto(datos.id);">
     <ion-item class="comercio">
         <h1 class="correr"><strong>{{datos.nombre}}</strong></h1>
         <p class="correr2">
@@ -36,7 +36,8 @@
         <br>
         <br>
         <span item-right end  style="margin-right: 0px;">
-            <button clear ion-button only-icon style="font-size: 14px;color:#6FBBF9; padding-right: 0px;" (click)="verpromociones();" >
+            <!-- <button clear ion-button only-icon style="font-size: 14px;color:#6FBBF9; padding-right: 0px;" (click)="verpromociones();" > -->
+              <button clear ion-button only-icon style="font-size: 14px;color:#6FBBF9; padding-right: 0px;" >
                 <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
                 width="30" height="30"
                 viewBox="0 0 192 192"
@@ -44,8 +45,9 @@
                 <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,192v-192h192v192z" fill="none"></path><g fill="#3498db"><g id="surface1"><path d="M62.88,34.56c-24.03,0 -43.68,19.41 -43.68,43.32c0,49.035 55.635,74.715 74.4,90.24l2.4,2.04l2.4,-2.04c18.765,-15.525 74.4,-41.205 74.4,-90.24c0,-23.91 -19.65,-43.32 -43.68,-43.32c-13.35,0 -25.11,6.195 -33.12,15.6c-8.01,-9.405 -19.77,-15.6 -33.12,-15.6zM62.88,42.24c12.54,0 23.445,6.345 29.88,15.96l3.24,4.8l3.24,-4.8c6.435,-9.615 17.34,-15.96 29.88,-15.96c19.905,0 36,15.915 36,35.64c0,41.85 -47.085,65.31 -69.12,82.56c-22.035,-17.25 -69.12,-40.71 -69.12,-82.56c0,-19.725 16.08,-35.64 36,-35.64z"></path></g></g></g></svg></button>
           </span>
         </ion-item>
-        <img  class="comerciodiv" src="{{datos.img_fondo}}" style="width:100%; height: 100px;">                            
-        <img class="logoredondo" src="{{datos.logo}}" alt="">
+        <img  class="comerciodiv" src="{{datos.img_fondo_establecimiento}}" style="width:100%; height: 100px;">                            
+        <!-- <img class="logoredondo" src="{{datos.logo}}" src="../../assets/imgs/logo.png" alt=""> -->
+        <img class="logoredondo" src="{{datos.logo_establecimiento}}" alt="">
 </div>
 </div>
 

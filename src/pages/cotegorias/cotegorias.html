@@ -147,26 +147,28 @@
               
             </ion-slides>
             <div id="mostrarPromos" class="formContent " >
-
+         
                 <ion-slides class="image-slider " loop="true" slidesPerView="1.2">
-                    <ion-slide class="slaider">
+                    <div *ngFor="let datos1 of datos1.data">
+                    <ion-slide class="slaider"  (click)="comercio(datos1.id_categorias)">
                         <ion-item >
-                            <h5 class="correr"><strong>Tiendas Deportivas Replay’s</strong></h5>
-                            <small class="correr"> Calle 82 # 10 -56</small>
+                            <h5 class="correr"><strong>{{datos1.nombre}}</strong></h5>
+                            <small class="correr"> {{datos1.direccion}}</small>
                             <br>
                             <br>
                             <br>
                             <span item-right end  style="margin-right: 0px;">
-                                <button clear ion-button style="font-size: 14px;color:#6FBBF9; padding-right: 0px;" (click)="verpromociones();" >1.1 KM ></button>
+                                <button clear ion-button style="font-size: 14px;color:#6FBBF9; padding-right: 0px;"  >{{datos1.categoria}} </button>
                               </span>
                             </ion-item>
-                            <img  src="../../assets/imgs/4.jpg" style="width:100%; height: 100px;">                            
-                            <img class="logoredondo" src="../../assets/imgs/logor.jpg" alt="">
-                     
+                            <img  src="{{datos1.img_fondo}}" style="width:100%; height: 100px;">                            
+                            <img class="logoredondo" src="{{datos1.logo}}" alt="">
+                         
                     </ion-slide>
-                    <ion-slide class="slaider">
+                  </div>
+                    <!-- <ion-slide class="slaider">
                         <ion-item >
-                            <h5 class="correr"><strong>Tiendas Deportivas Replay’s</strong></h5>
+                            <h5 class="correr"><strong>{{datos1.nombre}}</strong></h5>
                             <small class="correr"> Calle 82 # 10 -56</small>
                             <br>
                             <br>
@@ -193,10 +195,10 @@
                             <img  src="../../assets/imgs/4.jpg" style="width:100%; height: 100px;">                            
                             <img class="logoredondo" src="../../assets/imgs/logor.jpg" alt="">
                      
-                    </ion-slide>
+                    </ion-slide> -->
                   </ion-slides>
         
-                 
+               
             </div>
 
    

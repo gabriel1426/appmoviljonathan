@@ -22,8 +22,19 @@ import { HistorialPage } from '../historial/historial';
 })
 export class PerfilPage {
 nombre;
+letras
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.nombre = localStorage["nombre"]
+
+    var palabras = this.nombre,
+    resultado= palabras.replace(/[A-Za-z]+/g, function(match){ return (match.trim()[0]);}); 
+  
+    console.log(resultado.replace(/\s/g, ''));
+    if(resultado.length <= 2){
+      this.letras = resultado;
+    }else{
+      this.letras = resultado.substr(0, 3);
+    }
   }
 
   editarPerfil(){

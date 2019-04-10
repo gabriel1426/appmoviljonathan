@@ -32,9 +32,11 @@ export class CotegoriasPage {
  @ViewChild(Slides) slides: Slides;
  map: any;
  datos:any= [];
+ datos1:any= [];
  pos1:any;
   constructor( public navCtrl: NavController, public navParams: NavParams, public CategoriasProvider:CategoriasProvider) {
     this.getCategorias();
+    this.getEstablecimiento();
     console.log('hola');
    }
   ionViewDidLoad() {
@@ -43,6 +45,7 @@ export class CotegoriasPage {
     this.loadMap();
     document.getElementById('mostrarPromos').style.visibility="hidden";
     this.slides.lockSwipes(false);
+   
   }
 
   ngAfterViewInit() {
@@ -55,6 +58,14 @@ export class CotegoriasPage {
       this.datos = data;
      
       console.log(this.datos);
+    })
+  }
+  getEstablecimiento() {
+    this.CategoriasProvider.getEstablecimiento()
+    .then(data => {
+      this.datos1 = data;
+     
+      console.log(this.datos1);
     })
   }
 

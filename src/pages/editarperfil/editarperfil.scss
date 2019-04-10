@@ -1,13 +1,24 @@
 page-editarperfil {
-
+    .centrar{
+        text-align: center !important;
+        justify-content: center !important;
+        display: flex !important;
+        flex-direction: column !important;
+    }
+   
     .userimg{
-        height: 130px;
-        width: 130px;
+        height: 100px;
+        width: 100px;
         border-radius:50%; 
         margin-top: 15px;
         display: block;
         margin: 0 auto;
         border: 2px solid gainsboro;
+    }
+    .avatarletra{
+        height: 110px !important;
+        width: 110px !important;
+font-size: 45px;
     }
     .pencil{
         top:85px;

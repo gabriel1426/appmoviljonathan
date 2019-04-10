@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams,ModalController } from 'ionic-angular';
 import { ModalcomercioPage } from '../modalcomercio/modalcomercio';
+import { ProductoPage } from '../producto/producto';
 import { CategoriasProvider } from '../../providers/categorias/categorias';
 
 
@@ -21,30 +22,37 @@ import { CategoriasProvider } from '../../providers/categorias/categorias';
 export class ComercioPage {
 id_categoria;
 datos:any=[];
-  constructor(public CategoriasProvider:CategoriasProvider,public navCtrl: NavController, public navParams: NavParams,public modalCtrl: ModalController) {
+  constructor(
+    public CategoriasProvider:CategoriasProvider,
+    public navCtrl: NavController,
+     public navParams: NavParams,
+     public modalCtrl: ModalController) {
     console.log("id_categoria",this.id_categoria = navParams.get("id_categoria"));
-    this.getEstablecimientos(this.id_categoria)
+
+    this.getSucursales(this.id_categoria)
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ComercioPage');
   }
 
-
-  getEstablecimientos(id) {
-    this.CategoriasProvider.getEstablecimientoCategoria(id)
+getSucursales(id){
+  this.CategoriasProvider.getSucursales(id)
     .then(data => {
       this.datos = data;
      
       console.log(this.datos);
     })
-  }
+}
 
-  presentModal(id) {
-    let profileModal = this.modalCtrl.create(ModalcomercioPage,{
-        id_establecimiento:id
+
+ 
+
+  producto(id){
+    console.log(id)
+    this.navCtrl.push(ProductoPage,{
+      id_sucursal:id
     });
-    profileModal.present();
   }
 
   verpromociones(){

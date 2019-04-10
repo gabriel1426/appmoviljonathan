@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner';
 /**
  * Generated class for the ScanerPage page.
@@ -17,7 +17,7 @@ export class ScanerPage {
   scanData : {};
   scanSub:any;
   valor;
-  constructor(public navCtrl: NavController, public navParams: NavParams, private qrScanner: QRScanner) {
+  constructor(private alertCtrl:AlertController,public navCtrl: NavController, public navParams: NavParams, private qrScanner: QRScanner) {
     this.scaner();
   }
 
@@ -33,6 +33,11 @@ export class ScanerPage {
          this.scanSub = this.qrScanner.scan().subscribe((text: string) => {
          console.log('Scanned something', text);
         this.valor= text;
+        let alert1 = this.alertCtrl.create({
+          title: 'Mensaje Enviado!',
+          subTitle: 'Su mensaje ha sido enviado satisfactoriamente!',
+        // buttons: ['OK']
+        });
          this.qrScanner.hide();
          this.scanSub.unsubscribe(); 
         

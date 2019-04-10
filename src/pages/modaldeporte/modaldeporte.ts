@@ -44,8 +44,9 @@ export class ModaldeportePage {
     }
 
     comprar(id){
+      console.log("id_producto",id);
       let profileModal = this.modalCtrl.create(CompraenlineaPage,{
-        id_promociones:id
+        id_producto:id
       });
       profileModal.present().then((resolve)=>{
         this.viewCtrl.dismiss();

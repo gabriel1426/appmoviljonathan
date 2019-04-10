@@ -29,6 +29,7 @@ import { ComfirmaciondepagoPage } from '../pages/comfirmaciondepago/comfirmacion
 import { ModaldeportePage } from '../pages/modaldeporte/modaldeporte';
 import { TerminosycondicionesPage } from '../pages/terminosycondiciones/terminosycondiciones';
 import { ScanerPage } from '../pages/scaner/scaner';
+import { ProductoPage } from '../pages/producto/producto';
 
 
 
@@ -44,7 +45,7 @@ import { HomeProvider } from '../providers/home/home';
 // plugin
 
 import { QRScanner } from '@ionic-native/qr-scanner';
-
+import { IonTextAvatar } from 'ionic-text-avatar';
 
 
 @NgModule({
@@ -72,7 +73,9 @@ import { QRScanner } from '@ionic-native/qr-scanner';
     ComfirmaciondepagoPage,
     ModaldeportePage,
     TerminosycondicionesPage,
-    ScanerPage
+    ScanerPage,
+    ProductoPage,
+    IonTextAvatar
   ],
   imports: [
     BrowserModule,
@@ -105,7 +108,8 @@ import { QRScanner } from '@ionic-native/qr-scanner';
     ComfirmaciondepagoPage,
     ModaldeportePage,
     TerminosycondicionesPage,
-    ScanerPage
+    ScanerPage,
+    ProductoPage
   ],
   providers:[
     StatusBar,

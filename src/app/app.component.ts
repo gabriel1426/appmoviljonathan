@@ -21,6 +21,7 @@ export class MyApp {
 
   public  user; 
   public da : any;
+  public letras : any;
   public nombre : any;
   public email : any;
   public cedula: any;
@@ -88,6 +89,16 @@ export class MyApp {
           this.fecha_nacimiento =localStorage["fecha_nacimiento"];
           this.sexo =localStorage["sexo"];
           this.bloqueo =localStorage["bloqueo"];
+
+          var palabras = this.nombre,
+          resultado= palabras.replace(/[A-Za-z]+/g, function(match){ return (match.trim()[0]);}); 
+        
+          console.log(resultado.replace(/\s/g, ''));
+          if(resultado.length <= 2){
+            this.letras = resultado;
+          }else{
+            this.letras = resultado.substr(0, 3);
+          }
               console.log("nombre usuario",this.nombre);
         }
     
@@ -138,7 +149,16 @@ export class MyApp {
            this.fecha_nacimiento =localStorage["fecha_nacimiento"];
            this.sexo =localStorage["sexo"];
            this.bloqueo =localStorage["bloqueo"];
-     
+           var palabras = this.nombre,
+           resultado= palabras.replace(/[A-Za-z]+/g, function(match){ return (match.trim()[0]);}); 
+         
+           console.log(resultado.replace(/\s/g, ''));
+           if(resultado.length <= 2){
+             this.letras = resultado;
+           }else{
+             this.letras = resultado.substr(0, 3);
+           }
+               console.log("nombre usuario",this.nombre)
             }
         }
       });
@@ -162,7 +182,16 @@ export class MyApp {
         this.fecha_nacimiento =localStorage["fecha_nacimiento"];
         this.sexo =localStorage["sexo"];
         this.bloqueo =localStorage["bloqueo"];
-
+        var palabras = this.nombre,
+        resultado= palabras.replace(/[A-Za-z]+/g, function(match){ return (match.trim()[0]);}); 
+      
+        console.log(resultado.replace(/\s/g, ''));
+        if(resultado.length <= 2){
+          this.letras = resultado;
+        }else{
+          this.letras = resultado.substr(0, 3);
+        }
+            console.log("nombre usuario",this.nombre)
         console.log("nombre usuario",this.nombre);
         this.nav.setRoot(TabsPage);
       }
@@ -214,7 +243,16 @@ If the logout attribute is true .. we delete the user data from the phone  */
            this.fecha_nacimiento =localStorage["fecha_nacimiento"];
            this.sexo =localStorage["sexo"];
            this.bloqueo =localStorage["bloqueo"];
-      
+           var palabras = this.nombre,
+           resultado= palabras.replace(/[A-Za-z]+/g, function(match){ return (match.trim()[0]);}); 
+         
+           console.log(resultado.replace(/\s/g, ''));
+           if(resultado.length <= 2){
+             this.letras = resultado;
+           }else{
+             this.letras = resultado.substr(0, 3);
+           }
+               console.log("nombre usuario",this.nombre)
          
        
     }

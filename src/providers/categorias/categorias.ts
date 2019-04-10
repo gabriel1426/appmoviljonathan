@@ -25,9 +25,49 @@ export class CategoriasProvider {
     });
   }
 
-  public getEstablecimientoCategoria(id) {
+  // public getEstablecimientoCategoria(id) {
+  //   return new Promise(resolve => {
+  //     this.http.get(this.apiUrl+'/establecimientoidcategoria/'+id).subscribe(data => {
+  //       resolve(data);
+  //     }, err => {
+  //       console.log(err);
+  //     });
+  //   });
+  // }
+  public getSucursales(id) {
     return new Promise(resolve => {
-      this.http.get(this.apiUrl+'/establecimientoidcategoria/'+id).subscribe(data => {
+      this.http.get(this.apiUrl+'/sucursalcategoria/'+id).subscribe(data => {
+        resolve(data);
+      }, err => {
+        console.log(err);
+      });
+    });
+  }
+  public getProducto(id) {
+    // id sucursal
+    return new Promise(resolve => {
+      this.http.get(this.apiUrl+'/sucursalproductos/'+id).subscribe(data => {
+        resolve(data);
+      }, err => {
+        console.log(err);
+      });
+    });
+  }
+  public getProductoDellate(id) {
+    // id sucursal
+    return new Promise(resolve => {
+      this.http.get(this.apiUrl+'/detalleproducto/'+id).subscribe(data => {
+        resolve(data);
+      }, err => {
+        console.log(err);
+      });
+    });
+  }
+
+  public getEstablecimiento() {
+    // id sucursal
+    return new Promise(resolve => {
+      this.http.get(this.apiUrl+'/establecimiento').subscribe(data => {
         resolve(data);
       }, err => {
         console.log(err);

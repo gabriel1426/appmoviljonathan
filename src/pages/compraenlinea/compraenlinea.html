@@ -17,20 +17,20 @@
 </ion-header>
 
 <ion-content class="fondocompralinea" padding *ngFor="let datos of datos.data">
-
-   
+<br>  
+<br>  
      <div style="text-align: center">
         <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
         width="64" height="64"
         viewBox="0 0 192 192"
         style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,192v-192h192v192z" fill="none"></path><g id="Слой_1" fill="#3498db"><path d="M168,99v-18v-3v-21c0,-6.618 -5.382,-12 -12,-12h-9v-9c0,-4.962 -4.038,-9 -9,-9h-90c-4.962,0 -9,4.038 -9,9v6v3h-9c-3.276,0 -6.447,1.362 -8.703,3.738c-2.139,2.253 -3.249,5.172 -3.252,8.262h-0.045v93c0,8.271 6.729,15 15,15h120c8.271,0 15,-6.729 15,-15v-21c3.309,0 6,-2.691 6,-6v-18c0,-3.309 -2.691,-6 -6,-6zM156,51c3.309,0 6,2.691 6,6v9.078c-2.514,-1.905 -5.61,-3.078 -9,-3.078h-6v-12zM107.697,63c-1.395,-6.837 -7.452,-12 -14.697,-12c-7.245,0 -13.302,5.163 -14.697,12h-33.303v-3.24c9.177,-1.323 16.44,-8.76 17.76,-17.76h60.48c1.323,9 8.583,16.437 17.76,17.76v3.24zM101.448,63h-16.893c1.242,-3.483 4.542,-6 8.448,-6c3.906,0 7.203,2.517 8.445,6zM45,53.697v-11.643c0.564,-0.072 1.509,-0.054 2.184,-0.054h9.513c-1.197,6 -5.829,10.5 -11.697,11.697zM141,51v2.697c-5.868,-1.197 -10.5,-5.697 -11.697,-11.697h8.697c1.656,0 3,1.344 3,3zM48,33h90c1.656,0 3,1.344 3,3v0.552c-0.942,-0.336 -1.944,-0.552 -3,-0.552h-90h-0.771c-0.741,0 -1.491,0.018 -2.229,0.066v-0.066c0,-1.656 1.344,-3 3,-3zM25.65,52.869c1.146,-1.203 2.688,-1.869 4.35,-1.869h9v12h-8.49c-3.423,0 -6.336,-2.547 -6.501,-5.673c-0.087,-1.668 0.495,-3.252 1.641,-4.458zM162,150c0,4.962 -4.038,9 -9,9h-120c-4.962,0 -9,-4.038 -9,-9v-82.77c1.902,1.11 4.125,1.77 6.51,1.77h122.49c4.962,0 9,4.038 9,9v3v18h-6v-15c0,-4.962 -4.038,-9 -9,-9h-108c-4.962,0 -9,4.038 -9,9v60c0,4.962 4.038,9 9,9h108c4.962,0 9,-4.038 9,-9v-15h6zM144,114c0,4.962 -4.038,9 -9,9c-4.962,0 -9,-4.038 -9,-9c0,-4.962 4.038,-9 9,-9c4.962,0 9,4.038 9,9zM135,99c-8.271,0 -15,6.729 -15,15c0,8.271 6.729,15 15,15h15v15c0,1.656 -1.344,3 -3,3h-108c-1.656,0 -3,-1.344 -3,-3v-60c0,-1.656 1.344,-3 3,-3h108c1.656,0 3,1.344 3,3v15zM146.922,123c1.905,-2.514 3.078,-5.61 3.078,-9c0,-3.39 -1.173,-6.486 -3.078,-9h21.078l0.006,18z"></path><path d="M62.346,141h-17.346c-1.656,0 -3,-1.344 -3,-3v-17.346c0,-1.347 1.629,-2.025 2.583,-1.071l18.831,18.831c0.957,0.957 0.279,2.586 -1.068,2.586z"></path></g></g></svg>
     
-      <h1 class="color" style="margin: 2px;">Lugar, Fecha y Terminos.</h1>
+      <h1 class="color" style="margin: 2px;">Fecha y Terminos.</h1>
 
      </div>
      <div>
 
-       <p style="text-align: justify"><strong>Fecha del Evento:</strong>  <span class="gris">{{fechaprocesada}}&nbsp;&nbsp;</span>
+       <p style="text-align: justify"><strong>Fecha del compra:</strong>  <span class="gris">{{fechaprocesada}}&nbsp;&nbsp;</span>
        </p> 
 
         <p><strong>Establecimiento:</strong> <span class="gris">{{datos.nombre_establecimiento}}</span></p> 
@@ -56,13 +56,13 @@
         <ion-item style="border-radius: 10px; background: transparent;" >
 
             <span item-right start style="margin:0px;  background: white; border-radius:15px;">
-               <div style="border-radius:15px; padding: 8px; display: flex; justify-content: space-between"> &nbsp;<p (click)="menos()" style="font-size: 2.4rem !important">-</p> &nbsp; &nbsp;<p style="font-size: 2.4rem !important">{{contador}}</p>&nbsp;<p (click)="mas()" style="font-size: 2.4rem !important">+</p>&nbsp; </div> 
+               <div style="border-radius:15px; padding: 8px; display: flex; justify-content: space-between"> &nbsp;<p (click)="menos()" style="font-size: 2.4rem !important"> - </p> &nbsp; &nbsp;<p style="font-size: 2.4rem !important">{{contador}}</p>&nbsp;<p (click)="mas()" style="font-size: 2.4rem !important"> + </p>&nbsp; </div> 
             </span>
          
             <p class="gris">
                 TOTAL 
                 
-               <span style="padding-left:50px; color: black;font-size: 25px;">{{datos.valor | currency:0:"$" }}</span> 
+               <span style="padding-left:50px; color: black;font-size: 25px;">{{valor_actual | currency:0:"$" }}</span> 
                </p>
         </ion-item>
 
