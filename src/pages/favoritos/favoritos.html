@@ -6,15 +6,61 @@
 -->
 <ion-header>
   <ion-navbar>
-    <ion-title>favoritos</ion-title>
+
+    <ion-title style="text-align: center;">Favoritos</ion-title>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
   </ion-navbar>
 </ion-header>
-
-<ion-content padding>
+<ion-content  class="fondocomercio" >
     
-    <ion-tabs>
-        <ion-tab tabIcon="home" [root]="">uno</ion-tab>
-        
-      </ion-tabs>
+  <div *ngFor="let datos of datos.data">
+      <br>
+<div class="divrelative">
+  <ion-item class="comercio">
+      <h1 class="correr"><strong>{{datos.nombre}}</strong></h1>
+      <p class="correr2">
+          <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+        width="20" height="20"
+        viewBox="0 0 192 192"
+        style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal">
+          <path d="M0,192v-192h192v192z" fill="none"></path>
+          <g fill="#2a7aaf">
+          <g id="surface1">
+            <path d="M96,3.84c-33.87,0 -61.44,27.57 -61.44,61.44c0,54.195 56.175,118.83 58.56,121.56c0.735,0.84 1.77,1.32 2.88,1.32c1.185,-0.075 2.145,-0.48 2.88,-1.32c2.385,-2.775 58.56,-68.52 58.56,-121.56c0,-33.87 -27.57,-61.44 -61.44,-61.44zM96,46.08c12.72,0 23.04,10.32 23.04,23.04c0,12.72 -10.32,23.04 -23.04,23.04c-12.72,0 -23.04,-10.32 -23.04,-23.04c0,-12.72 10.32,-23.04 23.04,-23.04z">
+            </path></g></g></g></svg>
+         <span style="color:#3498db"><strong>{{datos.ciudad}}</strong>  |</span> {{datos.direccion}}</p>
+      <br>
+      <br>
+      <br>
+      <span item-right end  style="margin-right: 0px;">
+          <!-- <button clear ion-button only-icon style="font-size: 14px;color:#6FBBF9; padding-right: 0px;" (click)="verpromociones();" > -->
+            <div  *ngIf="datos.corazon != 1">
+            <button clear ion-button only-icon style="font-size: 14px;color:#6FBBF9; padding-right: 0px;" (click)="estadoCorazon(datos.id,1);">
+                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+                width="48" height="30"
+                viewBox="0 0 192 192"
+                style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,192v-192h192v192z" fill="none"></path><g fill="#cccccc"><g id="surface1"><path d="M130.54688,32c-14.4375,0 -27.125,7.3125 -34.54688,18.39062c-7.42188,-11.07812 -20.10938,-18.39062 -34.54688,-18.39062c-22.89062,0 -41.45312,18.39062 -41.45312,41.07812c0,40.875 64.59375,60.5625 76,86.92188c11.40625,-26.35938 76,-45.71875 76,-86.92188c0,-22.6875 -18.5625,-41.07812 -41.45312,-41.07812"></path></g></g></g></svg>
+              
+              </button>
+            </div>
+            <div  *ngIf="datos.corazon == 1">
+              <button clear ion-button only-icon style="font-size: 14px;color:#6FBBF9; padding-right: 0px;" (click)="estadoCorazon(datos.id,0);">
+               
+                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+                width="48" height="30"
+                viewBox="0 0 192 192"
+                style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,192v-192h192v192z" fill="none"></path><g fill="#ff3d00"><g id="surface1"><path d="M130.54688,32c-14.4375,0 -27.125,7.3125 -34.54688,18.39062c-7.42188,-11.07812 -20.10938,-18.39062 -34.54688,-18.39062c-22.89062,0 -41.45312,18.39062 -41.45312,41.07812c0,40.875 64.59375,60.5625 76,86.92188c11.40625,-26.35938 76,-45.71875 76,-86.92188c0,-22.6875 -18.5625,-41.07812 -41.45312,-41.07812"></path></g></g></g></svg>
+              
+            </button>
+          </div>
+        </span>
+      </ion-item>
+      <img  class="comerciodiv" (click)="producto(datos.id);" src="{{datos.img_fondo_establecimiento}}" style="width:100%; height: 100px;">                            
+      <!-- <img class="logoredondo" src="{{datos.logo}}" src="../../assets/imgs/logo.png" alt=""> -->
+      <img class="logoredondo" (click)="producto(datos.id);" src="{{datos.logo_establecimiento}}" alt="">
+</div>
+</div>
 
 </ion-content>

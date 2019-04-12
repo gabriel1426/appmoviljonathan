@@ -13,7 +13,7 @@ import { CategoriasProvider } from '../../providers/categorias/categorias';
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
-
+var datos;
 @IonicPage()
 @Component({
   selector: 'page-comercio',
@@ -22,6 +22,8 @@ import { CategoriasProvider } from '../../providers/categorias/categorias';
 export class ComercioPage {
 id_categoria;
 datos:any=[];
+datos1:any=[];
+corazon=0;
   constructor(
     public CategoriasProvider:CategoriasProvider,
     public navCtrl: NavController,
@@ -57,6 +59,19 @@ getSucursales(id){
 
   verpromociones(){
     
+  }
+  ActualizarFavoritos(id_sucursal,estado){
+    
+  }
+
+  estadoCorazon(id_sucursal,estado){
+
+    this.CategoriasProvider.ActualizarFavoritos(localStorage["id_empleado"],id_sucursal,estado)
+    .then(data => {
+      this.datos1 = data;
+     this.getSucursales(this.id_categoria)
+      console.log("datos1",this.datos1);
+    })
   }
  
 }

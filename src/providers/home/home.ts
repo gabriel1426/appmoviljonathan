@@ -47,6 +47,16 @@ export class HomeProvider {
     });
   }
 
+  public getTerminoscondiciones(id) {
+    // id establecimiento
+    return new Promise(resolve => {
+      this.http.get(this.apiUrl+'/terminoscondiciones/'+id).subscribe(data => {
+        resolve(data);
+      }, err => {
+        console.log(err);
+      });
+    });
+  }
   
 
 }

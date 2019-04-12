@@ -75,4 +75,24 @@ export class CategoriasProvider {
     });
   }
 
+  public ActualizarFavoritos(id_empleado,id_sucursal,estado){
+    return new Promise(resolve => {
+      this.http.get(this.apiUrl+'/favoritos/'+id_empleado+'/'+id_sucursal+'/'+estado).subscribe(data => {
+        resolve(data);
+      }, err => {
+        console.log(err);
+      });
+    });
+  }
+
+  public indexfavoritos(id){
+    return new Promise(resolve => {
+      this.http.get(this.apiUrl+'/indexfavoritos/'+id).subscribe(data => {
+        resolve(data);
+      }, err => {
+        console.log(err);
+      });
+    });
+  }
+
 }

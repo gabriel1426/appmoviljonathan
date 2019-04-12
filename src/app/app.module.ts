@@ -43,7 +43,7 @@ import { HomeProvider } from '../providers/home/home';
 
 
 // plugin
-
+import { OneSignal } from '@ionic-native/onesignal';
 import { QRScanner } from '@ionic-native/qr-scanner';
 import { IonTextAvatar } from 'ionic-text-avatar';
 
@@ -116,7 +116,7 @@ import { IonTextAvatar } from 'ionic-text-avatar';
     SplashScreen,
     Geolocation,
 
-
+    OneSignal,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     UsersProvider,
     CategoriasProvider,

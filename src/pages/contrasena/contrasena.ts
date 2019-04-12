@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
+import { IonicPage, NavController, NavParams , AlertController} from 'ionic-angular';
+import { UsersProvider } from './../../providers/users/users';
 /**
  * Generated class for the ContrasenaPage page.
  *
@@ -14,8 +14,12 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'contrasena.html',
 })
 export class ContrasenaPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+datos:any=[];
+email="";
+  constructor(public usersprovider:UsersProvider,
+    public navCtrl: NavController,
+    private alertController:AlertController,
+     public navParams: NavParams) {
   }
 
   aceptar(){
@@ -30,5 +34,30 @@ export class ContrasenaPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad ContrasenaPage');
   }
+
+  cambiarcontrasena(){
+    this.usersprovider.correocontrasena(this.email)
+    .then(data => {
+     
+      this.datos = data;
+      let alert1 = this.alertController.create({
+        title: 'Exito!',
+        subTitle: 'Mensaje Enviado con exito!',
+      buttons: ['OK']
+      });
+      alert1.present();
+      this.navCtrl.pop();
+    },err => {
+      
+      let alert1 = this.alertController.create({
+        title: 'Error!',
+        subTitle: 'El correo es incorrecto!',
+      buttons: ['OK']
+      });
+      alert1.present();
+     
+    })
+  }
+
 
 }

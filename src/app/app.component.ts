@@ -5,7 +5,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { TabsPage } from '../pages/tabs/tabs';
 import { LoginPage } from '../pages/login/login';
-
+import { OneSignal } from '@ionic-native/onesignal';
 import { Platform, MenuController,Nav, AlertController} from 'ionic-angular';
 
 
@@ -44,9 +44,10 @@ export class MyApp {
 
   constructor(
     public platform: Platform,
-   
+   public AlertController:AlertController,
     public menu: MenuController, 
     public statusBar: StatusBar, 
+    private oneSignal: OneSignal,
     public splashScreen: SplashScreen
     ) {
     platform.ready().then(() => {
@@ -54,6 +55,8 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       // statusBar.styleDefault();
       // splashScreen.hide();
+      // this.handlerNotifications();
+      // this.initializeApp();
     })
 
     this.pages = [
@@ -112,18 +115,28 @@ export class MyApp {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
+      this.handlerNotifications();
      // this.splashScreen.hide();
          var notificationOpenedCallback = function(jsonData) {
     console.log('notificationOpenedCallback: ' + JSON.stringify(jsonData));
   };
 
-  /*window["plugins"].OneSignal
-    .startInit("f93e9465-214d-4795-ace2-b0607c946f7b", "258118657186")
-    .handleNotificationOpened(notificationOpenedCallback)
-    .endInit();
-*/
-      
     });
+  }
+  private handlerNotifications(){
+    this.oneSignal.startInit('f067ec3a-2075-45b3-a9b4-38edd3f1489f', '121145930412');
+    this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.Notification);
+    this.oneSignal.handleNotificationOpened()
+    .subscribe(jsonData => {
+      let alert = this.AlertController.create({
+        title: jsonData.notification.payload.title,
+        subTitle: jsonData.notification.payload.body,
+        buttons: ['OK']
+      });
+      alert.present();
+      console.log('notificationOpenedCallback: ' + JSON.stringify(jsonData));
+    });
+    this.oneSignal.endInit();
   }
   ngAfterViewInit() {
       this.nav.viewDidEnter.subscribe((data) => {

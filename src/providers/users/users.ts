@@ -9,7 +9,7 @@ import { LoginPage } from '../../pages/login/login';
   See https://angular.io/guide/dependency-injection for more info on providers
   and Angular DI.
 */
-let apiUrl = 'http://www.api.avantisoluciones.com/public/login';
+let apiUrl = 'http://www.api.avantisoluciones.com/public/';
 @Injectable()
 export class UsersProvider {
 
@@ -33,7 +33,7 @@ login(credentials){
         var body = {
             session:credentials
         }
-        var url = apiUrl;
+        var url = apiUrl + 'login';
         // credentials.email.replace("","="); 
         // credentials.password.replace(/['"]+/g, '2'); 
 
@@ -60,6 +60,23 @@ login(credentials){
   });
 }
 
+
+public correocontrasena(email) {
+  // id establecimiento
+  return new Promise(resolve => {
+    this.http.get(apiUrl+'/correocontrasena/'+email).subscribe(data => {
+      resolve(data);
+    }, err => {
+      Inject(err);
+      let alert1 = this.alertController.create({
+        title: 'Error!',
+        subTitle: 'El correo es incorrecto!',
+      buttons: ['OK']
+      });
+      alert1.present();
+    });
+  });
+}
 
 
 }
