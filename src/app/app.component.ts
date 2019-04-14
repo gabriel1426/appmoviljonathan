@@ -4,6 +4,7 @@ import { Component, ViewChild } from '@angular/core';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { TabsPage } from '../pages/tabs/tabs';
+import { EditarperfilPage } from '../pages/editarperfil/editarperfil';
 import { LoginPage } from '../pages/login/login';
 import { OneSignal } from '@ionic-native/onesignal';
 import { Platform, MenuController,Nav, AlertController} from 'ionic-angular';
@@ -62,7 +63,7 @@ export class MyApp {
     this.pages = [
       { title: 'Inicio',icon:'home', component: TabsPage, logout : false },
       
-      { title: 'Home',icon:'md-home', component: TabsPage , logout : false },
+      { title: 'Perfil',icon:'md-person', component: EditarperfilPage , logout : false },
  
       { title: 'Logout',icon:'md-log-out', component: LoginPage , logout : true }
   

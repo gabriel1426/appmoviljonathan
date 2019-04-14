@@ -54,9 +54,9 @@ export class LoginPage {
  login(){
   const loader = this.loadingController.create({
     content: "Please wait...",
-    duration: 3000
+   
   });
- 
+  loader.present();
    console.log("entro",this.credentials);
   this.usersprovider.login(this.credentials)
   .then(data => {
@@ -78,6 +78,7 @@ export class LoginPage {
     console.log("bloqueo",localStorage["bloqueo"] = user.bloqueo);
 
     this.navCtrl.setRoot(TabsPage);
+    loader.dismiss();
   },err => {
     
     let alert1 = this.alertController.create({
@@ -87,7 +88,7 @@ export class LoginPage {
     });
     alert1.present();
   })
-  loader.present();
+  loader.dismiss();
  }
 
 

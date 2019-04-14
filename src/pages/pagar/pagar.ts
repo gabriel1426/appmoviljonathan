@@ -2,7 +2,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ScanerPage } from '../scaner/scaner';
-
+import { BarcodeScanner,BarcodeScannerOptions } from '@ionic-native/barcode-scanner';
+import { ValorapagarPage } from '../valorapagar/valorapagar';
 /**
  * Generated class for the PagarPage page.
  *
@@ -16,8 +17,10 @@ import { ScanerPage } from '../scaner/scaner';
   templateUrl: 'pagar.html',
 })
 export class PagarPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  scannedData:any={};
+  encodText:string='';
+  encodedData:any={};
+  constructor(private scanner: BarcodeScanner,public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
@@ -29,7 +32,17 @@ export class PagarPage {
     this.navCtrl.push(ScanerPage);
   }
 
+  scan2() {
 
+    this.scanner.scan().then((barcodeData) => {
+      this.encodedData = barcodeData;
+      this.navCtrl.push(ValorapagarPage,{
+        qr:this.encodedData
+      });
+    }, (err) => {
+     console.log();
+    });
+  }
 
 }
 

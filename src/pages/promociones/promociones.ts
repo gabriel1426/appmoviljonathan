@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams ,ModalController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams ,ModalController,AlertController, LoadingController} from 'ionic-angular';
 import { ModaldeportePage } from '../modaldeporte/modaldeporte';
 import { HomeProvider } from '../../providers/home/home';
 
@@ -17,17 +17,37 @@ import { HomeProvider } from '../../providers/home/home';
 })
 export class PromocionesPage {
 datos:any=[];
-  constructor(public navCtrl: NavController, public navParams: NavParams,public modalCtrl: ModalController, public HomeProvider:HomeProvider) {
+loader;
+  constructor(
+  private alertController:AlertController,
+  private loadingController:LoadingController, 
+  public navCtrl: NavController,
+  public navParams: NavParams,
+  public modalCtrl: ModalController,
+  public HomeProvider:HomeProvider) {
   this.getPromociones();
 
   }
   getPromociones() {
+    this.loader = this.loadingController.create({
+      content: "Please wait...",
+    });
+    this.loader.present();
     this.HomeProvider.getCategorias()
     .then(data => {
       this.datos = data;
-     
+      this.loader.dismiss();
       console.log(this.datos);
+    },err =>{
+      let alert1 = this.alertController.create({
+        title: 'Error!',
+        subTitle: 'No pudo conectar con el servidor!',
+      buttons: ['OK']
+      });
+      alert1.present();
+      this.loader.dismiss();
     })
+    this.loader.dismiss();
   }
 
   ionViewDidLoad() {

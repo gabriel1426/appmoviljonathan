@@ -32,7 +32,9 @@ id_empresa;
 id_empleado;
 monto;
   datos;
+  loader;
   constructor( 
+    private loadingController:LoadingController, 
      private alertController:AlertController,
     public PerfilProvider: PerfilProvider,
      public formBuilder:FormBuilder,
@@ -63,6 +65,10 @@ monto;
 
 
   recarga(){
+    this.loader = this.loadingController.create({
+      content: "Please wait...",
+    });
+    this.loader.present();
     console.log("request",this.request);
     this.PerfilProvider.Recarga(this.request)
     .then(data => {
@@ -76,7 +82,16 @@ monto;
       alert1.present();
       this.RecargaForm.reset();
       console.log(this.datos);
+    },err =>{
+      let alert1 = this.alertController.create({
+        title: 'Error!',
+        subTitle: 'No pudo conectar con el servidor!',
+      buttons: ['OK']
+      });
+      alert1.present();
+      this.loader.dismiss();
     })
+    this.loader.dismiss();
   }
 
 }

@@ -55,4 +55,15 @@ factura(factura,productos){
 });
 }
 
+buscarqr(qr){
+   // qr de establecimiento
+   return new Promise(resolve => {
+    this.http.get(apiUrl+'/buscarqr/'+qr).subscribe(data => {
+      resolve(data);
+    }, err => {
+      console.log(err);
+    });
+  });
+}
+
 }

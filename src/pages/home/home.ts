@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams ,ModalController } from 'ionic-angular';
+import { NavController, NavParams ,ModalController,AlertController,LoadingController } from 'ionic-angular';
 import { PromocionesPage } from '../promociones/promociones';
 import { ModaldeportePage } from '../modaldeporte/modaldeporte';
 import { HomeProvider } from '../../providers/home/home';
@@ -15,7 +15,11 @@ export class HomePage {
   datos:any= [];
 nombre;
 monto;
-  constructor(public navCtrl: NavController,
+loader;
+  constructor(
+    private alertController:AlertController,
+    private loadingController:LoadingController, 
+    public navCtrl: NavController,
     public modalCtrl: ModalController,
      public HomeProvider:HomeProvider) {
     this.getPromociones();
@@ -24,12 +28,25 @@ monto;
 
   }
   getPromociones() {
+    this.loader = this.loadingController.create({
+      content: "Please wait...",
+    });
+    this.loader.present();
     this.HomeProvider.getCategorias()
     .then(data => {
       this.datos = data;
      
       console.log(this.datos);
+    },err =>{
+      let alert1 = this.alertController.create({
+        title: 'Error!',
+        subTitle: 'No pudo conectar con el servidor!',
+      buttons: ['OK']
+      });
+      alert1.present();
+      this.loader.dismiss();
     })
+    this.loader.dismiss();
   }
 
   verpromociones(){

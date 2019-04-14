@@ -1,5 +1,5 @@
 import { Component ,ViewChild, ElementRef} from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,AlertController,LoadingController } from 'ionic-angular';
 import { Slides } from 'ionic-angular';
 import { ComercioPage } from '../comercio/comercio';
 import { CategoriasProvider } from '../../providers/categorias/categorias';
@@ -17,6 +17,7 @@ var infoWindow;
 var infowindow;
 var service;
 var pos;
+var datos;
 @IonicPage()
 @Component({
   selector: 'page-cotegorias',
@@ -34,7 +35,15 @@ export class CotegoriasPage {
  datos:any= [];
  datos1:any= [];
  pos1:any;
-  constructor( public navCtrl: NavController, public navParams: NavParams, public CategoriasProvider:CategoriasProvider) {
+ nombre;
+ loader;
+items;
+ searchTerm: string ;
+filterItems:any=[];
+  constructor( 
+    private alertController:AlertController,
+    private loadingController:LoadingController,
+    public navCtrl: NavController, public navParams: NavParams, public CategoriasProvider:CategoriasProvider) {
     this.getCategorias();
     this.getEstablecimiento();
     console.log('hola');
@@ -53,20 +62,49 @@ export class CotegoriasPage {
   }
 
   getCategorias() {
+    this.loader = this.loadingController.create({
+      content: "Please wait...",
+    });
+    this.loader.present();
     this.CategoriasProvider.getCategorias()
     .then(data => {
-      this.datos = data;
-     
+      
+      datos=data;
+      this.datos = datos.data;
+      this.filterItems =  this.datos;
+      // this.nombre = datos.data.descripcion;
       console.log(this.datos);
+    },err =>{
+      let alert1 = this.alertController.create({
+        title: 'Error!',
+        subTitle: 'No pudo conectar con el servidor!',
+      buttons: ['OK']
+      });
+      alert1.present();
+      this.loader.dismiss();
     })
+    this.loader.dismiss();
   }
   getEstablecimiento() {
+    this.loader = this.loadingController.create({
+      content: "Please wait...",
+    });
+    this.loader.present();
     this.CategoriasProvider.getEstablecimiento()
     .then(data => {
       this.datos1 = data;
-     
+      
       console.log(this.datos1);
+    },err =>{
+      let alert1 = this.alertController.create({
+        title: 'Error!',
+        subTitle: 'No pudo conectar con el servidor!',
+      buttons: ['OK']
+      });
+      alert1.present();
+      this.loader.dismiss();
     })
+    this.loader.dismiss();
   }
 
   buscarboton(){
@@ -97,6 +135,13 @@ export class CotegoriasPage {
       
     }
    }
+   
+    setFilteredItems(){
+      this.datos = this.filterItems.filter(
+        item =>  item.descripcion.toLowerCase().indexOf(this.searchTerm.toLowerCase()) > -1
+       )
+       console.log(this.datos);
+      }
    buscarlupa(){
      this.lupa=false;
      console.log("entre");
@@ -116,7 +161,7 @@ export class CotegoriasPage {
    loadMap() {
     map = new google.maps.Map(document.getElementById('map'), {
       center: {lat: -34.397, lng: 150.644},
-      zoom: 6
+      zoom: 8
     });
     infoWindow = new google.maps.InfoWindow;
     var geocoder = new google.maps.Geocoder;

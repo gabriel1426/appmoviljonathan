@@ -44,8 +44,9 @@ import { HomeProvider } from '../providers/home/home';
 
 // plugin
 import { OneSignal } from '@ionic-native/onesignal';
-import { QRScanner } from '@ionic-native/qr-scanner';
+// import { QRScanner } from '@ionic-native/qr-scanner';
 import { IonTextAvatar } from 'ionic-text-avatar';
+import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 
 
 @NgModule({
@@ -75,7 +76,8 @@ import { IonTextAvatar } from 'ionic-text-avatar';
     TerminosycondicionesPage,
     ScanerPage,
     ProductoPage,
-    IonTextAvatar
+    IonTextAvatar,
+
   ],
   imports: [
     BrowserModule,
@@ -123,8 +125,8 @@ import { IonTextAvatar } from 'ionic-text-avatar';
     PagarProvider,
     PerfilProvider,
     HomeProvider,
-    QRScanner 
- 
+    BarcodeScanner,
+    
     
   ]
 })

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams,ViewController , ModalController} from 'ionic-angular';
+import { IonicPage, NavController, NavParams,ViewController , ModalController,AlertController,LoadingController} from 'ionic-angular';
 import { HomeProvider } from '../../providers/home/home';
 /**
  * Generated class for the TerminosycondicionesPage page.
@@ -16,7 +16,10 @@ import { HomeProvider } from '../../providers/home/home';
 export class TerminosycondicionesPage {
 datos;
 id_establecimiento;
+loader;
   constructor(
+    private alertController:AlertController,
+    private loadingController:LoadingController,
     public navCtrl: NavController,  
     public navParams: NavParams,
     public viewCtrl: ViewController,
@@ -35,6 +38,10 @@ id_establecimiento;
   }
 
   getTerminoscondiciones(id){
+    this.loader = this.loadingController.create({
+      content: "Please wait...",
+    });
+    this.loader.present();
     this.HomeProvider.getTerminoscondiciones(id)
     .then(data => {
       this.datos = data;
@@ -43,7 +50,16 @@ id_establecimiento;
      
       console.log("datos",this.datos);
    
+    },err =>{
+      let alert1 = this.alertController.create({
+        title: 'Error!',
+        subTitle: 'No pudo conectar con el servidor!',
+      buttons: ['OK']
+      });
+      alert1.present();
+      this.loader.dismiss();
     })
+    this.loader.dismiss();
   }
 
 }

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams , AlertController} from 'ionic-angular';
+import { IonicPage, NavController, NavParams , AlertController,LoadingController} from 'ionic-angular';
 import { UsersProvider } from './../../providers/users/users';
 /**
  * Generated class for the ContrasenaPage page.
@@ -16,9 +16,13 @@ import { UsersProvider } from './../../providers/users/users';
 export class ContrasenaPage {
 datos:any=[];
 email="";
-  constructor(public usersprovider:UsersProvider,
-    public navCtrl: NavController,
+loader;
+  constructor(
     private alertController:AlertController,
+    private loadingController:LoadingController,
+    public usersprovider:UsersProvider,
+    public navCtrl: NavController,
+    
      public navParams: NavParams) {
   }
 
@@ -36,6 +40,10 @@ email="";
   }
 
   cambiarcontrasena(){
+    this.loader = this.loadingController.create({
+      content: "Please wait...",
+    });
+    this.loader.present();
     this.usersprovider.correocontrasena(this.email)
     .then(data => {
      
@@ -45,18 +53,19 @@ email="";
         subTitle: 'Mensaje Enviado con exito!',
       buttons: ['OK']
       });
+      this.loader.dismiss();
       alert1.present();
       this.navCtrl.pop();
-    },err => {
-      
+    },err =>{
       let alert1 = this.alertController.create({
         title: 'Error!',
-        subTitle: 'El correo es incorrecto!',
+        subTitle: 'No pudo conectar con el servidor!',
       buttons: ['OK']
       });
       alert1.present();
-     
+      this.loader.dismiss();
     })
+    this.loader.dismiss();
   }
 
 

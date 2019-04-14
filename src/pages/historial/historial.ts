@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams ,LoadingController,AlertController} from 'ionic-angular';
 import { PerfilProvider } from './../../providers/perfil/perfil';
 /**
  * Generated class for the HistorialPage page.
@@ -16,8 +16,12 @@ import { PerfilProvider } from './../../providers/perfil/perfil';
 export class HistorialPage {
 datosdia;
 datossemana;
-datosmes
-  constructor(public navCtrl: NavController,
+datosmes;
+loader;
+  constructor(
+    private alertController:AlertController,
+    private loadingController:LoadingController,
+    public navCtrl: NavController,
      public navParams: NavParams,
      public PerfilProvider:PerfilProvider
      ) {
@@ -29,6 +33,10 @@ datosmes
   }
 
   getHistorial(id){
+    this.loader = this.loadingController.create({
+      content: "Please wait...",
+    });
+    this.loader.present();
     this.PerfilProvider.getHistorial(id)
     .then(data => {
       this.datosdia = data;
@@ -37,8 +45,18 @@ datosmes
       this.datossemana = this.datossemana.semana;
       this.datosmes = data;
       this.datosmes = this.datosmes.mes;
+      this.loader.dismiss();
      console.log("Historial",this.datosdia);
+    },err =>{
+      let alert1 = this.alertController.create({
+        title: 'Error!',
+        subTitle: 'No pudo conectar con el servidor!',
+      buttons: ['OK']
+      });
+      alert1.present();
+      this.loader.dismiss();
     })
+    this.loader.dismiss();
   }
 
 }

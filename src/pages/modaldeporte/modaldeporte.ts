@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams,ViewController , ModalController} from 'ionic-angular';
+import { IonicPage, NavController, NavParams,ViewController , ModalController,AlertController,LoadingController} from 'ionic-angular';
 import { CompraenlineaPage } from '../compraenlinea/compraenlinea';
 import { HomeProvider } from '../../providers/home/home';
 /**
@@ -17,7 +17,11 @@ import { HomeProvider } from '../../providers/home/home';
 export class ModaldeportePage {
   id_promociones;
   datos:any=[];
-    constructor(public navCtrl: NavController, 
+  loader;
+    constructor(
+      private alertController:AlertController,
+      private loadingController:LoadingController, 
+      public navCtrl: NavController, 
       public navParams: NavParams,
       public viewCtrl: ViewController,
       public modalCtrl: ModalController,
@@ -35,12 +39,25 @@ export class ModaldeportePage {
     }
 
     getDetallePromocion(id){
+      this.loader = this.loadingController.create({
+        content: "Please wait...",
+      });
+      this.loader.present();
       this.HomeProvider.getDetallePromocion(id)
       .then(data => {
         this.datos = data;
        
         console.log(this.datos);
+      },err =>{
+        let alert1 = this.alertController.create({
+          title: 'Error!',
+          subTitle: 'No pudo conectar con el servidor!',
+        buttons: ['OK']
+        });
+        alert1.present();
+        this.loader.dismiss();
       })
+      this.loader.dismiss();
     }
 
     comprar(id){

@@ -10,12 +10,12 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content class="fondovalorpagar" padding>
+<ion-content class="fondovalorpagar" padding *ngFor="let datos of datos.data">
 
   <br><br><br><br>
   <div style="text-align: center">
       <h5 class="colorblue">
-          Tiendas Deportivas Replay’s
+         {{datos.nombre}}
   
       </h5>
       <br>

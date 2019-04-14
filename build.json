@@ -1,0 +1,18 @@
+{
+    "android": {
+        "debug": {
+            "keystore": "my-release-key.keystore",
+            "storePassword": "93010624760hiori",
+            "alias": "bitu",
+            "password" : "93010624760hiori",
+            "keystoreType": ""
+        },
+        "release": {
+            "keystore": "my-release-key.keystore",
+            "storePassword": "93010624760hiori",
+            "alias": "bitu",
+            "password" : "93010624760hiori",
+            "keystoreType": ""
+        }
+    }
+}

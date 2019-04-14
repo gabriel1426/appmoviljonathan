@@ -48,9 +48,10 @@ public letras:any;
 
   }
 
- 
+ loader;
 datos:any=[];
   constructor(
+    
     public cdRef:ChangeDetectorRef,
     public formBuilder:FormBuilder,
     private alertController:AlertController,
@@ -82,6 +83,10 @@ datos:any=[];
      }
      
      ngOnInit() {
+      this.loader = this.loadingController.create({
+        content: "Please wait...",
+      });
+      this.loader.present();
       console.log(this.id_empleado = localStorage["id_empleado"]);
       
       this.nombre =localStorage["nombre"];
@@ -108,6 +113,7 @@ datos:any=[];
       }else{
         this.letras = resultado.substr(0, 3);
       }
+      this.loader.dismiss();
     }
 
     
@@ -115,10 +121,10 @@ datos:any=[];
  
 
   Actualizar(){
-    const loader = this.loadingController.create({
+    this.loader = this.loadingController.create({
       content: "Please wait...",
-      duration: 1000
     });
+    this.loader.present();
     console.log("request",this.request);
     this.PerfilProvider.ActUser(this.request)
     .then(data => {
@@ -143,8 +149,16 @@ datos:any=[];
         this.letras = resultado.substr(0, 3);
       }
       console.log(this.datos);
+    },err =>{
+      let alert1 = this.alertController.create({
+        title: 'Error!',
+        subTitle: 'No pudo conectar con el servidor!',
+      buttons: ['OK']
+      });
+      alert1.present();
+      this.loader.dismiss();
     })
-    loader.present();
+    this.loader.dismiss();
   }
 
 }

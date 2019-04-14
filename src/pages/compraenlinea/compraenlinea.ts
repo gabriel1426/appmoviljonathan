@@ -26,7 +26,7 @@ export class CompraenlineaPage {
   contador;
   valor_actual;
   valor
-
+loader;
   factura= {
     total:'',
     id_empleado:'',
@@ -48,6 +48,7 @@ export class CompraenlineaPage {
      public navParams: NavParams,
      public modalCtrl: ModalController,
      public viewCtrl: ViewController,
+     private alertController:AlertController,
      private loadingController:LoadingController, 
      public HomeProvider:HomeProvider,
      public PagarProvider:PagarProvider) {
@@ -64,10 +65,10 @@ console.log(this.fechaprocesada = this.fechasinprocesar.getDate() + "-" + (this.
   }
 
   presentModal() {
-    const loader = this.loadingController.create({
+    this.loader = this.loadingController.create({
       content: "Please wait...",
-      duration: 2000
     });
+    this.loader.present();
     this.factura= {
       total:this.valor_actual,
       id_empleado:localStorage["id_empleado"],
@@ -78,23 +79,30 @@ console.log(this.fechaprocesada = this.fechasinprocesar.getDate() + "-" + (this.
       tiempo_espera:this.fechaprocesada,
       sucursales_id:"0",
       id_producto:this.id_producto
-     
     }
     this.productos = {
       id1:this.id_producto,
       cantidad1:'1'
     }
-
     console.log(this.factura);
     console.log(this.productos);
  this.PagarProvider.factura(this.factura,this.productos)
     .then(data => {
       this.datos = data;
-     
+      
       console.log("datos dela factura creada",this.datos);
+      this.loader.dismiss();
+    },err =>{
+      let alert1 = this.alertController.create({
+        title: 'Error!',
+        subTitle: 'No pudo conectar con el servidor!',
+      buttons: ['OK']
+      });
+      alert1.present();
+      this.loader.dismiss();
     })
 
-
+    
 
 
 
@@ -105,8 +113,9 @@ console.log(this.fechaprocesada = this.fechasinprocesar.getDate() + "-" + (this.
     });
     profileModal.present().then((resolve)=>{
       this.viewCtrl.dismiss();
+      
     });
-    loader.present();
+    this.loader.dismiss();
   }
 
   presentModalTerminos(id){
@@ -119,6 +128,11 @@ console.log(this.fechaprocesada = this.fechasinprocesar.getDate() + "-" + (this.
     // });
   }
   getProductoAComprar(id){
+    this.loader = this.loadingController.create({
+      content: "Please wait...",
+     
+    });
+    this.loader.present();
     this.HomeProvider.getProductoAComprar(id)
     .then(data => {
       this.datos = data;
@@ -130,7 +144,18 @@ console.log(this.fechaprocesada = this.fechasinprocesar.getDate() + "-" + (this.
       console.log("datos",this.datos);
       console.log("valor",this.valor);
       console.log("cantidad venta user",cantidad_venta);
+      this.loader.dismiss();
+    },err=>{
+      let alert1 = this.alertController.create({
+        title: 'Error!',
+        subTitle: 'No pudo conectar con el servidor!',
+      buttons: ['OK']
+      });
+      alert1.present();
+      this.loader.dismiss();
     })
+
+    this.loader.dismiss();
   }
   cerrar(){
     this.viewCtrl.dismiss();

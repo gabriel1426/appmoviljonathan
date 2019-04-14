@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams,ViewController , ModalController} from 'ionic-angular';
+import { IonicPage, NavController, NavParams,ViewController , ModalController,AlertController,LoadingController} from 'ionic-angular';
 import { CompraenlineaPage } from '../compraenlinea/compraenlinea';
 import { CategoriasProvider } from '../../providers/categorias/categorias';
 
@@ -18,7 +18,11 @@ import { CategoriasProvider } from '../../providers/categorias/categorias';
 export class ModalcomercioPage {
   id_producto;
   datos:any=[];
-  constructor(public CategoriasProvider:CategoriasProvider,public navCtrl: NavController, public navParams: NavParams,public viewCtrl: ViewController,public modalCtrl: ModalController) {
+  loader;
+  constructor(
+    private alertController:AlertController,
+    private loadingController:LoadingController, 
+    public CategoriasProvider:CategoriasProvider,public navCtrl: NavController, public navParams: NavParams,public viewCtrl: ViewController,public modalCtrl: ModalController) {
     console.log("id_producto",this.id_producto = navParams.get("id_producto"));
     this.getProductoDellate(this.id_producto)
   }
@@ -31,12 +35,25 @@ export class ModalcomercioPage {
     this.viewCtrl.dismiss();
   }
   getProductoDellate(id){
+    this.loader = this.loadingController.create({
+      content: "Please wait...",
+    });
+    this.loader.present();
     this.CategoriasProvider.getProductoDellate(id)
       .then(data => {
         this.datos = data;
        
         console.log(this.datos);
+      },err =>{
+        let alert1 = this.alertController.create({
+          title: 'Error!',
+          subTitle: 'No pudo conectar con el servidor!',
+        buttons: ['OK']
+        });
+        alert1.present();
+        this.loader.dismiss();
       })
+      this.loader.dismiss();
   }
   comprar(id){
     console.log("id producto",id)
