@@ -4,17 +4,48 @@
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-<ion-header>
-    <ion-navbar>
-        <ion-buttons left >
-        </ion-buttons>
-      <ion-title style="text-align: center">Terminos y condiciones</ion-title>
-    </ion-navbar>
-  </ion-header>
-  
-  <ion-content class="fondocompralinea" padding >
-    <ion-scroll scrollY="true" style="width: 90%; height: 100%;">
-    {{datos}}
-  </ion-scroll>      
-  </ion-content>
+<div class="modal" padding *ngFor="let datos of datos"  >
+   
+  <div class="mimodal">
+      <button class="cerrar" clear ion-button icon-only (click)="cerrarmodal();">
+          <ion-icon ios="ios-close" md="md-close"></ion-icon>
+      </button>
+      <img  class="imgmodal" src={{datos.img_destacada}} alt="">
+      <img  class="imgmarca" src={{datos.img_fondo}} alt="">
+      
+      <div>
+        <div style="width: 100%; height: 310px;">
+        
+
+      <div style="text-align: right;">
+        <br>
+        <label class="marquilla">{{datos.nombre_categoria | titlecase}}</label>
+      </div>
+      
+
+      <div style="text-align: center">
+          
+      <p style="font-size:15px"><strong>{{datos.nombre | titlecase}}</strong></p>
+      </div>
+      
+      <div style="padding-left: 8px;">
+        <ion-scroll scrollY="true" style="width: 100%; height: 280px;">
+     
+              
+          <p><strong>Terminos y condiciones:</strong></p>
+          <p>{{datos.terminos_condiciones | titlecase}}</p>
+                </ion-scroll>                                
+        </div>
+        <div style="text-align: center">
+          <button  round ion-button (click)="cerrarmodal();">
+            Cerrar
+        </button>
+        </div>
+     
+      </div>
+   
+  </div>
+
+
+</div>
   

@@ -22,7 +22,7 @@ export class PagarProvider {
   public navCtrl: NavController;
   private alertCtrl:AlertController;
   
-factura(factura,productos){
+factura(factura){
   return new Promise((resolve, reject)=>{
     let headeres = new HttpHeaders();
     headeres = headeres.set('Content-Type', 'application/json; charset=utf-8');
@@ -39,7 +39,7 @@ factura(factura,productos){
       // credentials.password.replace(/['"]+/g, '2'); 
 
       console.log("credentials",factura);
-      this.http.post(url, JSON.stringify(factura,productos),{ headers: headeres })
+      this.http.post(url, JSON.stringify(factura),{ headers: headeres })
         .subscribe(
           data => {
             resolve(data);
@@ -55,10 +55,53 @@ factura(factura,productos){
 });
 }
 
-buscarqr(qr){
+dataqr(qr){
    // qr de establecimiento
    return new Promise(resolve => {
-    this.http.get(apiUrl+'/buscarqr/'+qr).subscribe(data => {
+    this.http.get(apiUrl+'/dataqr/'+qr).subscribe(data => {
+      resolve(data);
+    }, err => {
+      console.log(err);
+    });
+  });
+}
+buscarqr(qr){
+  // qr de establecimiento
+  return new Promise(resolve => {
+   this.http.get(apiUrl+'/buscarqr/'+qr).subscribe(data => {
+     resolve(data);
+   }, err => {
+     console.log(err);
+   });
+ });
+}
+
+
+pin(codigo,email){
+  // qr de establecimiento
+  return new Promise(resolve => {
+   this.http.get(apiUrl+'/pin/'+codigo+'/'+email).subscribe(data => {
+     resolve(data);
+   }, err => {
+     console.log(err);
+   });
+ });
+}
+
+showfactura(id){
+  // qr de establecimiento
+  return new Promise(resolve => {
+   this.http.get(apiUrl+'/factura/'+id).subscribe(data => {
+     resolve(data);
+   }, err => {
+     console.log(err);
+   });
+ });
+}
+
+formulario(id){
+  return new Promise(resolve => {
+    this.http.get(apiUrl+'/formulario/factura/'+id).subscribe(data => {
       resolve(data);
     }, err => {
       console.log(err);

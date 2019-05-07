@@ -6,6 +6,8 @@ page-perfil {
         flex-direction: column !important;
     }
     .avatarletra{
+        background: color($colors,primary) !important;
+        color: white !important;
         height: 90px !important;
         width: 90px !important;
 font-size: 35px;

@@ -42,7 +42,7 @@ export class ProductoPage {
 
   getProducto(id){
     this.loader = this.loadingController.create({
-      content: "Please wait...",
+      content: "Espera por favor...",
     });
     this.loader.present();
     this.CategoriasProvider.getProducto(id)
@@ -50,6 +50,7 @@ export class ProductoPage {
         this.datos = data;
        
         console.log(this.datos);
+        this.loader.dismiss();
       },err =>{
         let alert1 = this.alertController.create({
           title: 'Error!',

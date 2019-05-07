@@ -1,3 +1,4 @@
+import { EstablecimientosPage } from './../pages/establecimientos/establecimientos';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
@@ -15,7 +16,9 @@ import { RegistroPage } from '../pages/registro/registro';
 import { ContrasenaPage } from '../pages/contrasena/contrasena';
 import { TabsPage } from '../pages/tabs/tabs';
 import { PromocionesPage } from '../pages/promociones/promociones';
+import { PromocionesdetallePage } from '../pages/promocionesdetalle/promocionesdetalle';
 import { PinPage } from '../pages/pin/pin';
+import { Pin2Page } from '../pages/pin2/pin2';
 import { RecargaPage } from '../pages/recarga/recarga';
 import { HistorialPage } from '../pages/historial/historial';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
@@ -30,8 +33,10 @@ import { ModaldeportePage } from '../pages/modaldeporte/modaldeporte';
 import { TerminosycondicionesPage } from '../pages/terminosycondiciones/terminosycondiciones';
 import { ScanerPage } from '../pages/scaner/scaner';
 import { ProductoPage } from '../pages/producto/producto';
-
-
+import { ComenzarPage } from '../pages/comenzar/comenzar';
+import { ActualizardatosPage } from '../pages/actualizardatos/actualizardatos';
+import { FormulariocompraPage } from './../pages/formulariocompra/formulariocompra';
+import { MapaPage } from './../pages/mapa/mapa';
 
 
 // Providers
@@ -42,12 +47,12 @@ import { PerfilProvider } from '../providers/perfil/perfil';
 import { HomeProvider } from '../providers/home/home';
 
 
-// plugin
+
 import { OneSignal } from '@ionic-native/onesignal';
 // import { QRScanner } from '@ionic-native/qr-scanner';
 import { IonTextAvatar } from 'ionic-text-avatar';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
-
+import { Network } from '@ionic-native/network';
 
 @NgModule({
   declarations:[
@@ -64,6 +69,7 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner';
     PromocionesPage,
     EditarperfilPage,
     PinPage,
+    Pin2Page,
     RecargaPage,
     HistorialPage,
     ComercioPage,
@@ -77,12 +83,18 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner';
     ScanerPage,
     ProductoPage,
     IonTextAvatar,
+    ComenzarPage,
+    ActualizardatosPage,
+    FormulariocompraPage,
+    EstablecimientosPage,
+    MapaPage,
+    PromocionesdetallePage
 
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    
+  
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
@@ -100,6 +112,7 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner';
     PromocionesPage,
     EditarperfilPage,
     PinPage,
+    Pin2Page,
     RecargaPage,
     HistorialPage,
     ComercioPage,
@@ -111,7 +124,13 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner';
     ModaldeportePage,
     TerminosycondicionesPage,
     ScanerPage,
-    ProductoPage
+    ProductoPage,
+    ComenzarPage,
+    ActualizardatosPage,
+    FormulariocompraPage,
+    EstablecimientosPage,
+    MapaPage,
+    PromocionesdetallePage
   ],
   providers:[
     StatusBar,
@@ -126,7 +145,7 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner';
     PerfilProvider,
     HomeProvider,
     BarcodeScanner,
-    
+    Network
     
   ]
 })

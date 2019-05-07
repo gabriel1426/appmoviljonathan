@@ -1,16 +1,16 @@
 {
     "android": {
         "debug": {
-            "keystore": "my-release-key.keystore",
+            "keystore": "miapp.keystore",
             "storePassword": "93010624760hiori",
-            "alias": "bitu",
+            "alias": "miapp",
             "password" : "93010624760hiori",
             "keystoreType": ""
         },
         "release": {
-            "keystore": "my-release-key.keystore",
+            "keystore": "miapp.keystore",
             "storePassword": "93010624760hiori",
-            "alias": "bitu",
+            "alias": "miapp",
             "password" : "93010624760hiori",
             "keystoreType": ""
         }

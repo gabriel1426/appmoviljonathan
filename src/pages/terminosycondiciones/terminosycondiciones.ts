@@ -39,7 +39,7 @@ loader;
 
   getTerminoscondiciones(id){
     this.loader = this.loadingController.create({
-      content: "Please wait...",
+      content: "Espera por favor...",
     });
     this.loader.present();
     this.HomeProvider.getTerminoscondiciones(id)
@@ -49,7 +49,7 @@ loader;
  
      
       console.log("datos",this.datos);
-   
+      this.loader.dismiss();
     },err =>{
       let alert1 = this.alertController.create({
         title: 'Error!',

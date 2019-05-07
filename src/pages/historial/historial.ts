@@ -1,6 +1,8 @@
+import { HomeProvider } from './../../providers/home/home';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams ,LoadingController,AlertController} from 'ionic-angular';
 import { PerfilProvider } from './../../providers/perfil/perfil';
+
 /**
  * Generated class for the HistorialPage page.
  *
@@ -18,13 +20,19 @@ datosdia;
 datossemana;
 datosmes;
 loader;
+  pet: string;
+  datospeticiones:any = [];
+// public segment: string = 'primero';
+// public segment: Array<string> = ['primero', 'segundo']
   constructor(
     private alertController:AlertController,
     private loadingController:LoadingController,
     public navCtrl: NavController,
      public navParams: NavParams,
-     public PerfilProvider:PerfilProvider
+     public PerfilProvider:PerfilProvider,
+     public HomeProvider:HomeProvider
      ) {
+      this.pet = 'puppies';
        this.getHistorial(localStorage["id_empleado"]);
   }
 
@@ -34,7 +42,7 @@ loader;
 
   getHistorial(id){
     this.loader = this.loadingController.create({
-      content: "Please wait...",
+      content: "Espera por favor...",
     });
     this.loader.present();
     this.PerfilProvider.getHistorial(id)
@@ -59,4 +67,29 @@ loader;
     this.loader.dismiss();
   }
 
+  segmentChanged(ev: any) {
+    console.log('Segment changed', ev);
+  }
+  peticionesempleado(id){
+    this.loader = this.loadingController.create({
+      content: "Espera por favor...",
+    });
+    this.loader.present();
+    this.HomeProvider.peticionesempleado(id)
+    .then(data => {
+      this.datospeticiones = data;
+    
+      this.loader.dismiss();
+     console.log("Historial",this.datospeticiones);
+    },err =>{
+      let alert1 = this.alertController.create({
+        title: 'Error!',
+        subTitle: 'No pudo conectar con el servidor!',
+      buttons: ['OK']
+      });
+      alert1.present();
+      this.loader.dismiss();
+    })
+    this.loader.dismiss();
+  }
 }

@@ -16,13 +16,16 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content  class="fondocomercio" >
+<ion-content  class="fondo-app" >
     
     <div *ngFor="let datos of datos.data">
         <br>
 <div class="divrelative" (click)="presentModal(datos.id);">
     <ion-item class="comercio">
-        <h1 class="correr"><strong>{{datos.nombre}}</strong></h1>
+      <div style="word-break: break-all;">
+        <h1 class="correr" ><strong>{{datos.nombre | titlecase}}</strong></h1>
+      </div>
+        
         <p class="correr2">
            
            <span style="color:#3498db"><strong>Disponibles: {{datos.cantidad_existente}}</strong>  </span></p>

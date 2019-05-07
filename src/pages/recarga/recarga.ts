@@ -1,3 +1,4 @@
+import { HomeProvider } from './../../providers/home/home';
 import { Component } from '@angular/core';
 // import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators  } from '@angular/forms';
@@ -34,6 +35,7 @@ monto;
   datos;
   loader;
   constructor( 
+    public HomeProvider:HomeProvider,
     private loadingController:LoadingController, 
      private alertController:AlertController,
     public PerfilProvider: PerfilProvider,
@@ -60,13 +62,38 @@ monto;
   ngOnInit() {
     this.id_empresa =localStorage["id_empresa"];
     this.id_empleado =localStorage["id_empleado"]
-    this.monto =localStorage["monto"]
+    
+    this.getMonto();
+    
   }
+  getMonto(){
 
+    this.loader = this.loadingController.create({
+      content: "Espera por favor...",
+    });
+    this.loader.present();
+    this.HomeProvider.getMonto(localStorage["id_empleado"])
+    .then(data => {
+      this.monto = data;
+      this.monto = this.monto.data;
+      this.loader.dismiss();
+  console.log("monto  data",this.monto);
+    },err=>{
+      let alert1 = this.alertController.create({
+        title: 'Error!',
+        subTitle: 'No pudo conectar con el servidor!',
+      buttons: ['OK']
+      });
+      alert1.present();
+      this.loader.dismiss();
+    })
+  
+    this.loader.dismiss();
+  }
 
   recarga(){
     this.loader = this.loadingController.create({
-      content: "Please wait...",
+      content: "Espera por favor...",
     });
     this.loader.present();
     console.log("request",this.request);
@@ -82,6 +109,7 @@ monto;
       alert1.present();
       this.RecargaForm.reset();
       console.log(this.datos);
+      this.loader.dismiss();
     },err =>{
       let alert1 = this.alertController.create({
         title: 'Error!',

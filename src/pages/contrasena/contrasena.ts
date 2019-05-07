@@ -41,7 +41,7 @@ loader;
 
   cambiarcontrasena(){
     this.loader = this.loadingController.create({
-      content: "Please wait...",
+      content: "Espera por favor...",
     });
     this.loader.present();
     this.usersprovider.correocontrasena(this.email)

@@ -1,9 +1,10 @@
   
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams ,AlertController} from 'ionic-angular';
 import { ScanerPage } from '../scaner/scaner';
 import { BarcodeScanner,BarcodeScannerOptions } from '@ionic-native/barcode-scanner';
 import { ValorapagarPage } from '../valorapagar/valorapagar';
+import { PagarProvider } from './../../providers/pagar/pagar';
 /**
  * Generated class for the PagarPage page.
  *
@@ -20,7 +21,13 @@ export class PagarPage {
   scannedData:any={};
   encodText:string='';
   encodedData:any={};
-  constructor(private scanner: BarcodeScanner,public navCtrl: NavController, public navParams: NavParams) {
+  datos;
+  productFound:boolean = false;
+  constructor(private alertController:AlertController,
+    public PagarProvider:PagarProvider,
+    private scanner: BarcodeScanner,
+    public navCtrl: NavController,
+    public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
@@ -35,13 +42,39 @@ export class PagarPage {
   scan2() {
 
     this.scanner.scan().then((barcodeData) => {
+      
       this.encodedData = barcodeData;
-      this.navCtrl.push(ValorapagarPage,{
-        qr:this.encodedData
-      });
+      this.PagarProvider.buscarqr(this.encodedData.text)
+      .then(data => {
+        this.datos = data;
+        if(this.datos === 1){
+          console.log(this.datos);
+          this.navCtrl.push(ValorapagarPage,{
+            qr:this.encodedData.text
+          });
+        }else{
+          let alert1 = this.alertController.create({
+            title: 'Error!',
+            subTitle: 'No pudo encontrar el QR2!',
+          buttons: ['OK']
+          });
+          alert1.present();
+        }
+      
+      },err=>{
+        let alert1 = this.alertController.create({
+          title: 'Error!',
+          subTitle: 'No pudo encontrar el QR!1',
+        buttons: ['OK']
+        });
+        alert1.present();
+      })
     }, (err) => {
      console.log();
     });
+    
+   
+  
   }
 
 }

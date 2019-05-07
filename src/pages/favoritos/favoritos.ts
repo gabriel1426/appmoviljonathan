@@ -46,13 +46,14 @@ export class FavoritosPage {
   }
   indexfavoritos(){
     this.loader = this.loadingController.create({
-      content: "Please wait...",
+      content: "Espera por favor...",
     });
     this.loader.present();
     this.CategoriasProvider.indexfavoritos(localStorage["id_empleado"])
     .then(data => {
       this.datos = data;
       console.log("datos1",this.datos1);
+      this.loader.dismiss();
     },err =>{
       let alert1 = this.alertController.create({
         title: 'Error!',

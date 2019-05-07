@@ -47,12 +47,22 @@ login(credentials){
             },
             err => {
               Inject(err);
-              let alert1 = this.alertController.create({
-                title: 'Error!',
-                subTitle: 'El usuario o la contraseña son incorrectas!',
-              buttons: ['OK']
-              });
-              alert1.present();
+              console.log("error",err)
+              if(err.status === 401){
+                let alert1 = this.alertController.create({
+                  title: 'Error!',
+                  subTitle: 'El usuario está bloqueado!',
+                buttons: ['OK']
+                });
+                alert1.present();
+              }else{
+                let alert1 = this.alertController.create({
+                  title: 'Error!',
+                  subTitle: 'El usuario o la contraseña son incorrectas!',
+                buttons: ['OK']
+                });
+                alert1.present();
+              }
               // console.log("Error occured"+credentials.email+credentials.password);
             }
           );
@@ -78,5 +88,21 @@ public correocontrasena(email) {
   });
 }
 
+
+user(id){
+  return new Promise(resolve => {
+    this.http.get(apiUrl+'/users/'+id).subscribe(data => {
+      resolve(data);
+    }, err => {
+      Inject(err);
+      let alert1 = this.alertController.create({
+        title: 'Error!',
+        subTitle: 'Error al conectarse con el servidor!',
+      buttons: ['OK']
+      });
+      alert1.present();
+    });
+  });
+}
 
 }

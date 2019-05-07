@@ -11,34 +11,35 @@
 </ion-header>
 
 
-<ion-content >
+<ion-content class="fondo-app" >
+  <div *ngFor="let datos of datos.data">
     <div  style="position: relative;" >
         <img class="tiket"  src="../../assets/imgs/tiket.png" alt="">
         <img class="logo" src="../../assets/imgs/logoapp.png" alt="">
-        <p class="fecha">07-29-2018 12:25</p>
+        <p class="fecha">{{datos.created_at}}</p>
     
-        <p class="trans">Número de transacción</p>
-        <p class="numtrans">0000001</p>
+        <p class="trans">Transacción: {{datos.id}}</p>
+        <!-- <p class="numtrans">0000001</p> -->
     
-        <p class="estableci">Establecimiento</p>
-        <p class="nomestableci">Pepe Ganga - Tienda Unicentro</p>
+        <p class="estableci">{{datos.nombre_establecimiento | titlecase}}</p>
+        <p class="nomestableci">{{datos.nombre_sucursal | titlecase}}</p>
     
-        <p class="user">Usuario</p>
-        <p class="iduser">4623123456789101</p>
+        <p class="user">{{datos.nombre_empleado | titlecase}}</p>
+        <p class="iduser">D.I. {{datos.cedula}}</p>
     
         <p class="valor">Valor de la Transacción</p>
     
         
-            <h1 class="precio" > <strong>$42.000</strong></h1>
+            <h1 class="precio" > <strong>{{datos.total | currency:0:"$"}}</strong></h1>
       </div>
   
     <ion-footer style="background: rgb(57, 177, 63);">
         <button  block  style="color: white;" clear  ion-button (click)="cerrar();" >
-            Regresar
+            Continuar comprando
         </button>
     </ion-footer>
       
 
   
-
+  </div>
 </ion-content>

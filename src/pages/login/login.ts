@@ -1,3 +1,4 @@
+import { ActualizardatosPage } from './../actualizardatos/actualizardatos';
 import { UsersProvider } from './../../providers/users/users';
 import { FormBuilder, FormGroup, Validators  } from '@angular/forms'
 import { Component } from '@angular/core';
@@ -53,7 +54,7 @@ export class LoginPage {
 
  login(){
   const loader = this.loadingController.create({
-    content: "Please wait...",
+    content: "Espera por favor...",
    
   });
   loader.present();
@@ -63,30 +64,50 @@ export class LoginPage {
     datos = data;
     user = datos.user[0];
     console.log("token",localStorage["token"]= datos.token);
-    console.log("nombre",localStorage["nombre"] = user.nombre);
-    console.log("email",localStorage["email"] = user.email);
-    console.log("direccion",localStorage["direccion"] = user.direccion);
-    console.log("cedula",localStorage["cedula"] = user.cedula);
-    console.log("monto",localStorage["monto"] = user.monto);
-    console.log("id_usuario",localStorage["id_usuario"] = user.id_usuario);
-    console.log("id_empresa",localStorage["id_empresa"] = user.id_empresa);
-    console.log("id_empleado",localStorage["id_empleado"] = user.id);
-    console.log("celular",localStorage["celular"] = user.celular);
-    console.log("fecha_nacimiento",localStorage["fecha_nacimiento"] = user.fecha_nacimiento);
-    console.log("sexo",localStorage["sexo"] = user.sexo);
-    console.log("ciudad_empleado",localStorage["ciudad_empleado"] = datos.ciudad);
-    console.log("bloqueo",localStorage["bloqueo"] = user.bloqueo);
+    console.log("token",localStorage["empresa"]= datos.empresa);
+    console.log("token",localStorage["cod_empresa"]= datos.cod_empresa);
+    if( user.nombre != null){
+      console.log("nombre",localStorage["nombre"] = user.nombre);
+    }
+    if(user.email != null)console.log("email",localStorage["email"] = user.email);
+    if(user.email != null)console.log("direccion",localStorage["direccion"] = user.direccion);
 
-    this.navCtrl.setRoot(TabsPage);
+    if(user.cedula != null)console.log("cedula",localStorage["cedula"] = user.cedula);
+    // if(user.monto != null){console.log("monto",localStorage["monto"] = user.monto);}else{localStorage["monto"] = 0;}
+    if(user.id_usuario != null)console.log("id_usuario",localStorage["id_usuario"] = user.id_usuario);
+    if(user.id_empresa != null)console.log("id_empresa",localStorage["id_empresa"] = user.id_empresa);
+    if(user.id != null)console.log("id_empleado",localStorage["id_empleado"] = user.id);
+    if(user.celular != null)console.log("celular",localStorage["celular"] = user.celular);
+    if(user.fecha_nacimiento != null)console.log("fecha_nacimiento",localStorage["fecha_nacimiento"] = user.fecha_nacimiento);
+    if(user.sexo != null)console.log("sexo",localStorage["sexo"] = user.sexo);
+    if(user.ciudad != null)console.log("ciudad_empleado",localStorage["ciudad_empleado"] = datos.ciudad);
+    if(user.bloqueo != null)console.log("bloqueo",localStorage["bloqueo"] = user.bloqueo);
+if(user.actualizado != 0){
+  this.navCtrl.setRoot(TabsPage);
+}else{
+  this.navCtrl.setRoot(ActualizardatosPage);
+}
+   
     loader.dismiss();
   },err => {
+    console.log("error",err)
+    loader.dismiss();
+    if(err.status === 401){
+      let alert1 = this.alertController.create({
+        title: 'Error!',
+        subTitle: 'El usuario está bloqueado!',
+      buttons: ['OK']
+      });
+      alert1.present();
+    }else{
+      let alert1 = this.alertController.create({
+        title: 'Error!',
+        subTitle: 'El usuario o la contraseña son incorrectas!',
+      buttons: ['OK']
+      });
+      alert1.present();
+    }
     
-    let alert1 = this.alertController.create({
-      title: 'Error!',
-      subTitle: 'El usuario o la contraseña son incorrectas!',
-    buttons: ['OK']
-    });
-    alert1.present();
   })
   loader.dismiss();
  }

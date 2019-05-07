@@ -1,10 +1,10 @@
 
-<ion-menu [content]="content" type="overlay"  persistent="true"  side="left" ng-controller="RightController">
+<ion-menu [content]="content" type="overlay"  persistent="true"  side="left" ng-controller="RightController" class="menucolor">
     
     <ion-header>
       <!-- AQUI ESTA LA CONFIGURACIÓN DEL MENÚ-->
       <ion-toolbar>
-        <div no-lines>
+        <div no-lines class="header-menu">
           <ion-avatar item-center class="center" style="width:40%">
             <br>
             <ion-item class="centrar">
@@ -15,25 +15,32 @@
                   <!-- <img  src="https://img.icons8.com/ultraviolet/120/000000/user.png" style="color:white;display: block; width: 100%; height: auto; margin-left: auto; margin-right: auto;"> -->
           </ion-avatar>
           
-           <h1 style="text-align:center;color:rgb(46, 43, 43);" >{{nombre}}</h1>
+           <!-- <h3 style="text-align:center;color:rgb(240, 234, 234);" >{{nombre}}</h3> -->
             
         </div>
       </ion-toolbar>
         
     </ion-header>
     <!--Ciclo de dinamico de paginas  -->
-    <ion-content class="menucolor">
-      <ion-list no-lines>
+    <br>
+    <br>
+    <br>
+
+    <ion-content class="menucolor" style="margin-top: 30px;">
+   
         <div *ngIf="logeado">
-            <button ion-item *ngFor="let p of pages" (click)="openPage(p)" >
-                <ion-icon name="{{p.icon}}"> {{p.title}}</ion-icon>  
-          
-    
-        </button>
+            <ion-grid *ngFor="let p of pages">
+                <ion-row (click)="openPage(p)">
+                  <ion-col col-3><img src="{{p.icon}}" alt=""> </ion-col>
+                  <ion-col col-6 style="color:white;"> <h4>{{p.title}}</h4></ion-col>
+                </ion-row>
+              </ion-grid>
         </div>
-      </ion-list>
+   
     </ion-content>
     
     </ion-menu>
-    
+    <!-- <div *ngIf="showSplash" class="splash">
+        <div class="spinner"></div>
+      </div> -->
     <ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>

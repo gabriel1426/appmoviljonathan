@@ -1,7 +1,9 @@
+import { PromocionesdetallePage } from './../promocionesdetalle/promocionesdetalle';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams ,ModalController,AlertController, LoadingController} from 'ionic-angular';
 import { ModaldeportePage } from '../modaldeporte/modaldeporte';
 import { HomeProvider } from '../../providers/home/home';
+import { TerminosycondicionesPage } from '../terminosycondiciones/terminosycondiciones';
 
 /**
  * Generated class for the PromocionesPage page.
@@ -25,12 +27,15 @@ loader;
   public navParams: NavParams,
   public modalCtrl: ModalController,
   public HomeProvider:HomeProvider) {
-  this.getPromociones();
+ 
 
+  }
+  ngOnInit() {
+    this.getPromociones();
   }
   getPromociones() {
     this.loader = this.loadingController.create({
-      content: "Please wait...",
+      content: "Espera por favor...",
     });
     this.loader.present();
     this.HomeProvider.getCategorias()
@@ -54,10 +59,24 @@ loader;
     console.log('ionViewDidLoad PromocionesPage');
   }
 
+  detallepromociones(id){
+    this.navCtrl.push(PromocionesdetallePage,{
+      id_promocion:id
+    });
+  }
+
   presentModal(id) {
     console.log('id_promocion',id)
     let profileModal = this.modalCtrl.create(ModaldeportePage,{
       id_promociones:id
+    });
+    profileModal.present();
+  }
+
+  presentModal2(id) {
+    console.log('id_establecimiento',id)
+    let profileModal = this.modalCtrl.create(TerminosycondicionesPage,{
+      id_establecimiento:id
     });
     profileModal.present();
   }

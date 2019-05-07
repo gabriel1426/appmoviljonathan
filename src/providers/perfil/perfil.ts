@@ -86,4 +86,15 @@ export class PerfilProvider {
       });
     });
   }
+
+  public Actualizado(id) {
+    // id de empleado
+    return new Promise(resolve => {
+      this.http.get(this.apiUrl+'/actualizado/'+id).subscribe(data => {
+        resolve(data);
+      }, err => {
+        console.log(err);
+      });
+    });
+  }
 }

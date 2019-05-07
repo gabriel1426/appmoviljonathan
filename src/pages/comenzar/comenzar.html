@@ -1,0 +1,115 @@
+<!--
+  Generated template for the ComenzarPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header style="background-color: #353c48;">
+  <ion-navbar *ngIf="valor_inicial != 3">
+      <ion-title style="text-align: right;" (click)="goToSlide()" >
+        <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+        width="24" height="24"
+        viewBox="0 0 192 192"
+        style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,192v-192h192v192z" fill="none"></path><g fill="#ffffff"><g id="surface1"><path d="M45,18c-1.07812,0 -2.07422,0.58594 -2.61328,1.52344c-0.52734,0.9375 -0.51562,2.09765 0.03516,3.02344l44.07422,73.45313l-44.07422,73.45313c-0.55078,0.92578 -0.5625,2.07422 -0.03516,3.02344c0.53906,0.9375 1.53516,1.52344 2.61328,1.52344h33c1.05469,0 2.02734,-0.55078 2.57813,-1.45312l45,-75c0.5625,-0.94922 0.5625,-2.14453 0,-3.09375l-45,-75c-0.55078,-0.90234 -1.52344,-1.45312 -2.57812,-1.45312zM105,18c-1.07812,0 -2.07422,0.58594 -2.61328,1.52344c-0.52734,0.9375 -0.51562,2.09765 0.03516,3.02344l44.07422,73.45313l-44.07422,73.45313c-0.55078,0.92578 -0.5625,2.07422 -0.03516,3.02344c0.53906,0.9375 1.53516,1.52344 2.61328,1.52344h33c1.05469,0 2.02734,-0.55078 2.57813,-1.45312l45,-75c0.5625,-0.94922 0.5625,-2.14453 0,-3.09375l-45,-75c-0.55078,-0.90234 -1.52344,-1.45312 -2.57812,-1.45312zM22.47656,21.1875c-0.38672,0.04688 -0.77344,0.17578 -1.125,0.39844c-1.42969,0.84375 -1.88672,2.68359 -1.03125,4.10156l19.14844,31.93359c0.57422,0.9375 1.55859,1.45313 2.57813,1.45313c0.52734,0 1.06641,-0.1289 1.54688,-0.42187c1.41797,-0.85547 1.88672,-2.69531 1.03125,-4.125l-19.17187,-31.92188c-0.63281,-1.0664 -1.82812,-1.58203 -2.97656,-1.41797zM50.29688,24h26.00391l43.19531,72l-43.19531,72h-26.00391l42.28125,-70.45312c0.5625,-0.94922 0.5625,-2.14453 0,-3.09375zM110.29688,24h26.00391l43.19531,72l-43.19531,72h-26.00391l42.28125,-70.45312c0.5625,-0.94922 0.5625,-2.14453 0,-3.09375zM49.07813,65.51953c-0.38672,0.05859 -0.77344,0.1875 -1.125,0.39844c-1.42969,0.85547 -1.88672,2.69531 -1.03125,4.11328l5.57813,9.29297c0.55078,0.9375 1.55859,1.46485 2.57813,1.46485c0.51563,0 1.05469,-0.14062 1.53516,-0.4336c1.41797,-0.85547 1.88672,-2.69531 1.03125,-4.11328l-5.57812,-9.30469c-0.64453,-1.05469 -1.83984,-1.58203 -2.98828,-1.41797zM62.27344,91.54688c-1.16016,-0.14062 -2.35547,0.41016 -2.97656,1.48828c-0.82031,1.42969 -0.32812,3.26953 1.11328,4.08984l5.17969,3c0.48047,0.28125 0.9961,0.41016 1.5,0.41016c1.04297,0 2.05078,-0.55078 2.61328,-1.5c0.82031,-1.44141 0.32813,-3.26953 -1.11328,-4.10156l-5.17969,-3c-0.36328,-0.21094 -0.75,-0.32812 -1.13672,-0.38672zM54.77344,104.54297c-1.16016,-0.14062 -2.35547,0.39844 -2.97656,1.47656c-0.82031,1.44141 -0.32812,3.26953 1.11328,4.08984l5.17969,3c0.48047,0.28125 0.9961,0.41016 1.5,0.41016c1.04297,0 2.05078,-0.53906 2.61328,-1.5c0.82031,-1.44141 0.32813,-3.26953 -1.11328,-4.10156l-5.17969,-3c-0.36328,-0.19922 -0.75,-0.32812 -1.13672,-0.375zM47.27344,117.52734c-1.16016,-0.14062 -2.35547,0.41016 -2.97656,1.48828c-0.82031,1.42969 -0.32812,3.25781 1.11328,4.08984l5.17969,3c0.48047,0.26953 0.9961,0.41016 1.5,0.41016c1.04297,0 2.05078,-0.55078 2.61328,-1.5c0.82031,-1.44141 0.32813,-3.26953 -1.11328,-4.10156l-5.17969,-3c-0.36328,-0.21094 -0.75,-0.32812 -1.13672,-0.38672zM39.77344,130.52344c-1.16016,-0.14062 -2.35547,0.39844 -2.97656,1.47656c-0.82031,1.44141 -0.32812,3.26953 1.11328,4.08984l5.17969,3c0.48047,0.28125 0.9961,0.41016 1.5,0.41016c1.04297,0 2.05078,-0.53906 2.61328,-1.5c0.82031,-1.44141 0.32813,-3.26953 -1.11328,-4.08984l-5.17969,-3c-0.36328,-0.21094 -0.75,-0.33984 -1.13672,-0.38672zM32.27344,143.51953c-1.16016,-0.15234 -2.35547,0.39844 -2.97656,1.46484c-0.82031,1.44141 -0.32812,3.26953 1.11328,4.10156l5.17969,3c0.48047,0.26953 0.9961,0.39844 1.5,0.39844c1.04297,0 2.05078,-0.53906 2.61328,-1.5c0.82031,-1.42969 0.32813,-3.25781 -1.11328,-4.08984l-5.17969,-3c-0.36328,-0.21094 -0.75,-0.32812 -1.13672,-0.375zM24.77344,156.50391c-1.16016,-0.14062 -2.35547,0.39844 -2.97656,1.47656c-0.82031,1.44141 -0.32812,3.26953 1.10156,4.10156l5.20313,3c0.46875,0.26953 0.98438,0.39844 1.5,0.39844c1.03125,0 2.03906,-0.53906 2.60156,-1.5c0.82031,-1.42969 0.32813,-3.26953 -1.11328,-4.08984l-5.1914,-3c-0.35156,-0.21094 -0.73828,-0.33984 -1.125,-0.38672z"></path></g></g></g></svg> 
+      </ion-title> 
+      </ion-navbar>
+</ion-header>
+
+<ion-content style="background-color: #353c48;">
+  <ion-slides class="image-slider" pager (ionSlideDidChange)=isBeginning($event) >
+   
+        <ion-slide >
+            <!-- <div  class="card-title-promocion"> -->
+                
+                <!-- <img src= style="../../assets/imgs/1.jpg" width:100%; height: 200px; border-radius: 12px;"> -->
+            <!-- </div> -->
+              
+              <!-- <div class="card-title-promocion"></div> -->
+              <!-- <div class="card-subtitle-promocion"> </div> -->
+              <ion-grid class="overlay">
+                  <ion-row>
+                    <ion-col col-12>
+                      <img src="https://img.icons8.com/clouds/300/000000/slide-left-on-a-row.png">
+                    </ion-col>
+                  </ion-row>
+                  <ion-row>
+                    <ion-col col-12 class="letra-blanca">En Bitú</ion-col>
+                    <ion-col col-12 class="letra-blanca2" >Cambiamos la forma de comprar</ion-col>
+                    <!-- <ion-col col-12 class="letra-blanca">Desliza para ver.</ion-col> -->
+                  </ion-row>
+                 </ion-grid> 
+                
+          </ion-slide>
+   
+      
+      <ion-slide>
+          <ion-grid class="overlay">
+              <ion-row>
+                <ion-col col-12><img src="https://img.icons8.com/clouds/300/000000/qr-code.png"></ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col col-12 class="letra-blanca bounce"  >Escanea</ion-col>
+                <ion-col col-12 class="letra-blanca2 bounce"  >el código QR de la tienda</ion-col>
+              </ion-row>
+             </ion-grid> 
+      </ion-slide>
+      <ion-slide>
+          <ion-grid class="overlay">
+              <ion-row>
+                <ion-col col-12><img src="https://img.icons8.com/clouds/300/000000/mobile-shop-wallet.png"></ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col col-12 class="letra-blanca">Paga</ion-col>
+                <ion-col col-12 class="letra-blanca2">con nuestra moneda digital</ion-col>
+              </ion-row>
+             </ion-grid> 
+      </ion-slide>
+      <ion-slide>
+          <ion-grid class="overlay">
+              <ion-row>
+                <ion-col col-12><img src="https://img.icons8.com/bubbles/300/000000/man-with-beard-product-box.png"></ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col col-12 class="letra-blanca">Obten tu producto.</ion-col>
+              </ion-row>
+              <ion-row>
+                  <ion-col col-12><button ion-button round class="boton-borde" (click)="login()">Comenzar</button></ion-col>
+                </ion-row>
+             </ion-grid> 
+      </ion-slide>
+    </ion-slides>
+    
+    <ion-footer>
+        <ion-grid >
+            <ion-row *ngIf="valor_inicial == 1">
+                <ion-col col-12 (click)="slideNext(500)">
+                  <ion-toolbar>
+                    <ion-title style="text-align:center">Siguiente</ion-title>
+                  </ion-toolbar>
+                </ion-col>
+                
+              </ion-row>
+              <ion-row *ngIf="valor_inicial == 2">
+                  <ion-col col-6 (click)="slidePrev(500)">
+                    <ion-toolbar>
+                      <ion-title style="text-align:center">Anterior</ion-title>
+                    </ion-toolbar>
+                  </ion-col>
+                  <ion-col col-6 (click)="slideNext(500)">
+                    <ion-toolbar>
+                      <ion-title style="text-align:center">Siguiente</ion-title>
+                    </ion-toolbar>
+                  </ion-col>
+                </ion-row>
+                <ion-row *ngIf="valor_inicial == 3">
+                    
+                    <ion-col col-12 (click)="slidePrev(500)">
+                      <ion-toolbar>
+                        <ion-title style="text-align:center">Anterior</ion-title>
+                      </ion-toolbar>
+                    </ion-col>
+                  </ion-row>
+          </ion-grid> 
+        
+      </ion-footer>
+</ion-content>

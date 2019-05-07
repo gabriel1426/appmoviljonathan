@@ -1,3 +1,4 @@
+import { EstablecimientosPage } from './../establecimientos/establecimientos';
 import { Component ,ViewChild, ElementRef} from '@angular/core';
 import { IonicPage, NavController, NavParams,AlertController,LoadingController } from 'ionic-angular';
 import { Slides } from 'ionic-angular';
@@ -18,6 +19,9 @@ var infowindow;
 var service;
 var pos;
 var datos;
+var datos2;
+var markers = [];
+var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 @IonicPage()
 @Component({
   selector: 'page-cotegorias',
@@ -38,63 +42,67 @@ export class CotegoriasPage {
  nombre;
  loader;
 items;
+pos:any=[];
  searchTerm: string ;
 filterItems:any=[];
+posicion:any=[];
+
+
+data: any;
+categorias: string[];
+errorMessage: string;
+page = 1;
+perPage = 0;
+totalData = 0;
+totalPage = 0;
+
   constructor( 
     private alertController:AlertController,
     private loadingController:LoadingController,
     public navCtrl: NavController, public navParams: NavParams, public CategoriasProvider:CategoriasProvider) {
-    this.getCategorias();
-    this.getEstablecimiento();
+    
     console.log('hola');
    }
   ionViewDidLoad() {
    
     console.log('ionViewDidLoad CotegoriasPage');
-    this.loadMap();
-    document.getElementById('mostrarPromos').style.visibility="hidden";
-    this.slides.lockSwipes(false);
+    // this.loadMap();
+    // document.getElementById('mostrarPromos').style.display="none";
+    // this.slides.lockSwipes(false);
    
   }
-
+ngOnInit(){
+  // this.datos1=[];
+  console.log("ngOnInit()");
+  this.getCategorias();
+  // document.getElementById('mostrarPromos').style.display="none";
+}
   ngAfterViewInit() {
    
   }
 
+  ionViewWillLeave(){
+    console.log("ionViewWillLeave");
+    // this.datos1=[];
+    // document.getElementById('mostrarPromos').style.visibility="hidden";
+    // this.buscar=true;
+  }
+
   getCategorias() {
     this.loader = this.loadingController.create({
-      content: "Please wait...",
+      content: "Espera por favor...",
     });
     this.loader.present();
     this.CategoriasProvider.getCategorias()
     .then(data => {
       
       datos=data;
-      this.datos = datos.data;
+      console.log("datos",this.datos = datos.data.data);
+      
       this.filterItems =  this.datos;
       // this.nombre = datos.data.descripcion;
-      console.log(this.datos);
-    },err =>{
-      let alert1 = this.alertController.create({
-        title: 'Error!',
-        subTitle: 'No pudo conectar con el servidor!',
-      buttons: ['OK']
-      });
-      alert1.present();
+      console.log("datos data", this.datos);
       this.loader.dismiss();
-    })
-    this.loader.dismiss();
-  }
-  getEstablecimiento() {
-    this.loader = this.loadingController.create({
-      content: "Please wait...",
-    });
-    this.loader.present();
-    this.CategoriasProvider.getEstablecimiento()
-    .then(data => {
-      this.datos1 = data;
-      
-      console.log(this.datos1);
     },err =>{
       let alert1 = this.alertController.create({
         title: 'Error!',
@@ -107,14 +115,56 @@ filterItems:any=[];
     this.loader.dismiss();
   }
 
-  buscarboton(){
-    if(this.buscar){
+
+  getEstablecimiento() {
+    this.loader = this.loadingController.create({
+      content: "Espera por favor...",
+    });
+    this.loader.present();
+    this.CategoriasProvider.getEstablecimiento()
+    .then(data => {
+      this.datos1 = data;
+      this.pos = this.datos1.data;
      
+      console.log("antes del foreach",this.pos);
+    this.pos.forEach(element => {
+      console.log("elemento",element.latitud);
+      pos = {
+        lat: parseFloat(element.latitud),
+        lng: parseFloat(element.longitud)
+      };
+      var R = 6371; // radius of earth in km
+      var distances = [];
+      var closest = -1;
+      var contentString = element.nombre_sucursal+ '<br>'+
+      ''+element.categoria+'<br>'+
+      element.direccion;
+    });
+    this.loader.dismiss();
+    },err =>{
+      let alert1 = this.alertController.create({
+        title: 'Error!',
+        subTitle: 'No pudo conectar con el servidor!',
+      buttons: ['OK']
+      });
+      alert1.present();
+      this.loader.dismiss();
+    })
+   
+    this.loader.dismiss();
+  }
+
+  buscarboton(){
+    document.getElementById('mostrarPromos').style.display="block";
+    console.log("buscarboton()");
+    if(this.buscar){
+      document.getElementById('mostrarPromos').style.visibility="hidden";
       this.slides.slideTo(1, 200);
       console.log(this.buscar);
     }
   }
   buscarboton2(){
+    console.log("buscarboton2()");
     if(!this.buscar){
       document.getElementById('mostrarPromos').style.visibility="hidden";
       this.slides.slideTo(0, 200);
@@ -122,19 +172,7 @@ filterItems:any=[];
     }
     
    }
-   slideChanged(){
-     console.log("cambio")
-    if(this.buscar){
-      document.getElementById('mostrarPromos').style.visibility="visible";
-      this.buscar=false;
-    
-      
-    }else{
-      document.getElementById('mostrarPromos').style.visibility="hidden";
-      this.buscar=true;
-      
-    }
-   }
+
    
     setFilteredItems(){
       this.datos = this.filterItems.filter(
@@ -152,78 +190,41 @@ filterItems:any=[];
 
    
   comercio(id){
-    this.navCtrl.push(ComercioPage,{
+    this.navCtrl.push(EstablecimientosPage,{
       id_categoria:id
     });
   }
 
-
-   loadMap() {
-    map = new google.maps.Map(document.getElementById('map'), {
-      center: {lat: -34.397, lng: 150.644},
-      zoom: 8
-    });
-    infoWindow = new google.maps.InfoWindow;
-    var geocoder = new google.maps.Geocoder;
-    var infowindow = new google.maps.InfoWindow;
-    // Try HTML5 geolocation.
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(function(position) {
-        pos = {
-          lat: position.coords.latitude,
-          lng: position.coords.longitude
-        };
-        
-       
-        
-
-        infoWindow.setPosition(pos);
-        infoWindow.setContent('Location found.');
-        infoWindow.open(map);
-        map.setCenter(pos);
-        // this.geocodeLatLng(geocoder, map, infowindow,pos);
-      }, function() {
-        this.handleLocationError(true, infoWindow, map.getCenter());
-        
-      });
-    } else {
-      // Browser doesn't support Geolocation
-      
-    }
-   
-      
-  }
-
-  geocodeLatLng(geocoder, map, infowindow,pos) {
-    console.log('pos',pos);
-    var latlng = pos;
-    geocoder.geocode({'location': latlng}, function(results, status) {
-      if (status === 'OK') {
-        if (results[0]) {
-          map.setZoom(11);
-          var marker = new google.maps.Marker({
-            position: latlng,
-            map: map
-          });
-          infowindow.setContent(results[0].formatted_address);
-          infowindow.open(map, marker);
-        } else {
-          window.alert('No results found');
-        }
-      } else {
-        window.alert('Geocoder failed due to: ' + status);
-      }
-    });
-  }
-
-  handleLocationError(browserHasGeolocation, infoWindow, pos) {
-    infoWindow.setPosition(pos);
-    infoWindow.setContent(browserHasGeolocation ?
-                          'Error: The Geolocation service failed.' :
-                          'Error: Your browser doesn\'t support geolocation.');
-    infoWindow.open(map);
-  }
-
-
+  doRefresh(refresher) {
+    console.log('Begin async operation', refresher);
+    //ur function e.g getPostWordPress()
+    this.getEstablecimiento();
+     this.getCategorias();
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      refresher.complete();
+    }, 2000);}
   
+    doInfinite(infiniteScroll){
+      console.log("entroalinfinite");
+      this.page = this.page+1;
+      setTimeout(() => {
+        this.CategoriasProvider.getCategorias()
+        .then(data => {
+             datos2 = data;
+             this.data= datos2.data.data;
+              //  this.data = data;
+               console.log("per page",this.perPage = this.data.per_page);
+               console.log("totaldata",this.totalData = this.data.total);
+               console.log("total page",this.totalPage = this.data.total_pages);
+               for(let i=0; i<this.data.data.length; i++) {
+                 this.datos.push(this.data.data[i]);
+               }
+             },
+             error =>  this.errorMessage = <any>error);
+    
+        console.log('Async operation has ended');
+        infiniteScroll.complete();
+      }, 100);
+    }
 }

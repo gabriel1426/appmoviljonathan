@@ -20,7 +20,7 @@ var datos;
   templateUrl: 'comercio.html',
 })
 export class ComercioPage {
-id_categoria;
+id_establecimiento;
 datos:any=[];
 datos1:any=[];
 corazon=0;
@@ -32,8 +32,8 @@ loader;
     public navCtrl: NavController,
      public navParams: NavParams,
      public modalCtrl: ModalController) {
-    console.log("id_categoria",this.id_categoria = navParams.get("id_categoria"));
-    this.getSucursales(this.id_categoria)
+    console.log("id_categoria",this.id_establecimiento = navParams.get("id_establecimiento"));
+    this.getSucursales(this.id_establecimiento)
   }
 
   ionViewDidLoad() {
@@ -42,7 +42,7 @@ loader;
 
 getSucursales(id){
   this.loader = this.loadingController.create({
-    content: "Please wait...",
+    content: "Espera por favor...",
   });
   this.loader.present();
   this.CategoriasProvider.getSucursales(id)
@@ -75,19 +75,21 @@ getSucursales(id){
   verpromociones(){
     
   }
-  ActualizarFavoritos(id_sucursal,estado){
+  // ActualizarFavoritos(id_sucursal,estado){
     
-  }
+  // }
 
   estadoCorazon(id_sucursal,estado){
+    console.log("id_sucursal", id_sucursal);
+    console.log("estado", estado)
     this.loader = this.loadingController.create({
-      content: "Please wait...",
+      content: "Espera por favor...",
     });
     this.loader.present();
     this.CategoriasProvider.ActualizarFavoritos(localStorage["id_empleado"],id_sucursal,estado)
     .then(data => {
       this.datos1 = data;
-     this.getSucursales(this.id_categoria)
+     this.getSucursales(this.id_establecimiento)
       console.log("datos1",this.datos1);
       this.loader.dismiss();
     },err =>{

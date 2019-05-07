@@ -34,8 +34,11 @@ $app-direction: ltr;
 // The "primary" color is the only required color in the map.
 
 $colors: (
-  primary:    #00b2d2,
-  secondary:  #2D5DFC,
+ 
+  primary:     #353c48,
+  // primary:    #00b2d2,
+  // primary:    #c7ece5,
+  secondary:  #26a69a,
   danger:     #f53d3d,
   light:      #f4f4f4,
   dark:       #222
@@ -86,8 +89,15 @@ $colors: (
 // --------------------------------------------------
 
 @import "roboto";
-@import "noto-sans";
+@font-face {
+  font-family: HALTER_;
+  // src: url("../font/HALTER__.ttf");
+  src: url("../font/Halter");
+  }
 
+// @import "../font/HALTER_.ttf";
+@import "noto-sans";
+// @import 'animate.min.css';
 
 ion-app.cameraView, ion-app.cameraView ion-content, ion-app.cameraView .nav-decor {
   background: transparent none !important;

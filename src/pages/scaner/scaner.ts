@@ -30,9 +30,8 @@ export class ScanerPage {
   selectedProduct;
   constructor(private alertController:AlertController,
     public navCtrl: NavController,
-
-     public navParams: NavParams,
-     private scanner: BarcodeScanner) {
+    public navParams: NavParams,
+    private scanner: BarcodeScanner) {
     // this.leerCodigo();
   }
 scan(){
@@ -41,12 +40,11 @@ scan(){
   };
     this.scanner.scan(this.options).then((data)=>{
       this.scannedData = data;
-      alert( data);
+      // alert( data);
     },(err)=>{
       console.log('Error:', err);
     })
 }
-
 encode(){
   this.scanner.encode(this.scanner.Encode.TEXT_TYPE,this.encodText).then((data)=>{
     this.encodedData = data;

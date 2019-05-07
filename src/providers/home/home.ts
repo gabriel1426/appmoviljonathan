@@ -58,5 +58,47 @@ export class HomeProvider {
     });
   }
   
+  public getMonto(id) {
+    // id establecimiento
+    return new Promise(resolve => {
+      this.http.get(this.apiUrl+'/consultarmonto/'+id).subscribe(data => {
+        resolve(data);
+      }, err => {
+        console.log(err);
+      });
+    });
+  }
+
+  public inactivo(id) {
+    // id establecimiento
+    return new Promise(resolve => {
+      this.http.get(this.apiUrl+'/inactivo/'+id).subscribe(data => {
+        resolve(data);
+      }, err => {
+        console.log(err);
+      });
+    });
+  }
+  public peticionesempleado(id) {
+    // id establecimiento
+    return new Promise(resolve => {
+      this.http.get(this.apiUrl+'/peticionesempleado/'+id).subscribe(data => {
+        resolve(data);
+      }, err => {
+        console.log(err);
+      });
+    });
+  }
+  
+  img_tarjeta(id){
+    return new Promise(resolve => {
+      this.http.get(this.apiUrl+'/img_tarjeta/'+id).subscribe(data => {
+        resolve(data);
+      }, err => {
+        console.log(err);
+      });
+    });
+  }
+  
 
 }

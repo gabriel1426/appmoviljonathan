@@ -1,9 +1,13 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams,ModalController,ViewController, LoadingController, AlertController,ToastController  } from 'ionic-angular';
 import { CompraexitosaPage } from '../compraexitosa/compraexitosa';
+import { PinPage } from '../pin/pin';
 import { TerminosycondicionesPage } from '../terminosycondiciones/terminosycondiciones';
 import { PagarProvider } from '../../providers/pagar/pagar';
 import { HomeProvider } from '../../providers/home/home';
+import swal from 'sweetalert';
+import swalOptions from 'sweetalert';
+
 /**
  * Generated class for the CompraenlineaPage page.
  *
@@ -20,9 +24,11 @@ var array;
 })
 export class CompraenlineaPage {
   id_producto;
+  id_sucursal;
   fechasinprocesar;
   fechaprocesada;
   datos:any=[];
+  monto:any=[];
   contador;
   valor_actual;
   valor
@@ -36,14 +42,16 @@ loader;
     descripcion_ped:" ",
     tiempo_espera:"",
     sucursales_id:'',
-    id_producto:''
+    id_producto:'',
+    id1:'',
+    cantidad1:'',
   }
-
+  codigo;
   productos = {
     id1:'',
     cantidad1:''
   }
-  
+  terminos_condiciones:boolean=false;
   constructor(public navCtrl: NavController,
      public navParams: NavParams,
      public modalCtrl: ModalController,
@@ -63,59 +71,72 @@ console.log(this.fechaprocesada = this.fechasinprocesar.getDate() + "-" + (this.
   ionViewDidLoad() {
     console.log('ionViewDidLoad CompraenlineaPage');
   }
+ngOnInit(){
+  console.log("id_empleado",localStorage["id_empleado"]);
+  this.getMonto(localStorage["id_empleado"]);
+}
 
-  presentModal() {
-    this.loader = this.loadingController.create({
-      content: "Please wait...",
+/// consultar monto actual
+getMonto(id){
+  console.log("factura total" ,this.valor_actual);
+  console.log("monto " ,this.monto);
+  this.loader = this.loadingController.create({
+    content: "Espera por favor...",
+  });
+  this.loader.present();
+  this.HomeProvider.getMonto(id)
+  .then(data => {
+    this.monto = data;
+    this.monto = this.monto.data;
+    this.loader.dismiss();
+console.log("monto  data",this.monto);
+  },err=>{
+    let alert1 = this.alertController.create({
+      title: 'Error!',
+      subTitle: 'No pudo conectar con el servidor!',
+    buttons: ['OK']
     });
-    this.loader.present();
-    this.factura= {
-      total:this.valor_actual,
-      id_empleado:localStorage["id_empleado"],
-      venta_web:'1',
-      length:'1',
-      cantidad_cuota:'1',
-      descripcion_ped:"",
-      tiempo_espera:this.fechaprocesada,
-      sucursales_id:"0",
-      id_producto:this.id_producto
-    }
-    this.productos = {
-      id1:this.id_producto,
-      cantidad1:'1'
-    }
-    console.log(this.factura);
-    console.log(this.productos);
- this.PagarProvider.factura(this.factura,this.productos)
-    .then(data => {
-      this.datos = data;
-      
-      console.log("datos dela factura creada",this.datos);
-      this.loader.dismiss();
-    },err =>{
+    alert1.present();
+    this.loader.dismiss();
+  })
+
+ 
+}
+
+///metodo de compra
+  presentModal() {
+    
+
+    if(this.terminos_condiciones == false){
       let alert1 = this.alertController.create({
-        title: 'Error!',
-        subTitle: 'No pudo conectar con el servidor!',
+        title: 'Oops!',
+        subTitle: 'Debe aceptar terminos y condiciones!',
       buttons: ['OK']
       });
       alert1.present();
-      this.loader.dismiss();
-    })
+      return;
+    }
 
+    if(parseInt(this.monto) < parseInt(this.valor_actual)){
+      console.log("cantidad",this.contador);
+    console.log("valor_actual",this.valor_actual)
+    console.log("monto",this.monto)
+      let alert1 = this.alertController.create({
+        title: 'Oops!',
+        subTitle: 'Saldo insuficiente!',
+      buttons: ['OK']
+      });
+      alert1.present();
+      return
+  }else{
+    console.log("cantidad",this.contador);
+    console.log("valor_actual",this.valor_actual)
+    console.log("monto",this.monto)
+  }
     
-
-
-
-    let profileModal = this.modalCtrl.create(CompraexitosaPage,{
-      datos:array,
-      contador:this.contador,
-      valor_actual:this.valor_actual
-    });
-    profileModal.present().then((resolve)=>{
-      this.viewCtrl.dismiss();
-      
-    });
-    this.loader.dismiss();
+    
+   
+    this.SweetAlert();
   }
 
   presentModalTerminos(id){
@@ -129,7 +150,7 @@ console.log(this.fechaprocesada = this.fechasinprocesar.getDate() + "-" + (this.
   }
   getProductoAComprar(id){
     this.loader = this.loadingController.create({
-      content: "Please wait...",
+      content: "Espera por favor...",
      
     });
     this.loader.present();
@@ -141,6 +162,7 @@ console.log(this.fechaprocesada = this.fechasinprocesar.getDate() + "-" + (this.
      cantidad_venta = array.cantidad_venta_user;
      this.valor_actual = array.valor;
      this.valor = array.valor;
+     this.id_sucursal = array.id_sucursal; 
       console.log("datos",this.datos);
       console.log("valor",this.valor);
       console.log("cantidad venta user",cantidad_venta);
@@ -154,8 +176,8 @@ console.log(this.fechaprocesada = this.fechasinprocesar.getDate() + "-" + (this.
       alert1.present();
       this.loader.dismiss();
     })
-
     this.loader.dismiss();
+
   }
   cerrar(){
     this.viewCtrl.dismiss();
@@ -177,4 +199,62 @@ console.log(this.fechaprocesada = this.fechasinprocesar.getDate() + "-" + (this.
     }
   }
 
+
+    pagar(){
+      this.loader = this.loadingController.create({
+        content: "Espera por favor...",
+       
+      });
+      this.loader.present();
+      console.log(this.codigo = Math.floor(Math.random()* (9999 - 1000)));
+      console.log("Codigo + Email",this.codigo,localStorage["email"]);
+    this.PagarProvider.pin(this.codigo,localStorage["email"])
+    .then(data => {
+      this.datos = data;
+      console.log(this.datos);
+      this.loader.dismiss();
+      let profileModal = this.modalCtrl.create(PinPage,{
+        pin:this.codigo,
+        factura:this.factura,
+        valor_actual:this.valor_actual,
+        id_sucursal:this.id_sucursal,
+        fechaprocesada:this.fechaprocesada,
+        id_producto:this.id_producto,
+        cantidad1:this.contador,
+        
+      });
+      profileModal.present().then((resolve)=>{
+        this.viewCtrl.dismiss();
+      });
+      this.loader.dismiss();
+    },err =>{
+      let alert1 = this.alertController.create({
+        title: 'Error!',
+        subTitle: 'No pudo conectar con el servidor!',
+      buttons: ['OK']
+      });
+      alert1.present();
+      this.loader.dismiss();
+    })
+    this.loader.dismiss();
+
+    }
+
+    SweetAlert(){
+      swal({
+        title: "Valor a pagar:"+ this.valor_actual,
+        icon: "success",
+        // button: true,
+        dangerMode: true,
+      })
+      .then((willDelete) => {
+        if (willDelete) {
+          this.pagar();
+        } else {
+          
+        }
+      });
+
+
+    }
 }

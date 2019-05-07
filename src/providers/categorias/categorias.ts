@@ -43,6 +43,15 @@ export class CategoriasProvider {
       });
     });
   }
+  public getSucursalesEstablecimiento(id) {
+    return new Promise(resolve => {
+      this.http.get(this.apiUrl+'/sucursalestablecimiento/'+id).subscribe(data => {
+        resolve(data);
+      }, err => {
+        console.log(err);
+      });
+    });
+  }
   public getProducto(id) {
     // id sucursal
     return new Promise(resolve => {
@@ -74,6 +83,16 @@ export class CategoriasProvider {
       });
     });
   }
+  public getEstablecimientoCategoria(id) {
+    // id sucursal
+    return new Promise(resolve => {
+      this.http.get(this.apiUrl+'/establecimientotegoria/'+id).subscribe(data => {
+        resolve(data);
+      }, err => {
+        console.log(err);
+      });
+    });
+  }
 
   public ActualizarFavoritos(id_empleado,id_sucursal,estado){
     return new Promise(resolve => {
@@ -95,4 +114,13 @@ export class CategoriasProvider {
     });
   }
 
+  public getPromocionesDetalles(id){
+    return new Promise(resolve => {
+      this.http.get(this.apiUrl+'/promocionesdetalles/'+id).subscribe(data => {
+        resolve(data);
+      }, err => {
+        console.log(err);
+      });
+    });
+  }
 }

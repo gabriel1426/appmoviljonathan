@@ -4,4 +4,22 @@ page-tabs {
     #tab-t0-2{
 margin-bottom:-10 px;
     }
+    .tabs-md .tab-button-icon{
+        color: white !important;
+    }
+    .tab-button-icon{
+        color: white !important;
+    }
+    .tab-button[aria-selected=true]{
+        color: white !important;
+       
+    }
+    .tab-button-text{
+        color: white !important;
+
+    }
+    .tabbar{
+        background-color: color($colors,primary) !important;
+        color: white !important;
+    }
 }

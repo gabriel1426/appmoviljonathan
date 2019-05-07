@@ -40,13 +40,13 @@ export class ModaldeportePage {
 
     getDetallePromocion(id){
       this.loader = this.loadingController.create({
-        content: "Please wait...",
+        content: "Espera por favor...",
       });
       this.loader.present();
       this.HomeProvider.getDetallePromocion(id)
       .then(data => {
         this.datos = data;
-       
+        this.loader.dismiss();
         console.log(this.datos);
       },err =>{
         let alert1 = this.alertController.create({

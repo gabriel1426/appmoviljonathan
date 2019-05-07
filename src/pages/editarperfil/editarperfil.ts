@@ -84,7 +84,7 @@ datos:any=[];
      
      ngOnInit() {
       this.loader = this.loadingController.create({
-        content: "Please wait...",
+        content: "Espera por favor...",
       });
       this.loader.present();
       console.log(this.id_empleado = localStorage["id_empleado"]);
@@ -122,7 +122,7 @@ datos:any=[];
 
   Actualizar(){
     this.loader = this.loadingController.create({
-      content: "Please wait...",
+      content: "Espera por favor...",
     });
     this.loader.present();
     console.log("request",this.request);
@@ -149,6 +149,7 @@ datos:any=[];
         this.letras = resultado.substr(0, 3);
       }
       console.log(this.datos);
+      this.loader.dismiss();
     },err =>{
       let alert1 = this.alertController.create({
         title: 'Error!',

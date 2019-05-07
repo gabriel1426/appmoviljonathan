@@ -51,44 +51,61 @@ font-size: 45px;
 }
 ion-menu{
     //background menu user
-    .header::after{background: -webkit-linear-gradient(bottom right,#fff, #fff);
-  background: -o-linear-gradient(bottom right, #fff, #fff);
-  background: -moz-linear-gradient(bottom right, #fff, #fff);
-background: linear-gradient(to bottom right, #fff, #fff); } /*Hide toolbar shadow*/
+    .header::after{background: color($colors,primary) !important;
+ } /*Hide toolbar shadow*/
      ion-toolbar{
-         .toolbar-background{background: -webkit-linear-gradient(bottom right, #fff, #fff);
-  background: -o-linear-gradient(bottom right, #fff, #fff);
-  background: -moz-linear-gradient(bottom right, #fff, #fff);
-background: linear-gradient(to bottom right, #fff, #fff);  border:0px; }
+         .toolbar-background{
+             
+
+            background:color($colors,primary) !important;
+            
+            border:0px;
+         }
          .toolbar-content{
                 ion-item{
                     //background menu user
-                background: transparent;
-              
-                
+                    background:color($colors,primary) !important;
+                    padding-left: inherit !important; 
+                }
+
+                .list-md[no-lines] .item-block{
+                    // padding-left: inherit !important; 
+                    padding-left: 20px !important; 
+                }
                 
             }
         }
-      }
+      
+        .item-menu > div > div{
+                    padding-left: 5px !important; 
+                    background:color($colors,primary) !important;
 
+        }
+        .iconos-texto{
+            display: flex;
+            orientation: column;
+            color: #f1f1f1 !important;
+            // font-size: 16px !import  |ant;
+        }
      ion-content{
          //CAMBIO DE COLOR DE CONTENIDO DEL MENU
-             background: -webkit-linear-gradient(bottom right, #fff, #fff);
-  background: -o-linear-gradient(bottom right, #fff, #fff);
-  background: -moz-linear-gradient(bottom right, #fff, #fff);
-background: linear-gradient(to bottom right, #fff, #fff) !important;
+         background:color($colors,primary) !important;
              ion-list{
                  //background ITEMS MENU
-                 
+                 background:color($colors,primary) !important;
                     .item-inner{
+                        background:color($colors,primary) !important;
                         //background: -webkit-linear-gradient(bottom left, #202b36, #202b36);
                         //background: -o-linear-gradient(bottom right, #202b36, #202b36);
                         //background: -moz-linear-gradient(bottom right, #202b36, #202b36);
                      //background: linear-gradient(to bottom right, #202b36, #202b36) !important;
-                        border-bottom: 1px solid #202b36 !important;
-                        img{width: 25px;height: 25px;vertical-align: middle;margin-right: 10px;margin-bottom: 5px;}
+                        border-bottom: 1px solid #f1f1f1 !important;
+                        img{
+                            width: 20px;height: 20px;vertical-align: middle;margin-right: 10px;margin-bottom: 5px;
+                        }
                         ion-icon{
-                            width:30px; height:30px; vertical-align: middle;  font-size:1.9em;
+                            color: #f1f1f1;
+                            width:30px; height:30px; vertical-align: middle;  font-size:1.5em;
                             //background: -webkit-linear-gradient(bottom left, #202b36, #202b36);
                             //background: -o-linear-gradient(bottom right, #202b36, #202b36);
                             //background: -moz-linear-gradient(bottom right, #202b36, #202b36);
@@ -99,7 +116,25 @@ background: linear-gradient(to bottom right, #fff, #fff) !important;
             }
      }
 }
+ .toolbar-background-md{
+    background:color($colors,primary) !important;
+    .bar-button-menutoggle-md{
+    }
+}
+.ion-text-avatar{
+    color:color($colors,primary) !important;
+    background: white !important;
+}
+.bar-button-menutoggle-md{
+    color: white !important;
 
+}
+.toolbar-title-md{
+    color:white !important;
+}
+.bar-button-default-md{
+    color:white !important
+}
 //-----------------------------------------------------
 .button-md {text-transform:none;}
 .facebookButton {background-color:#3b5998; color:#fff; }
@@ -117,7 +152,7 @@ background: linear-gradient(to bottom right, #fff, #fff) !important;
  .hrLine { width: 75%;
     text-align:center;
      border-bottom: 1px dotted #fff; line-height: 0.1em; margin:15px auto;}
- .hrLine span { background:#fff; padding:0 5px;  font-size:18px; color:#000;}
+ .hrLine span { background:#fff; padding:0 5px;  font-size:12px; color:#000;}
  .alineado{align-content: center};
 
 
@@ -129,3 +164,61 @@ background: linear-gradient(to bottom right, #fff, #fff) !important;
     }
   }
 
+ .header-menu{
+    background-color: color($colors,primary);
+  }
+  .menu-color{
+    background-color: color($colors,primary) !important;
+
+  }
+  .content-md{
+    // background: #dcdcdc91  !important;
+  }
+//   .splash {
+//     position: absolute;
+//     width: 100%;
+//     height: 100%;
+//     z-index: 999;
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//     background: #ff7400;
+// }
+
+// .spinner {
+//   // your animation code (SpinKit used in this demo)
+// }
+
+.has-refresher > .scroll-content{
+        background-image: url('https://image.freepik.com/vector-gratis/fondo-pincel-acrilico-abstracto-azul-textura-fondo_53876-86373.jpg') !important;
+}
+
+.fondo-app{
+    background-image: url('https://image.freepik.com/vector-gratis/fondo-pincel-acrilico-abstracto-azul-textura-fondo_53876-86373.jpg') !important;
+ }
+//  ion-title {
+//     position: absolute;
+//     top: 0;
+//     left: 0;
+//     padding: 0 90px 1px;
+//     width: 100%;
+//     height: 100%;
+//     font-size: 1.5rem !important;
+//     text-align: center;
+//   }
+  .toolbar-title-md{
+    font-size: 1.5rem !important;
+  }
+ 
+  .title.title-md {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    }
+    ion-header button, .back-button {
+        position: absolute !important;
+        z-index: 5;
+      }

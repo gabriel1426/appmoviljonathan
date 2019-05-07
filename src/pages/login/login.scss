@@ -37,7 +37,8 @@ page-login {
         text-align: center;
     }    
     .fondo{
-        background: color($colors, primary, base);
+        background-color: color($colors, primary);
+        // background: #c7ece5 !important;
         // background: rgba(41,184,229,1);
         // background: -moz-linear-gradient(top, rgba(41,184,229,1) 0%, rgba(41,184,229,1) 46%, rgba(172,230,233,1) 95%, rgba(185,235,233,1) 100%);
         // background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(41,184,229,1)), color-stop(46%, rgba(41,184,229,1)), color-stop(95%, rgba(172,230,233,1)), color-stop(100%, rgba(185,235,233,1)));
@@ -48,7 +49,7 @@ page-login {
         // filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#29b8e5', endColorstr='#b9ebe9', GradientType=0 );
     }
     .btningresar{
-        background:#342DC3;
+        background: #00b2d2;
         font-size: 16px; 
         color: white; 
         padding-top:8px; 
@@ -56,5 +57,15 @@ page-login {
         border-radius: 10px;
     }
     
+    // .boton-borde{
+    //     background: #00b2d2;
+    //     border: 1px solid #00b2d2 !important;
+    //     color:white !important;
+    //     font-size: 16px !important;
+    // }
+
+    .letra-blanca{
+        color: white;
+    }
     
 }
