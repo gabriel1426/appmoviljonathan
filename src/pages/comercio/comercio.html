@@ -7,7 +7,7 @@
 <ion-header>
   <ion-navbar>
 
-    <ion-title style="text-align: center;">Comercio</ion-title>
+    <ion-title style="text-align: center;">{{nombre_ciudad}}</ion-title>
     <ion-buttons start>
     <button  ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
@@ -18,7 +18,7 @@
 
 <ion-content class="fondo-app" >
     
-    <div *ngFor="let datos of datos.data">
+    <div *ngFor="let datos of datos">
         <br>
 <div class="divrelative">
     <ion-item class="comercio">

@@ -59,7 +59,6 @@ page = 1;
 perPage = 0;
 totalData = 0;
 totalPage = 0;
-ports: Port[];
 port: Port;
   nombre_ciudad: any;
   constructor( 
@@ -111,7 +110,7 @@ ngOnInit(){
       
       this.filterItems =  this.datos;
       // this.nombre = datos.data.descripcion;
-      console.log("datos data", this.datos);
+      console.log("datos data categorias", this.datos);
       this.loader.dismiss();
     },err =>{
       let alert1 = this.alertController.create({
@@ -134,22 +133,7 @@ ngOnInit(){
     this.CategoriasProvider.getEstablecimiento()
     .then(data => {
       this.datos1 = data;
-      this.pos = this.datos1.data;
-     
-      console.log("antes del foreach",this.pos);
-    this.pos.forEach(element => {
-      console.log("elemento",element.latitud);
-      pos = {
-        lat: parseFloat(element.latitud),
-        lng: parseFloat(element.longitud)
-      };
-      var R = 6371; // radius of earth in km
-      var distances = [];
-      var closest = -1;
-      var contentString = element.nombre_sucursal+ '<br>'+
-      ''+element.categoria+'<br>'+
-      element.direccion;
-    });
+    
     this.loader.dismiss();
     },err =>{
       let alert1 = this.alertController.create({
@@ -190,6 +174,12 @@ ngOnInit(){
        )
        console.log(this.datos);
       }
+      setFilteredItems_ciudad(ciudad){
+        this.datos = this.filterItems.filter(
+          item =>  item.ciudad.toLowerCase().indexOf(ciudad.toLowerCase()) > -1
+         )
+         console.log(this.datos);
+        }
    buscarlupa(){
      this.lupa=false;
      console.log("entre");
@@ -212,6 +202,7 @@ ngOnInit(){
     //ur function e.g getPostWordPress()
     this.getEstablecimiento();
      this.getCategorias();
+     this.ciudades_categorias();
     setTimeout(() => {
       console.log('Async operation has ended');
       refresher.complete();
@@ -247,6 +238,8 @@ ngOnInit(){
         this.id_ciudad = event.value.id;
         this.nombre_ciudad = event.value.descripcion;
           console.log('id ciudad:', event.value.id);
+          console.log('nombre ciudad:', event.value.descripcion);
+          this.setFilteredItems_ciudad(this.nombre_ciudad);
       }
 
     ciudades_categorias(){
@@ -260,9 +253,6 @@ ngOnInit(){
         this.ciudades = ciudades.data;
         console.log("ciudaes this.ciudades",this.ciudades);
 
-    
-        console.log("despues de el foreach",this.ports);
-    
       this.loader.dismiss();
       },err =>{
         let alert1 = this.alertController.create({

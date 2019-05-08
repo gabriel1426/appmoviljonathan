@@ -26,6 +26,7 @@ export class EstablecimientosPage {
 id_categoria;
 datos:any=[];
 datos1:any=[];
+filterItems:any=[];
 corazon=0;
 loader;
 categoria;
@@ -42,12 +43,19 @@ categoria;
     console.log("id_ciudad",this.id_ciudad = navParams.get("id_ciudad"));
     console.log("nombre_ciudad",this.nombre_ciudad = navParams.get("nombre_ciudad"));
     this.getEstablecimientoCategoria(this.id_categoria)
+
+    
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad EstablecimientosPage');
   }
-
+ setFilteredItems_ciudad(ciudad){
+        this.datos = this.filterItems.filter(
+          item =>  item.ciudad.toLowerCase().indexOf(ciudad.toLowerCase()) > -1
+         )
+         console.log("datos del filtro",this.datos);
+        }
 getEstablecimientoCategoria(id){
   this.loader = this.loadingController.create({
     content: "Espera por favor...",
@@ -56,10 +64,18 @@ getEstablecimientoCategoria(id){
   this.CategoriasProvider.getEstablecimientoCategoria(id)
     .then(data => {
       this.datos = data;
+      this.datos = this.datos.data;
       this.categoria = data;
       this.categoria = this.categoria.categoria;
+      this.filterItems =  this.datos;
       this.loader.dismiss();
       console.log(this.datos);
+      if(this.nombre_ciudad  != '' || this.nombre_ciudad != undefined){
+        console.log("this.nombre_ciudad",this.nombre_ciudad)
+        this.setFilteredItems_ciudad(this.nombre_ciudad);
+      }else{
+        console.log("this.nombre_ciudad",this.nombre_ciudad)
+      }
     },err =>{
       let alert1 = this.alertController.create({
         title: 'Error!',
@@ -78,7 +94,9 @@ getEstablecimientoCategoria(id){
   producto(id){
     console.log(id)
     this.navCtrl.push(ComercioPage,{
-      id_establecimiento:id
+      id_establecimiento:id,
+      id_ciudad:this.id_ciudad,
+      nombre_ciudad:this.nombre_ciudad
     });
   }
 
