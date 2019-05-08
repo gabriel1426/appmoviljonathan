@@ -47,7 +47,7 @@ import { PerfilProvider } from '../providers/perfil/perfil';
 import { HomeProvider } from '../providers/home/home';
 
 
-
+import { SelectSearchableModule } from 'ionic-select-searchable';
 import { OneSignal } from '@ionic-native/onesignal';
 // import { QRScanner } from '@ionic-native/qr-scanner';
 import { IonTextAvatar } from 'ionic-text-avatar';
@@ -94,7 +94,7 @@ import { Network } from '@ionic-native/network';
   imports: [
     BrowserModule,
     HttpClientModule,
-  
+    SelectSearchableModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],

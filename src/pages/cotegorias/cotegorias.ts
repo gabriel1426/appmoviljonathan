@@ -1,17 +1,20 @@
 import { EstablecimientosPage } from './../establecimientos/establecimientos';
 import { Component ,ViewChild, ElementRef} from '@angular/core';
-import { IonicPage, NavController, NavParams,AlertController,LoadingController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,AlertController,LoadingController, Select } from 'ionic-angular';
 import { Slides } from 'ionic-angular';
 import { ComercioPage } from '../comercio/comercio';
 import { CategoriasProvider } from '../../providers/categorias/categorias';
-
+import { SelectSearchableComponent } from 'ionic-select-searchable';
 /**
  * Generated class for the CotegoriasPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
-
+class Port {
+  public id: number;
+  public name: string;
+}
 declare var google:any;
 var map;
 var infoWindow;
@@ -22,6 +25,7 @@ var datos;
 var datos2;
 var markers = [];
 var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+var ciudades;
 @IonicPage()
 @Component({
   selector: 'page-cotegorias',
@@ -32,7 +36,7 @@ export class CotegoriasPage {
  
  buscar= true;
  lupa=true;
-
+ @ViewChild('sectionSelect') sectionSelect: Select;
  @ViewChild('map') mapElement: ElementRef
  @ViewChild(Slides) slides: Slides;
  map: any;
@@ -46,8 +50,8 @@ pos:any=[];
  searchTerm: string ;
 filterItems:any=[];
 posicion:any=[];
-
-
+id_ciudad;
+ciudades:any=[];
 data: any;
 categorias: string[];
 errorMessage: string;
@@ -55,13 +59,15 @@ page = 1;
 perPage = 0;
 totalData = 0;
 totalPage = 0;
-
+ports: Port[];
+port: Port;
+  nombre_ciudad: any;
   constructor( 
     private alertController:AlertController,
     private loadingController:LoadingController,
     public navCtrl: NavController, public navParams: NavParams, public CategoriasProvider:CategoriasProvider) {
-    
-    console.log('hola');
+      this.ciudades_categorias();
+    console.log('CotegoriasPage');
    }
   ionViewDidLoad() {
    
@@ -71,6 +77,10 @@ totalPage = 0;
     // this.slides.lockSwipes(false);
    
   }
+  doFilter(){
+    this.sectionSelect.open();
+    console.log('hello')
+ }
 ngOnInit(){
   // this.datos1=[];
   console.log("ngOnInit()");
@@ -191,7 +201,9 @@ ngOnInit(){
    
   comercio(id){
     this.navCtrl.push(EstablecimientosPage,{
-      id_categoria:id
+      id_categoria:id,
+      id_ciudad:this.id_ciudad,
+      nombre_ciudad:this.nombre_ciudad
     });
   }
 
@@ -226,5 +238,42 @@ ngOnInit(){
         console.log('Async operation has ended');
         infiniteScroll.complete();
       }, 100);
+    }
+
+    portChange(event: {
+      component: SelectSearchableComponent,
+      value: any 
+      }) {
+        this.id_ciudad = event.value.id;
+        this.nombre_ciudad = event.value.descripcion;
+          console.log('id ciudad:', event.value.id);
+      }
+
+    ciudades_categorias(){
+      this.loader = this.loadingController.create({
+        content: "Espera por favor...",
+      });
+      this.loader.present();
+      this.CategoriasProvider.ciudades_categorias()
+      .then(data => {
+        ciudades = data;
+        this.ciudades = ciudades.data;
+        console.log("ciudaes this.ciudades",this.ciudades);
+
+    
+        console.log("despues de el foreach",this.ports);
+    
+      this.loader.dismiss();
+      },err =>{
+        let alert1 = this.alertController.create({
+          title: 'Error!',
+          subTitle: 'No pudo conectar con el servidor!',
+        buttons: ['OK']
+        });
+        alert1.present();
+        this.loader.dismiss();
+      })
+     
+      this.loader.dismiss();
     }
 }

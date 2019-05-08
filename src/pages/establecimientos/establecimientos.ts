@@ -29,6 +29,8 @@ datos1:any=[];
 corazon=0;
 loader;
 categoria;
+  nombre_ciudad: any;
+  id_ciudad: any;
   constructor(
     private alertController:AlertController,
     private loadingController:LoadingController, 
@@ -37,6 +39,8 @@ categoria;
      public navParams: NavParams,
      public modalCtrl: ModalController) {
     console.log("id_categoria",this.id_categoria = navParams.get("id_categoria"));
+    console.log("id_ciudad",this.id_ciudad = navParams.get("id_ciudad"));
+    console.log("nombre_ciudad",this.nombre_ciudad = navParams.get("nombre_ciudad"));
     this.getEstablecimientoCategoria(this.id_categoria)
   }
 

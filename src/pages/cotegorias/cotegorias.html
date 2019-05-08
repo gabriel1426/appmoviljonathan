@@ -1,75 +1,32 @@
 <!--
   Generated template for the CotegoriasPage page.
-
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-<ion-header>
+<ion-header class="formHeader"> 
   <ion-navbar *ngIf="lupa">
-    
       <button ion-button menuToggle>
           <ion-icon name="menu"></ion-icon>
         </button>
-      <!-- <span *ngIf="buscar else templateName"> -->
-      <!-- <ion-segment  class="segmento" color="primary"> -->
-      <!-- <ion-segment-button (click)="buscarboton2();" class="segmentleft activo">
-          
-
-          <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
-          width="24" height="24"
-          viewBox="0 0 192 192"
-          style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,192v-192h192v192z" fill="none"></path><g fill="#ffffff"><g id="surface1"><path d="M22.15385,7.38462c-8.13461,0 -14.76923,6.63462 -14.76923,14.76923v14.76923c0,8.13462 6.63462,14.76923 14.76923,14.76923h14.76923c8.13462,0 14.76923,-6.63461 14.76923,-14.76923v-14.76923c0,-8.13461 -6.63461,-14.76923 -14.76923,-14.76923zM88.61538,7.38462c-8.13461,0 -14.76923,6.63462 -14.76923,14.76923v14.76923c0,8.13462 6.63462,14.76923 14.76923,14.76923h14.76923c8.13462,0 14.76923,-6.63461 14.76923,-14.76923v-14.76923c0,-8.13461 -6.63461,-14.76923 -14.76923,-14.76923zM155.07692,7.38462c-8.13461,0 -14.76923,6.63462 -14.76923,14.76923v14.76923c0,8.13462 6.63462,14.76923 14.76923,14.76923h14.76923c8.13462,0 14.76923,-6.63461 14.76923,-14.76923v-14.76923c0,-8.13461 -6.63461,-14.76923 -14.76923,-14.76923zM22.15385,73.84615c-8.13461,0 -14.76923,6.63462 -14.76923,14.76923v14.76923c0,8.13462 6.63462,14.76923 14.76923,14.76923h14.76923c8.13462,0 14.76923,-6.63461 14.76923,-14.76923v-14.76923c0,-8.13461 -6.63461,-14.76923 -14.76923,-14.76923zM88.61538,73.84615c-8.13461,0 -14.76923,6.63462 -14.76923,14.76923v14.76923c0,8.13462 6.63462,14.76923 14.76923,14.76923h14.76923c8.13462,0 14.76923,-6.63461 14.76923,-14.76923v-14.76923c0,-8.13461 -6.63461,-14.76923 -14.76923,-14.76923zM155.07692,73.84615c-8.13461,0 -14.76923,6.63462 -14.76923,14.76923v14.76923c0,8.13462 6.63462,14.76923 14.76923,14.76923h14.76923c8.13462,0 14.76923,-6.63461 14.76923,-14.76923v-14.76923c0,-8.13461 -6.63461,-14.76923 -14.76923,-14.76923zM22.15385,140.30769c-8.13461,0 -14.76923,6.63462 -14.76923,14.76923v14.76923c0,8.13462 6.63462,14.76923 14.76923,14.76923h14.76923c8.13462,0 14.76923,-6.63461 14.76923,-14.76923v-14.76923c0,-8.13461 -6.63461,-14.76923 -14.76923,-14.76923zM88.61538,140.30769c-8.13461,0 -14.76923,6.63462 -14.76923,14.76923v14.76923c0,8.13462 6.63462,14.76923 14.76923,14.76923h14.76923c8.13462,0 14.76923,-6.63461 14.76923,-14.76923v-14.76923c0,-8.13461 -6.63461,-14.76923 -14.76923,-14.76923zM155.07692,140.30769c-8.13461,0 -14.76923,6.63462 -14.76923,14.76923v14.76923c0,8.13462 6.63462,14.76923 14.76923,14.76923h14.76923c8.13462,0 14.76923,-6.63461 14.76923,-14.76923v-14.76923c0,-8.13461 -6.63461,-14.76923 -14.76923,-14.76923z"></path></g></g></g></svg>    
-
-
-
-          
-        </ion-segment-button> -->
-        <!-- <ion-segment-button (click)="buscarboton();" class="segmentright noactivo"> -->
-      
-<!--            
-            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
-            width="24" height="24"
-            viewBox="0 0 192 192"
-            style=" fill:#000000;"><g transform="translate(6.624,6.624) scale(0.931,0.931)">
-              <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="none" stroke-linecap="butt" stroke-linejoin="none" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><g fill="#000000" stroke="#000000" stroke-width="14" stroke-linejoin="round"><g id="surface1 1"><path d="M157.44,65.28c0,27.525 -14.835,57.615 -29.4,81.12c-14.565,23.505 -29.16,40.44 -29.16,40.44c-0.735,0.825 -1.785,1.305 -2.88,1.305c-1.095,0 -2.145,-0.48 -2.88,-1.305c0,0 -14.58,-16.59 -29.16,-39.96c-14.58,-23.37 -29.4,-53.535 -29.4,-81.6c0,-33.945 27.495,-61.44 61.44,-61.44c33.945,0 61.44,27.495 61.44,61.44zM42.24,65.28c0,25.305 13.98,54.72 28.2,77.52c11.895,19.065 21.99,31.185 25.56,35.4c3.54,-4.245 13.635,-16.635 25.56,-35.88c14.235,-22.965 28.2,-52.335 28.2,-77.04c0,-29.805 -23.955,-53.76 -53.76,-53.76c-29.805,0 -53.76,23.955 -53.76,53.76zM122.88,69.12c0,14.805 -12.075,26.88 -26.88,26.88c-14.805,0 -26.88,-12.075 -26.88,-26.88c0,-14.805 12.075,-26.88 26.88,-26.88c14.805,0 26.88,12.075 26.88,26.88zM76.8,69.12c0,10.65 8.55,19.2 19.2,19.2c10.65,0 19.2,-8.55 19.2,-19.2c0,-10.65 -8.55,-19.2 -19.2,-19.2c-10.65,0 -19.2,8.55 -19.2,19.2z"></path></g></g><path d="M0,192v-192h192v192z" fill="none" stroke="none" stroke-width="1" stroke-linejoin="miter"></path><g fill="#000000" stroke="none" stroke-width="1" stroke-linejoin="miter"><g id="surface1"><path d="M96,3.84c-33.945,0 -61.44,27.495 -61.44,61.44c0,28.065 14.82,58.23 29.4,81.6c14.58,23.37 29.16,39.96 29.16,39.96c0.735,0.825 1.785,1.305 2.88,1.305c1.095,0 2.145,-0.48 2.88,-1.305c0,0 14.595,-16.935 29.16,-40.44c14.565,-23.505 29.4,-53.595 29.4,-81.12c0,-33.945 -27.495,-61.44 -61.44,-61.44zM96,11.52c29.805,0 53.76,23.955 53.76,53.76c0,24.705 -13.965,54.075 -28.2,77.04c-11.925,19.245 -22.02,31.635 -25.56,35.88c-3.57,-4.215 -13.665,-16.335 -25.56,-35.4c-14.22,-22.8 -28.2,-52.215 -28.2,-77.52c0,-29.805 23.955,-53.76 53.76,-53.76zM96,42.24c-14.805,0 -26.88,12.075 -26.88,26.88c0,14.805 12.075,26.88 26.88,26.88c14.805,0 26.88,-12.075 26.88,-26.88c0,-14.805 -12.075,-26.88 -26.88,-26.88zM96,49.92c10.65,0 19.2,8.55 19.2,19.2c0,10.65 -8.55,19.2 -19.2,19.2c-10.65,0 -19.2,-8.55 -19.2,-19.2c0,-10.65 8.55,-19.2 19.2,-19.2z"></path></g></g><path d="" fill="none" stroke="none" stroke-width="1" stroke-linejoin="miter"></path><path d="" fill="none" stroke="none" stroke-width="1" stroke-linejoin="miter">
-
-              </path></g></g></svg>            -->
-
-           
-        <!-- </ion-segment-button> -->
-      <!-- </ion-segment> -->
-      <!-- </span> -->
-      <!-- <ng-template #templateName>
-        <ion-segment  class="segmento" color="primary">
-          <ion-segment-button (click)="buscarboton2();" class="segmentleft noactivo">
-             
-              <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
-              width="24" height="24"
-              viewBox="0 0 192 192"
-              style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,192v-192h192v192z" fill="none"></path><g fill="#000000"><g id="surface1"><path d="M22.15385,7.38462c-8.13461,0 -14.76923,6.63462 -14.76923,14.76923v14.76923c0,8.13462 6.63462,14.76923 14.76923,14.76923h14.76923c8.13462,0 14.76923,-6.63461 14.76923,-14.76923v-14.76923c0,-8.13461 -6.63461,-14.76923 -14.76923,-14.76923zM88.61538,7.38462c-8.13461,0 -14.76923,6.63462 -14.76923,14.76923v14.76923c0,8.13462 6.63462,14.76923 14.76923,14.76923h14.76923c8.13462,0 14.76923,-6.63461 14.76923,-14.76923v-14.76923c0,-8.13461 -6.63461,-14.76923 -14.76923,-14.76923zM155.07692,7.38462c-8.13461,0 -14.76923,6.63462 -14.76923,14.76923v14.76923c0,8.13462 6.63462,14.76923 14.76923,14.76923h14.76923c8.13462,0 14.76923,-6.63461 14.76923,-14.76923v-14.76923c0,-8.13461 -6.63461,-14.76923 -14.76923,-14.76923zM22.15385,73.84615c-8.13461,0 -14.76923,6.63462 -14.76923,14.76923v14.76923c0,8.13462 6.63462,14.76923 14.76923,14.76923h14.76923c8.13462,0 14.76923,-6.63461 14.76923,-14.76923v-14.76923c0,-8.13461 -6.63461,-14.76923 -14.76923,-14.76923zM88.61538,73.84615c-8.13461,0 -14.76923,6.63462 -14.76923,14.76923v14.76923c0,8.13462 6.63462,14.76923 14.76923,14.76923h14.76923c8.13462,0 14.76923,-6.63461 14.76923,-14.76923v-14.76923c0,-8.13461 -6.63461,-14.76923 -14.76923,-14.76923zM155.07692,73.84615c-8.13461,0 -14.76923,6.63462 -14.76923,14.76923v14.76923c0,8.13462 6.63462,14.76923 14.76923,14.76923h14.76923c8.13462,0 14.76923,-6.63461 14.76923,-14.76923v-14.76923c0,-8.13461 -6.63461,-14.76923 -14.76923,-14.76923zM22.15385,140.30769c-8.13461,0 -14.76923,6.63462 -14.76923,14.76923v14.76923c0,8.13462 6.63462,14.76923 14.76923,14.76923h14.76923c8.13462,0 14.76923,-6.63461 14.76923,-14.76923v-14.76923c0,-8.13461 -6.63461,-14.76923 -14.76923,-14.76923zM88.61538,140.30769c-8.13461,0 -14.76923,6.63462 -14.76923,14.76923v14.76923c0,8.13462 6.63462,14.76923 14.76923,14.76923h14.76923c8.13462,0 14.76923,-6.63461 14.76923,-14.76923v-14.76923c0,-8.13461 -6.63461,-14.76923 -14.76923,-14.76923zM155.07692,140.30769c-8.13461,0 -14.76923,6.63462 -14.76923,14.76923v14.76923c0,8.13462 6.63462,14.76923 14.76923,14.76923h14.76923c8.13462,0 14.76923,-6.63461 14.76923,-14.76923v-14.76923c0,-8.13461 -6.63461,-14.76923 -14.76923,-14.76923z"></path></g></g></g></svg>
-    
-            
-            
-            </ion-segment-button>
-            <ion-segment-button (click)="buscarboton();" class="segmentright activo">
-                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
-                width="24" height="24"
-                viewBox="0 0 192 192"
-                style=" fill:#000000;"><g transform="translate(6.528,6.528) scale(0.932,0.932)"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="none" stroke-linecap="butt" stroke-linejoin="none" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><g fill="#ffffff" stroke="#ffffff" stroke-width="14" stroke-linejoin="round"><g id="surface1 1"><path d="M157.44,65.28c0,27.525 -14.835,57.615 -29.4,81.12c-14.565,23.505 -29.16,40.44 -29.16,40.44c-0.735,0.825 -1.785,1.305 -2.88,1.305c-1.095,0 -2.145,-0.48 -2.88,-1.305c0,0 -14.58,-16.59 -29.16,-39.96c-14.58,-23.37 -29.4,-53.535 -29.4,-81.6c0,-33.945 27.495,-61.44 61.44,-61.44c33.945,0 61.44,27.495 61.44,61.44zM42.24,65.28c0,25.305 13.98,54.72 28.2,77.52c11.895,19.065 21.99,31.185 25.56,35.4c3.54,-4.245 13.635,-16.635 25.56,-35.88c14.235,-22.965 28.2,-52.335 28.2,-77.04c0,-29.805 -23.955,-53.76 -53.76,-53.76c-29.805,0 -53.76,23.955 -53.76,53.76zM122.88,69.12c0,14.805 -12.075,26.88 -26.88,26.88c-14.805,0 -26.88,-12.075 -26.88,-26.88c0,-14.805 12.075,-26.88 26.88,-26.88c14.805,0 26.88,12.075 26.88,26.88zM76.8,69.12c0,10.65 8.55,19.2 19.2,19.2c10.65,0 19.2,-8.55 19.2,-19.2c0,-10.65 -8.55,-19.2 -19.2,-19.2c-10.65,0 -19.2,8.55 -19.2,19.2z"></path></g></g><path d="M0,192v-192h192v192z" fill="none" stroke="none" stroke-width="1" stroke-linejoin="miter"></path><g fill="#ffffff" stroke="none" stroke-width="1" stroke-linejoin="miter"><g id="surface1"><path d="M96,3.84c-33.945,0 -61.44,27.495 -61.44,61.44c0,28.065 14.82,58.23 29.4,81.6c14.58,23.37 29.16,39.96 29.16,39.96c0.735,0.825 1.785,1.305 2.88,1.305c1.095,0 2.145,-0.48 2.88,-1.305c0,0 14.595,-16.935 29.16,-40.44c14.565,-23.505 29.4,-53.595 29.4,-81.12c0,-33.945 -27.495,-61.44 -61.44,-61.44zM96,11.52c29.805,0 53.76,23.955 53.76,53.76c0,24.705 -13.965,54.075 -28.2,77.04c-11.925,19.245 -22.02,31.635 -25.56,35.88c-3.57,-4.215 -13.665,-16.335 -25.56,-35.4c-14.22,-22.8 -28.2,-52.215 -28.2,-77.52c0,-29.805 23.955,-53.76 53.76,-53.76zM96,42.24c-14.805,0 -26.88,12.075 -26.88,26.88c0,14.805 12.075,26.88 26.88,26.88c14.805,0 26.88,-12.075 26.88,-26.88c0,-14.805 -12.075,-26.88 -26.88,-26.88zM96,49.92c10.65,0 19.2,8.55 19.2,19.2c0,10.65 -8.55,19.2 -19.2,19.2c-10.65,0 -19.2,-8.55 -19.2,-19.2c0,-10.65 8.55,-19.2 19.2,-19.2z"></path></g></g><path d="" fill="none" stroke="none" stroke-width="1" stroke-linejoin="miter"></path><path d="" fill="none" stroke="none" stroke-width="1" stroke-linejoin="miter"></path></g></g></svg>
-            </ion-segment-button>
-          </ion-segment>
-      
-      </ng-template> -->
-      <ion-buttons end>
+          <ion-buttons class="tituloTab">
+              <button ion-button icon-only (click)="doFilter()">
+                  <img src="https://img.icons8.com/color/35/000000/filled-filter.png">
+              </button>
+              <!-- <div style="background: url('https://img.icons8.com/color/48/000000/filled-filter.png') no-repeat;">
+                <ion-select>
+                  <ion-option value="1">Option 1</ion-option>
+                 
+                </ion-select>
+              </div> -->
+          </ion-buttons>
+      <ion-buttons end class="lupa" >
           <button ion-button icon-only (click)="buscarlupa();">
               <ion-icon style="font-size: 31px;" md="md-search"></ion-icon>
           </button>
         </ion-buttons>
-        
-    
   </ion-navbar>
+  
   <ion-navbar *ngIf="!lupa">
-
       <ion-item class="itembar">
           <span item-left start style="margin:0px; padding-right:15px;">
               <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
@@ -80,18 +37,14 @@
             <span item-right start style="margin:0px; padding-right:15px;">
                 <button  clear ion-button icon-only (click)="cerrarlupa();">
                     <ion-icon ios="ios-close" md="md-close"></ion-icon>
-                </button>
-                
+                </button>      
               </span>
         <ion-input class="lupabuscarcss" type="text" value="" autofocus placeholder="Buscar" [(ngModel)]="searchTerm"  (ionChange)="setFilteredItems()"></ion-input>
       </ion-item>
-      <ion-buttons end>
-               
+      <ion-buttons end>          
         </ion-buttons>
   </ion-navbar>
-
 </ion-header>
-
 <ion-content class="no-scroll fondo-app">
   <ion-refresher style="background: #eeecec;" (ionRefresh)="doRefresh($event)">
     <ion-refresher-content
@@ -155,5 +108,21 @@
             <!-- <ion-infinite-scroll >
                 <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data..."></ion-infinite-scroll-content>
               </ion-infinite-scroll>    -->
-   
+        
+              <!-- <ion-select >
+                  <ion-option value="0" selected="true">Topics</ion-option>
+                  <ion-option *ngFor="let topiclist of allTopics" value="{{topiclist.term_id}}"   [innerHTML]="topiclist.taxonomy_term_data_name">
+                </ion-option>
+              </ion-select> -->
+              <select-searchable #sectionSelect (ngModel)="selecteTopic"  (ionChange)="topicChange($event,selecteTopic)"
+                  item-content
+                  [(ngModel)]="port"
+                  [items]="ciudades"
+                  itemValueField="id"
+                  itemTextField="descripcion"
+                  [canSearch]="true"
+                  (onChange)="portChange($event)">
+            </select-searchable>
+                  
+                 
 </ion-content>

@@ -123,4 +123,13 @@ export class CategoriasProvider {
       });
     });
   }
+  public ciudades_categorias(){
+    return new Promise(resolve => {
+      this.http.get(this.apiUrl+'/ciudades_categorias').subscribe(data => {
+        resolve(data);
+      }, err => {
+        console.log(err);
+      });
+    });
+  }
 }
